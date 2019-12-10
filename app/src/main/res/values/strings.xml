@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">pass24</string>
-    <string name="text_loginPhone">Номер телефона</string>
-    <string name="text_loginPass">Пароль</string>
+    <string name="text_login_phone">Номер телефона</string>
+    <string name="text_login_pass">Пароль</string>
+    <string name="title_login_fragment">Войти</string>
+    <string name="text_login_button">Войти</string>
+    <string name="dicr_no_account">Нет учетной записи?</string>
+    <string name="text_to_registry">Зарегестрироваться</string>
+    <string name="text_forgot_pass">Забыли пароль?</string>
 </resources>
