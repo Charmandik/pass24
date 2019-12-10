@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvLoginLogo"
+        android:id="@+id/tvLoginTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -14,25 +14,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/ivLoginLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_login_logo"
         android:contentDescription="image_key"
-        app:layout_constraintTop_toBottomOf="@+id/tvLoginLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
 
     <TextView
+        android:id="@+id/tvLoginPhoneTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Номер телефона" />
+        android:text="@string/text_loginPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLoginLogo" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:id="@+id/etLoginPhoneNumber"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="номер телефона" />
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@id/tvLoginPhoneTitle" />
 
     <TextView
+        android:id="@+id/tvLoginPassTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пароль" />
+        android:text="@string/text_loginPass"
+        app:layout_constraintTop_toBottomOf="@id/etLoginPhoneNumber" />
 
     <EditText
         android:layout_width="wrap_content"
