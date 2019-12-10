@@ -1,88 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvLoginTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Войти"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivLoginLogo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="image_key"
-        android:src="@drawable/ic_login_logo"
-        app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
-
-    <TextView
-        android:id="@+id/tvLoginPhoneTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_loginPhone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLoginLogo" />
-
-    <EditText
-        android:id="@+id/etLoginPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:importantForAutofill="no"
-        android:inputType="phone"
-        app:layout_constraintTop_toBottomOf="@id/tvLoginPhoneTitle" />
-
-    <TextView
-        android:id="@+id/tvLoginPassTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_loginPass"
-        app:layout_constraintTop_toBottomOf="@id/etLoginPhoneNumber" />
-
-    <EditText
-        android:id="@+id/etLoginPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/tvLoginPassTitle" />
-
-    <ImageView
-        android:id="@+id/ivLoginEnterButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="Кнопка Войти"
-        app:layout_constraintTop_toBottomOf="@id/etLoginPass" />
-
     <LinearLayout
-        android:id="@+id/llLoginNeedHelp"
+        android:id="@+id/llLoginHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/ivLoginEnterButton">
+        android:orientation="vertical"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tvLoginTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Нет учетной записи?" />
+            android:gravity="center_horizontal"
+            android:text="@string/title_login_fragment"
+            android:paddingTop="48dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvLoginToRegistry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Зарегестрироваться" />
+        <ImageView
+            android:id="@+id/ivLoginLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="image_key"
+            android:src="@drawable/ic_login_logo"
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvLoginToForgotPass"
+    <LinearLayout
+        android:id="@+id/llLoginBody"
         android:layout_width="match_parent"
-        android:textAlignment="center"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/llLoginNeedHelp"
-        android:text="Забыли пароль?" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/llLoginHeader">
+
+        <TextView
+            android:id="@+id/tvLoginPhoneTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:text="@string/text_login_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginLogo" />
+
+        <EditText
+            android:id="@+id/etLoginPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            app:layout_constraintTop_toBottomOf="@id/tvLoginPhoneTitle" />
+
+        <TextView
+            android:id="@+id/tvLoginPassTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:text="@string/text_login_pass"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLoginPhoneNumber" />
+
+        <EditText
+            android:id="@+id/etLoginPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/tvLoginPassTitle" />
+
+        <Button
+            android:id="@+id/ivLoginEnterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:background="@drawable/rounded_red_button"
+            android:text="@string/text_login_button"
+            app:layout_constraintTop_toBottomOf="@id/etLoginPass" />
+
+        <LinearLayout
+            android:id="@+id/llLoginNeedHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/ivLoginEnterButton">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="@string/dicr_no_account" />
+
+            <TextView
+                android:id="@+id/tvLoginToRegistry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/text_to_registry" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvLoginToForgotPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            android:text="@string/text_forgot_pass"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/llLoginNeedHelp" />
+    </LinearLayout>
+</LinearLayout>
