@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Регистрация" />
+
+    <LinearLayout
+        android:id="@+id/llRegistryFirstNameBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Имя" />
+
+        <EditText
+            android:id="@+id/etRegistryFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Константин"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistrySecondNameBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Фамилия" />
+
+        <EditText
+            android:id="@+id/etRegistrySecondName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Васильев"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistryEmailBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="E-mail" />
+
+        <EditText
+            android:id="@+id/etRegistryEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="mail@mail.ru"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistryPhoneBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Телефон" />
+
+        <EditText
+            android:id="@+id/etRegistryPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="8(967)123-11-22"
+            android:inputType="phone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistryPassBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Пароль" />
+
+        <EditText
+            android:id="@+id/etRegistryPass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="123321123"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistryPassConfirmBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Пароль еще раз" />
+
+        <EditText
+            android:id="@+id/etRegistryConfirmPass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="123321123"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegistryDataProcessingBlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Даю согласие на обработку персональных
+            данных в соотвествии с политикой компании" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="Зарегистрироваться" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Есть записи?" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Войти" />
+    </LinearLayout>
+
+</LinearLayout>
