@@ -9,21 +9,20 @@
         android:id="@+id/llLoginHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="4"
         android:orientation="vertical"
-        android:layout_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvLoginTitle"
+            style="@style/login_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/title_login_fragment"
             android:paddingTop="48dp"
-            android:textSize="18sp"
+            android:text="@string/title_login_fragment"
             android:textStyle="bold"
-            android:textColor="#000000"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -31,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="image_key"
+            android:scaleType="center"
             android:src="@drawable/ic_login_logo"
             app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
     </LinearLayout>
@@ -39,53 +39,48 @@
         android:id="@+id/llLoginBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="1"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/llLoginHeader">
+        app:layout_constraintTop_toBottomOf="@+id/llLoginHeader">
 
-        <TextView
-            android:id="@+id/tvLoginPhoneTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:text="@string/text_login_phone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivLoginLogo" />
-
-        <EditText
-            android:id="@+id/etLoginPhoneNumber"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etLoginPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:importantForAutofill="no"
-            android:inputType="phone"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginPhoneTitle" />
+            android:hint="@string/text_login_phone">
 
-        <TextView
-            android:id="@+id/tvLoginPassTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:text="@string/text_login_pass"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etLoginPhoneNumber" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLoginPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginPassTitle" />
+            android:hint="@string/text_login_pass"
+            app:passwordToggleContentDescription="Пароль"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/ivLoginEnterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
+            android:layout_marginTop="40dp"
             android:background="@drawable/rounded_red_button"
             android:text="@string/text_login_button"
+            android:textColor="#ffffff"
             app:layout_constraintTop_toBottomOf="@id/etLoginPass" />
 
         <LinearLayout
@@ -100,8 +95,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="@string/dicr_no_account" />
+                android:text="@string/dicr_no_account"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/tvLoginToRegistry"
@@ -115,7 +110,7 @@
             android:id="@+id/tvLoginToForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="32dp"
+            android:paddingTop="40dp"
             android:text="@string/text_forgot_pass"
             android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@id/llLoginNeedHelp" />
