@@ -11,49 +11,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:paddingBottom="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/text_welcome_head"
-            android:paddingTop="65dp"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="65dp"
+                android:text="@string/text_welcome_head"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/ivWelcomeLogo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="64dp"
-            android:contentDescription="image_success"
-            android:src="@drawable/ic_welcome_logo" />
+            <ImageView
+                android:id="@+id/ivWelcomeLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="image_success"
+                android:paddingTop="64dp"
+                android:src="@drawable/ic_welcome_logo" />
+
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llWelcomeBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:paddingTop="112dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+    <include
+        layout="@layout/fragment_welcome_1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llWelcomeHeader">
+        app:layout_constraintTop_toBottomOf="@+id/llWelcomeHeader" />
 
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vpWelcome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/llWelcomeBody"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_weight="1"-->
+<!--        android:paddingTop="112dp"-->
+<!--        android:paddingStart="16dp"-->
+<!--        android:paddingEnd="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/llWelcomeHeader">-->
 
 
-    </LinearLayout>
+<!--        <android.support.v4.view.ViewPager-->
+<!--            android:id="@+id/vpWelcome"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+
+
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

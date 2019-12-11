@@ -1,85 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llNewAddress"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clNewAddress"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight=""
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="31dp">
 
     <LinearLayout
         android:id="@+id/llNewAddressHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:layout_weight=""
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="23dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="none"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_back"/>
+            android:background="none"
+            android:src="@drawable/ic_arrow_back" />
 
         <LinearLayout
-            android:id="@+id/llAddressHead"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvNewAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#2A2A2A"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:text="@string/text_new_address_header"/>
 
             <TextView
+                android:text="@string/text_query"
                 android:id="@+id/tvQuery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:paddingTop="5dp"
                 android:textColor="#B9B9B9"
-                android:textSize="12sp"
-                android:text="@string/text_query"/>
+                android:textSize="12sp"/>
 
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llNewAddressBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="21dp">
+        android:paddingTop="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llNewAddressHeader"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/etObjectNumber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_object_number"/>
+            android:layout_height="65dp"
+            android:hint="@string/hint_object_number"
+            android:textSize="12sp"/>
 
         <EditText
             android:id="@+id/etObjectAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_object_address"/>
+            android:layout_height="65dp"
+            android:hint="@string/hint_object_address"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnSendAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_red_button"
+        android:minHeight="56dp"
         android:text="@string/button_send_new_address"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:background="#DC3D41"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

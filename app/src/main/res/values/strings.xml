@@ -36,9 +36,13 @@
     <string name="text_to_find_object">Как узнать номер объекта?</string>
     <string name="text_to_demo">Демо-режим</string>
     <string name="text_new_address_header">Новый адрес</string>
-    <string name="text_query">Запрос на подключение</string>
+    <string name="text_query">Запрос на присоединение</string>
     <string name="hint_object_number">Номер объекта</string>
     <string name="hint_object_address">Адрес</string>
     <string name="button_send_new_address">Отправить</string>
-    <string name="text_succes_query">Объект получил ваш запрос. После рассмотрения заявки вы получите PUSH-уведомление.</string>
+    <string name="text_query_head">Запрос отправлен!</string>
+    <string name="text_success_query">Объект получил ваш запрос. После рассмотрения заявки вы получите PUSH-уведомление.</string>
+    <string name="text_use_demo">А пока можете попробовать демо-режим</string>
+    <string name="text_send_another_query">Отправить другой запрос</string>
+    <string name="button_enable_demo">Включить демо-режим</string>
 </resources>

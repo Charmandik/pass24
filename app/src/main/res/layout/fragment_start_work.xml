@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:layout_weight="1">
+    android:gravity="center_horizontal">
 
     <LinearLayout
+        android:id="@+id/llStartWorkHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toTopOf="parent">
+
         <TextView
             android:id="@+id/tvStartWork"
             android:layout_width="match_parent"
@@ -18,7 +22,7 @@
             android:gravity="center_horizontal"
             android:paddingTop="56dp"
             android:text="@string/text_start_work"
-            android:textColor="#000000"
+            android:textColor="#2A2A2A"
             android:textSize="24sp"
             android:textStyle="bold"/>
 
@@ -29,6 +33,17 @@
             android:paddingTop="28dp"
             android:src="@drawable/ic_start_logo"
             android:contentDescription="image_geo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llStartWorkBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llStartWorkHeader">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,10 +57,9 @@
                 android:textAlignment="center"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="@string/text_start_info"/>
         </RelativeLayout>
-
 
         <TextView
             android:id="@+id/tvFindObject"
@@ -55,17 +69,22 @@
             android:text="@string/text_to_find_object"
             android:textAlignment="center"
             android:textColor="#51CFC0"
+            android:paddingTop="40dp"
             android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tvDemoMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@string/text_to_demo"
-            />
-
 
     </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvDemoMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_to_demo"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="26dp"
+        android:textColor="#E9413C"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
