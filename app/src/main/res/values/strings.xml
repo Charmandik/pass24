@@ -7,4 +7,21 @@
     <string name="dicr_no_account">Нет учетной записи?</string>
     <string name="text_to_registry">Зарегестрироваться</string>
     <string name="text_forgot_pass">Забыли пароль?</string>
+    <string name="text_welcome_head">Добро пожаловать!</string>
+    <string name="text_welcome_info_1">PASS24.online - удобное приложение для создания пропусков без звонков и бумаг... за несколько секунд!</string>
+    <string name="text_welcome_info_2">Отправляйте приглашения гостям, чтобы не заполнять данные самостоятельно и создавайте шаблоны на частых гостей.</string>
+    <string name="text_welcome_info_3_1">Выдавайте временные доверенности на создание пропусков.</string>
+    <string name="text_welcome_info_3_2">После завершения срока действия, они перестанут действовать автоматически.</string>
+    <string name="text_welcome_info_4">Получайте уведомления и прибытии и убытии гостей. История событий хранится в приложении.</string>
+    <string name="text_welcome_skip">Пропустить</string>
+    <string name="text_welcome_go">Поехали!</string>
+    <string name="text_start_work">Начало работы</string>
+    <string name="text_start_info">Для начала использования приложения, необходимо присоединиться к объекту, подключенному к системе PASS24.online</string>
+    <string name="text_to_find_object">Как узнать номер объекта?</string>
+    <string name="text_to_demo">Демо-режим</string>
+    <string name="text_new_address_header">Новый адрес</string>
+    <string name="text_query">Запрос на подключение</string>
+    <string name="hint_object_number">Номер объекта</string>
+    <string name="hint_object_address">Адрес</string>
+    <string name="button_send_new_address">Отправить</string>
 </resources>
