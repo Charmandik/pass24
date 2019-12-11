@@ -15,4 +15,9 @@ public class LoginPresenter {
     public void detachView() {
         view = null;
     }
+
+    public void login(String phone, String password){
+        model.login(phone,password);
+    }
+
 }

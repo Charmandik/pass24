@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
         btnLoginEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loginPresenter.login(etLoginPhone.getText().toString().trim(), etLoginPass.getText().toString().trim());
             }
         });
 

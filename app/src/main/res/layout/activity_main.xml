@@ -35,20 +35,20 @@
                 android:paddingBottom="46dp"
                 android:src="@drawable/ic_welcome_logo" />
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vpWelcome"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v4.view.ViewPager>
+<!--            <androidx.core.view.ViewPager-->
+<!--                android:id="@+id/vpWelcome"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--            </androidx.core.view.ViewPager>-->
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tlWelcome"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabBackground="@drawable/tab_selector"
-                app:tabGravity="center"
-                app:tabIndicatorHeight="0dp"/>
+<!--            <android.support.design.widget.TabLayout-->
+<!--                android:id="@+id/tlWelcome"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:tabBackground="@drawable/tab_selector"-->
+<!--                app:tabGravity="center"-->
+<!--                app:tabIndicatorHeight="0dp"/>-->
 
             <include
                 layout="@layout/fragment_welcome_4"
