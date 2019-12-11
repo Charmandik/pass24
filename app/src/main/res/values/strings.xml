@@ -24,4 +24,5 @@
     <string name="hint_object_number">Номер объекта</string>
     <string name="hint_object_address">Адрес</string>
     <string name="button_send_new_address">Отправить</string>
+    <string name="text_succes_query">Объект получил ваш запрос. После рассмотрения заявки вы получите PUSH-уведомление.</string>
 </resources>
