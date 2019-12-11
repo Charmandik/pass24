@@ -22,4 +22,5 @@
     <string name="descr_registry_confirm">Мы отправили вам СМС сообщение с кодом подверждения. Введите код из сообщения, чтобы подтвердить номер телефона.</string>
     <string name="text_registry_cofirm_btn">Далее</string>
     <string name="text_registry_confirm_send_again">Отправить еще раз</string>
+    <string name="text_password_recovery_button">Восстановить</string>
 </resources>
