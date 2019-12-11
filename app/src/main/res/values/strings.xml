@@ -7,4 +7,15 @@
     <string name="dicr_no_account">Нет учетной записи?</string>
     <string name="text_to_registry">Зарегестрироваться</string>
     <string name="text_forgot_pass">Забыли пароль?</string>
+    <string name="title_registry_fragment">Регистрация</string>
+    <string name="text_registry_first_name">Имя</string>
+    <string name="text_registry_second_name">Фамилия</string>
+    <string name="text_registry_email">E-mail</string>
+    <string name="text_registry_phone">Телефон</string>
+    <string name="text_registry_pass">Пароль</string>
+    <string name="text_registry_confirm_pass">Пароль еще раз</string>
+    <string name="descr_registry_data_processing">Даю согласие на обработку персональных данных в соотвествии с политикой компании</string>
+    <string name="text_registry_btn">Зарегистрироваться</string>
+    <string name="descr_registry_footer">Есть записи?</string>
+    <string name="text_registry_to_login_btn">Войти</string>
 </resources>
