@@ -13,7 +13,8 @@
         android:text="@string/text_welcome_info_2"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        />
 
 
 
