@@ -8,39 +8,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Регистрация" />
+        android:layout_marginTop="56dp"
+        android:text="@string/title_registry_fragment"
+        android:textColor="@color/textPrimary"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Подтверждение учетной записи" />
+        android:paddingTop="5dp"
+        android:text="@string/text_registry_confirm"
+        android:textColor="#B9B9B9"
+        android:textSize="12sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мы отправили вам СМС сообщение с кодом
-подверждения. Введите код из сообщения,
-чтобы подтвердить номер телефона" />
+        android:layout_marginTop="56dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:text="@string/descr_registry_confirm"
+        android:textAlignment="textStart"
+        android:textColor="@color/textPrimary"
+        android:textSize="14sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:hint="0000"
+        android:layout_marginTop="32dp"
+        android:background=""
+        android:hint="00000"
+        android:letterSpacing="0.2"
+        android:maxLength="5"
+        android:maxLines="1"
         android:textAlignment="center"
         android:inputType="number" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegistry"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Далее" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_red_button"
+        android:minHeight="56dp"
+        android:text="@string/text_registry_cofirm_btn"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Отправить еще раз" />
+        android:layout_marginTop="16dp"
+        android:text="@string/text_registry_confirm_send_again"
+        android:textColor="#51CFC0" />
 
 </LinearLayout>

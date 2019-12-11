@@ -123,9 +123,11 @@
             android:id="@+id/btnRegistry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="56dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/rounded_red_button"
             android:text="@string/text_registry_btn"
+            android:textAllCaps="false"
             android:textColor="#ffffff" />
 
         <LinearLayout

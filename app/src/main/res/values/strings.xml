@@ -18,4 +18,8 @@
     <string name="text_registry_btn">Зарегистрироваться</string>
     <string name="descr_registry_footer">Есть записи?</string>
     <string name="text_registry_to_login_btn">Войти</string>
+    <string name="text_registry_confirm">Подтверждение учетной записи</string>
+    <string name="descr_registry_confirm">Мы отправили вам СМС сообщение с кодом подверждения. Введите код из сообщения, чтобы подтвердить номер телефона.</string>
+    <string name="text_registry_cofirm_btn">Далее</string>
+    <string name="text_registry_confirm_send_again">Отправить еще раз</string>
 </resources>
