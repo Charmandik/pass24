@@ -30,7 +30,6 @@ public class LoginModel {
                             Constants.authToken = loginResponse.getBody();
                             loginPresenter.onLoggedIn();
                         }
-
                     }
 
                     @Override

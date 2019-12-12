@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,9 @@ public class LoginFragment extends Fragment {
     private TextInputLayout etLoginPass;
     private Button btnLoginEnter;
     private LoginPresenter loginPresenter;
+    private TextView toRegistryBtn;
+    private TextView toForgotPassBtn;
+
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -47,11 +51,27 @@ public class LoginFragment extends Fragment {
             etLoginPhone = view.findViewById(R.id.etLoginPhone);
             etLoginPass = view.findViewById(R.id.etLoginPass);
             btnLoginEnter = view.findViewById(R.id.btnLoginEnter);
+            toRegistryBtn = view.findViewById(R.id.tvLoginToRegistry);
+            toForgotPassBtn = view.findViewById(R.id.tvLoginToForgotPass);
         }
         btnLoginEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginPresenter.login(etLoginPhone.getEditText().getText().toString().trim(), etLoginPass.getEditText().getText().toString().trim());
+            }
+        });
+
+        toRegistryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.toRegistry();
+            }
+        });
+
+        toForgotPassBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.toForgotPass();
             }
         });
     }
