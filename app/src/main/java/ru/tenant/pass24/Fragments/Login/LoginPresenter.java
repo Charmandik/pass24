@@ -3,6 +3,7 @@ package ru.tenant.pass24.Fragments.Login;
 import androidx.fragment.app.FragmentManager;
 
 import ru.tenant.pass24.Fragments.MainScreen;
+import ru.tenant.pass24.Fragments.PasswordRecovery.PasswordRecoveryFragment;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.Fragments.Registration.RegistryFragment;
 
@@ -43,6 +44,6 @@ public class LoginPresenter {
     }
 
     public void toForgotPass() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new MainScreen()).commit();
+        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new PasswordRecoveryFragment()).commit();
     }
 }

@@ -3,10 +3,11 @@ package ru.tenant.pass24.Fragments.Registration;
 import androidx.fragment.app.FragmentManager;
 
 import ru.tenant.pass24.Fragments.Login.LoginFragment;
+import ru.tenant.pass24.Fragments.RegistryConfirm.RegistryConfirmFragment;
 import ru.tenant.pass24.R;
 
 public class RegistryPresenter {
-    private final RegistryModel model;
+    public final RegistryModel model;
     private RegistryFragment view;
     private FragmentManager fragmentManager;
 
@@ -33,19 +34,11 @@ public class RegistryPresenter {
         model.checkData(firstName, secondName, phone, email, password);
     }
 
-//    public void onError(String errorTitle, String errorMessage) {
-//        view.showError(errorTitle, errorMessage);
-//    }
-//
-//    public void onLoggedIn() {
-//        fragmentManager.beginTransaction().add(R.id.flMainContainer, new MainScreen()).commit();
-//    }
-//
     public void toLogin() {
         fragmentManager.beginTransaction().replace(R.id.flMainContainer, new LoginFragment()).commit();
     }
-//
-//    public void toForgotPass() {
-//        fragmentManager.beginTransaction().add(R.id.flMainContainer, new MainScreen()).commit();
-//    }
+
+    public void toRegistryConfirm() {
+        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new RegistryConfirmFragment()).commit();
+    }
 }
