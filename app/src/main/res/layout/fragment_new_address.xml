@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="none"
-            android:src="@drawable/ic_arrow_back" />
+
+            android:src="@drawable/ic_arrow_back"/>
 
         <LinearLayout
             android:layout_width="match_parent"
