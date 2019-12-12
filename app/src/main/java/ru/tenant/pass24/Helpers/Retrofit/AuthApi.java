@@ -5,9 +5,32 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 import ru.tenant.pass24.Login.apiModels.LoginRequestBody;
 import ru.tenant.pass24.Login.apiModels.LoginResponse;
+import ru.tenant.pass24.Registration.apiModels.RegistryCheckRequestBody;
+import ru.tenant.pass24.Registration.apiModels.RegistryCheckResponse;
 
 public interface AuthApi {
     @POST("auth/login/")
-    Observable<LoginResponse> getLogin(@Body LoginRequestBody loginRequestBody);
+    Observable<LoginResponse> login(@Body LoginRequestBody loginRequestBody);
+
+    @POST("auth/register/")
+    Observable<RegistryResponse> registrate(@Body RegistryCheckRequestBody registryCheckRequestBody);
+
+    @POST("auth/register/check")
+    Observable<RegistryCheckResponse> checkRegistrationData(@Body RegistryCheckRequestBody registryCheckRequestBody);
+//
+//    @POST("auth/passwordReset")
+//    Observable<PasswordResetResponse> resetPassword(@Body PasswordResetRequest passwordResetRequest);
+//
+//    @POST("auth/sendConfirmPhone/")
+//    Observable<SendConfirmPhoneResponse> sendConfirmPhone(@Body SendConfirmPhoneRequest sendConfirmPhoneRequest);
+//
+//    @POST("auth/ConfirmPhone/")
+//    Observable<ConfirmPhoneResponse> confirmPhone(@Body ConfirmPhoneRequest confirmPhoneRequest);
+//
+//    @POST("auth/refresh/")
+//    Observable<RefreshTokenResponse> refreshToken(@Body RefreshtokenRequest refreshtokenRequest);
+//
+//    @POST("auth/logout/")
+//    Observable<LogoutResponse> logout(@Body LogoutResponse logoutResponse);
 }
 

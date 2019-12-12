@@ -13,7 +13,7 @@ public class LoginModel {
     public LoginPresenter loginPresenter;
 
     public void login(String phone, String password) {
-        ApiService.getInstance().getAuthApi().getLogin(new LoginRequestBody(phone, password))
+        ApiService.getInstance().getAuthApi().login(new LoginRequestBody(phone, password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<LoginResponse>() {

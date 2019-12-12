@@ -22,12 +22,12 @@
         android:paddingEnd="24dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistryFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/text_registry_first_name">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistryFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -35,65 +35,65 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistrySecondName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/text_registry_second_name">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistrySecondName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistryEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/text_registry_email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistryEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistryPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/text_registry_phone">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistryPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistryPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/text_registry_pass">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistryPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etRegistryConfirmPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/text_registry_confirm_pass">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRegistryConfirmPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -108,6 +108,7 @@
             android:paddingTop="16dp">
 
             <Switch
+                android:id="@+id/registrySwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -144,6 +145,7 @@
                 android:textColor="@color/textPrimary" />
 
             <TextView
+                android:id="@+id/tvRegistryToLoginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
