@@ -6,6 +6,8 @@ public class LoginPresenter {
 
     public LoginPresenter(LoginModel model) {
         this.model = model;
+        if (model != null)
+            model.loginPresenter = this;
     }
 
     public void attachView(LoginFragment loginFragment) {
@@ -16,8 +18,15 @@ public class LoginPresenter {
         view = null;
     }
 
-    public void login(String phone, String password){
-        model.login(phone,password);
+    public void login(String phone, String password) {
+        model.login(phone, password);
     }
 
+    public void onError(String errorTitle, String errorMessage) {
+        view.showError(errorTitle, errorMessage);
+    }
+
+    public void onLoggedIn() {
+
+    }
 }

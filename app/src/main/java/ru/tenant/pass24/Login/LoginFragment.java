@@ -5,19 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import ru.tenant.pass24.Helpers.Dialog;
 import ru.tenant.pass24.R;
 
 public class LoginFragment extends Fragment {
-
-
-    private EditText etLoginPhone;
-    private EditText etLoginPass;
+    private TextInputLayout etLoginPhone;
+    private TextInputLayout etLoginPass;
     private Button btnLoginEnter;
     private LoginPresenter loginPresenter;
 
@@ -51,10 +51,19 @@ public class LoginFragment extends Fragment {
         btnLoginEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginPresenter.login(etLoginPhone.getText().toString().trim(), etLoginPass.getText().toString().trim());
+                loginPresenter.login(etLoginPhone.getEditText().getText().toString().trim(), etLoginPass.getEditText().getText().toString().trim());
             }
         });
-
     }
 
+    public void showError(String errorTitle, String errorMessage) {
+        final Dialog dialog = new Dialog(errorTitle, errorMessage);
+        dialog.show(this.getFragmentManager(), "");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        loginPresenter.detachView();
+    }
 }
