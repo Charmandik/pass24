@@ -1,6 +1,9 @@
-package ru.tenant.pass24.Registration;
+package ru.tenant.pass24.Fragments.Registration;
 
 import androidx.fragment.app.FragmentManager;
+
+import ru.tenant.pass24.Fragments.Login.LoginFragment;
+import ru.tenant.pass24.R;
 
 public class RegistryPresenter {
     private final RegistryModel model;
@@ -38,9 +41,9 @@ public class RegistryPresenter {
 //        fragmentManager.beginTransaction().add(R.id.flMainContainer, new MainScreen()).commit();
 //    }
 //
-//    public void toRegistry() {
-//        fragmentManager.beginTransaction().add(R.id.flMainContainer, new MainScreen()).commit();
-//    }
+    public void toLogin() {
+        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new LoginFragment()).commit();
+    }
 //
 //    public void toForgotPass() {
 //        fragmentManager.beginTransaction().add(R.id.flMainContainer, new MainScreen()).commit();

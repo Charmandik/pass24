@@ -1,10 +1,10 @@
-package ru.tenant.pass24.Login;
+package ru.tenant.pass24.Fragments.Login;
 
 import androidx.fragment.app.FragmentManager;
 
-import ru.tenant.pass24.MainScreen;
+import ru.tenant.pass24.Fragments.MainScreen;
 import ru.tenant.pass24.R;
-import ru.tenant.pass24.Registration.RegistryFragment;
+import ru.tenant.pass24.Fragments.Registration.RegistryFragment;
 
 public class LoginPresenter {
     private final LoginModel model;

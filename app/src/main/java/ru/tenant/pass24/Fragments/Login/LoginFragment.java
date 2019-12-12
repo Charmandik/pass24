@@ -1,4 +1,4 @@
-package ru.tenant.pass24.Login;
+package ru.tenant.pass24.Fragments.Login;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

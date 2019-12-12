@@ -1,4 +1,4 @@
-package ru.tenant.pass24.Registration;
+package ru.tenant.pass24.Fragments.Registration;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -69,6 +69,13 @@ public class RegistryFragment extends Fragment {
                             etRegistryPhone.getText().toString().trim(),
                             etRegistryEmail.getText().toString().trim(),
                             etRegistryPass.getText().toString().trim());
+            }
+        });
+
+        tvRegistryToLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registryPresenter.toLogin();
             }
         });
     }

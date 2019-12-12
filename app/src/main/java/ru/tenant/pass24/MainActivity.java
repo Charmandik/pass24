@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import ru.tenant.pass24.Login.LoginFragment;
+import ru.tenant.pass24.Fragments.Login.LoginFragment;
 
 public class MainActivity extends AppCompatActivity {
 

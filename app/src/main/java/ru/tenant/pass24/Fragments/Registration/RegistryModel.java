@@ -1,12 +1,12 @@
-package ru.tenant.pass24.Registration;
+package ru.tenant.pass24.Fragments.Registration;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.Helpers.Retrofit.ApiService;
-import ru.tenant.pass24.Registration.apiModels.RegistryCheckRequestBody;
-import ru.tenant.pass24.Registration.apiModels.RegistryCheckResponse;
+import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckRequestBody;
+import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckResponse;
 
 public class RegistryModel {
     public RegistryPresenter registryPresenter;

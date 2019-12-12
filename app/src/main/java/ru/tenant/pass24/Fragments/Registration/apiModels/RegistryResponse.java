@@ -1,14 +1,14 @@
-package ru.tenant.pass24.Registration.apiModels;
+package ru.tenant.pass24.Fragments.Registration.apiModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import ru.tenant.pass24.Login.apiModels.ErrorResponse;
+import ru.tenant.pass24.Fragments.Login.apiModels.ErrorResponse;
 
-public class RegistryCheckResponse {
+public class RegistryResponse {
     @SerializedName("body")
     @Expose
-    private boolean body;
+    private RegistryResponseBody body;
     @SerializedName("error")
     @Expose
     private ErrorResponse error;
@@ -21,11 +21,11 @@ public class RegistryCheckResponse {
         this.error = error;
     }
 
-    public boolean isBody() {
+    public RegistryResponseBody getBody() {
         return body;
     }
 
-    public void setBody(boolean body) {
+    public void setBody(RegistryResponseBody body) {
         this.body = body;
     }
 }

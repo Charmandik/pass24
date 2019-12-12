@@ -1,4 +1,4 @@
-package ru.tenant.pass24.Login;
+package ru.tenant.pass24.Fragments.Login;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -6,8 +6,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.Helpers.Constants;
 import ru.tenant.pass24.Helpers.Retrofit.ApiService;
-import ru.tenant.pass24.Login.apiModels.LoginRequestBody;
-import ru.tenant.pass24.Login.apiModels.LoginResponse;
+import ru.tenant.pass24.Fragments.Login.apiModels.LoginRequestBody;
+import ru.tenant.pass24.Fragments.Login.apiModels.LoginResponse;
 
 public class LoginModel {
     public LoginPresenter loginPresenter;

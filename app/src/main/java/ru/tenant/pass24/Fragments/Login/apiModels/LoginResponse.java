@@ -1,4 +1,4 @@
-package ru.tenant.pass24.Login.apiModels;
+package ru.tenant.pass24.Fragments.Login.apiModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
