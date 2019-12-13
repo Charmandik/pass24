@@ -18,6 +18,10 @@ public class RegistryConfirmPresenter {
         fragmentManager = view.getActivity().getSupportFragmentManager();
     }
 
+    public void confirmTelephone(String code) {
+
+    }
+
     public void detachView() {
         view = null;
     }
