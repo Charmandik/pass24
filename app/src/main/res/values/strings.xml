@@ -46,6 +46,7 @@
     <string name="text_use_demo">А пока можете попробовать демо-режим</string>
     <string name="text_send_another_query">Отправить другой запрос</string>
     <string name="button_enable_demo">Включить демо-режим</string>
+    <string name="button_welcome_go">Поехали!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
