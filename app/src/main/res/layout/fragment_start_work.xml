@@ -12,11 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent">
-<!--        app:layout_constraintStart_toTopOf="parent"-->
-        >
+<!--        app:layout_constraintStart_toTopOf="parent">-->
+
 
         <TextView
             android:id="@+id/tvStartWork"

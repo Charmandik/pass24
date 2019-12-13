@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,12 +39,8 @@
             android:id="@+id/llViewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background=""
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llWelcomeHeader"
-            app:layout_constraintBot_toBottomOf="parent">
-
+            app:layout_constraintStart_toStartOf="parent">
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpWelcome"
                 android:layout_width="match_parent"
@@ -54,36 +51,11 @@
 
             </androidx.viewpager.widget.ViewPager>
 
-            <ru.tenant.pass24.WelcomeView.rd.PageIndicatorView
-                android:id="@+id/pageIndicatorView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="393dp"
-                app:piv_selectedColor="#212121"
-                app:piv_unselectedColor="#efd2a0"
-                app:piv_viewPager="@id/vpWelcome"
-                attrs:piv_padding="12dp"
-                attrs:piv_radius="8dp" />
-
-            <include
-                android:id="@+id/includeFragment"
-                layout="@layout/fragment_welcome_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                />
 
         </RelativeLayout>
 
 
     </LinearLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
