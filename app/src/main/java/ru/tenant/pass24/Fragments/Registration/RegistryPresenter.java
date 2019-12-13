@@ -42,10 +42,10 @@ public class RegistryPresenter {
                 .commit();
     }
 
-    public void toRegistryConfirm() {
+    public void toRegistryConfirm(String phone) {
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flMainContainer, new RegistryConfirmFragment())
+                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone))
                 .addToBackStack(null)
                 .commit();
     }

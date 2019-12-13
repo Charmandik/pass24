@@ -6,79 +6,80 @@ import com.google.gson.annotations.SerializedName;
 public class RegistryResponseBody {
     @SerializedName("id")
     @Expose
-    private boolean id;
+    private int id;
     @SerializedName("name")
     @Expose
-    private boolean name;
+    private String name;
     @SerializedName("firstName")
     @Expose
-    private boolean firstName;
+    private String firstName;
     @SerializedName("lastName")
     @Expose
-    private boolean lastName;
+    private String lastName;
     @SerializedName("middleName")
     @Expose
-    private boolean middleName;
+    private String middleName;
     @SerializedName("phone")
     @Expose
-    private boolean phone;
+    private String phone;
     @SerializedName("email")
     @Expose
-    private boolean email;
+    private String email;
 
-    public boolean isId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(boolean id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public boolean isName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(boolean name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public boolean isFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(boolean firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public boolean isLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(boolean lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public boolean isMiddleName() {
+    public String getMiddleName() {
         return middleName;
     }
 
-    public void setMiddleName(boolean middleName) {
+    public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    public boolean isPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(boolean phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public boolean isEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(boolean email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 }

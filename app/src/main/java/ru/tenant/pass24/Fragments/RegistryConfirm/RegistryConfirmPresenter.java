@@ -18,7 +18,8 @@ public class RegistryConfirmPresenter {
         fragmentManager = view.getActivity().getSupportFragmentManager();
     }
 
-    public void confirmTelephone(String code) {
+    public void confirmTelephone(String phone, String code) {
+        model.confirmTelephone(phone, code);
 
     }
 

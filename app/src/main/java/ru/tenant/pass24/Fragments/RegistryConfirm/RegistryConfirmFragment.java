@@ -15,10 +15,15 @@ import androidx.fragment.app.Fragment;
 import ru.tenant.pass24.R;
 
 public class RegistryConfirmFragment extends Fragment {
+    public String phone;
     private RegistryConfirmPresenter registryConfirmPresenter;
     private Button btnRegistry;
     private TextView tvSendAgain;
     private EditText etConfirmRegistryCode;
+
+    public RegistryConfirmFragment(String phone) {
+        this.phone = phone;
+    }
 
     @Nullable
     @Override
@@ -43,14 +48,14 @@ public class RegistryConfirmFragment extends Fragment {
         btnRegistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registryConfirmPresenter.confirmTelephone(etConfirmRegistryCode.getText().toString().trim());
+                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim());
             }
         });
 
         tvSendAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registryConfirmPresenter.confirmTelephone(etConfirmRegistryCode.getText().toString().trim());
+                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim());
             }
         });
     }

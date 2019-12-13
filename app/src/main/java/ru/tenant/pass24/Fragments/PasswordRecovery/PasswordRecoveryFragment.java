@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import ru.tenant.pass24.R;
 
 public class PasswordRecoveryFragment extends Fragment {
     private PasswordRecoveryPresenter passwordRecoveryPresenter;
+    private TextView tvBackToLogin;
 
     @Nullable
     @Override
@@ -23,12 +25,19 @@ public class PasswordRecoveryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init();
+        init(view);
     }
 
-    private void init() {
+    private void init(View view) {
         PasswordRecoveryModel passwordRecoveryModel = new PasswordRecoveryModel();
         passwordRecoveryPresenter = new PasswordRecoveryPresenter(passwordRecoveryModel);
         passwordRecoveryPresenter.attachView(this);
+        tvBackToLogin = view.findViewById(R.id.tvBackToLogin);
+        tvBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordRecoveryPresenter.toLogin();
+            }
+        });
     }
 }
