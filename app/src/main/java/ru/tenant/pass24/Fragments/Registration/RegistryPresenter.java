@@ -35,10 +35,18 @@ public class RegistryPresenter {
     }
 
     public void toLogin() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new LoginFragment()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new LoginFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     public void toRegistryConfirm() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new RegistryConfirmFragment()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new RegistryConfirmFragment())
+                .addToBackStack(null)
+                .commit();
     }
 }
