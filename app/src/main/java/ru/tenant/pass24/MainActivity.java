@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import ru.tenant.pass24.Fragments.Login.LoginFragment;
+import ru.tenant.pass24.Fragments.Welcome.WelcomeMainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = this.getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.flMainContainer, new LoginFragment()).commit();
+        fragmentManager.beginTransaction().add(R.id.flMainContainer, new WelcomeMainFragment()).commit();
     }
 }

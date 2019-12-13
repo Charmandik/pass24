@@ -24,7 +24,7 @@
     <string name="text_registry_confirm_send_again">Отправить еще раз</string>
     <string name="text_password_recovery_button">Восстановить</string>
     <string name="text_welcome_head">Добро пожаловать!</string>
-    <string name="text_welcome_info_1">PASS24.online - удобное приложение для создания пропусков без звонков и бумаг... за несколько секунд!</string>
+    <string name="text_welcome_info_1">PASS24.online - удобное приложение для создания пропусков без звонков и бумаг...</string>
     <string name="text_welcome_info_1_1">за несколько секунд!</string>
     <string name="text_welcome_info_2">Отправляйте приглашения гостям, чтобы не заполнять данные самостоятельно и создавайте шаблоны на частых гостей.</string>
     <string name="text_welcome_info_3_1">Выдавайте временные доверенности на создание пропусков.</string>
