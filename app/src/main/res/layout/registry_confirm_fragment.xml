@@ -34,6 +34,7 @@
         android:textSize="14sp" />
 
     <EditText
+        android:id="@+id/etConfirmRegistryCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -59,6 +60,7 @@
         android:textColor="#ffffff" />
 
     <TextView
+        android:id="@+id/tvSendAgain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
