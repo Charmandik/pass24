@@ -49,4 +49,8 @@ public class RegistryPresenter {
                 .addToBackStack(null)
                 .commit();
     }
+
+    public void onError(String errorTitle, String errorMessage) {
+        view.showError(errorTitle, errorMessage);
+    }
 }

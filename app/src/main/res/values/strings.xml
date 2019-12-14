@@ -5,7 +5,7 @@
     <string name="title_login_fragment">Войти</string>
     <string name="text_login_button">Войти</string>
     <string name="dicr_no_account">Нет учетной записи?</string>
-    <string name="text_to_registry">Зарегестрироваться</string>
+    <string name="text_to_registry">Зарегистрироваться</string>
     <string name="text_forgot_pass">Забыли пароль?</string>
     <string name="title_registry_fragment">Регистрация</string>
     <string name="text_registry_first_name">Имя</string>

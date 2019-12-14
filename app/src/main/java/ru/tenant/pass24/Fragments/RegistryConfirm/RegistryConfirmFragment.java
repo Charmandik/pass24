@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import ru.tenant.pass24.Helpers.Dialog;
 import ru.tenant.pass24.R;
 
 public class RegistryConfirmFragment extends Fragment {
@@ -20,8 +21,14 @@ public class RegistryConfirmFragment extends Fragment {
     private Button btnRegistry;
     private TextView tvSendAgain;
     private EditText etConfirmRegistryCode;
+    private boolean fromRecovery = false;
 
     public RegistryConfirmFragment(String phone) {
+        this.phone = phone;
+    }
+
+    public RegistryConfirmFragment(String phone,boolean fromRecovery) {
+        this.fromRecovery = fromRecovery;
         this.phone = phone;
     }
 
@@ -45,18 +52,23 @@ public class RegistryConfirmFragment extends Fragment {
         tvSendAgain = view.findViewById(R.id.tvSendAgain);
         etConfirmRegistryCode = view.findViewById(R.id.etConfirmRegistryCode);
 
+
         btnRegistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim());
+                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim(),fromRecovery);
             }
         });
 
         tvSendAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim());
+                registryConfirmPresenter.sendConfirmPhone(phone);
             }
         });
+    }
+    public void showError(String errorTitle, String errorMessage) {
+        final Dialog dialog = new Dialog(errorTitle, errorMessage);
+        dialog.show(this.getFragmentManager(), "");
     }
 }
