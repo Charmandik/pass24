@@ -1,7 +1,6 @@
 package ru.tenant.pass24.Fragments.Welcome;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +9,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.tenant.pass24.R;
+import ru.tenant.pass24.Fragments.Login.LoginFragment;
 import ru.tenant.pass24.Helpers.WelcomeView.PageIndicatorView;
 import ru.tenant.pass24.Helpers.WelcomeView.animation.type.AnimationType;
 import ru.tenant.pass24.Helpers.WelcomeView.pageindicatorview.base.WelcomeChangeFragment;
 import ru.tenant.pass24.Helpers.WelcomeView.pageindicatorview.data.Customization;
 import ru.tenant.pass24.Helpers.WelcomeView.pageindicatorview.home.WelcomeFragmentAdapter;
+import ru.tenant.pass24.R;
 
 public class WelcomeMainFragment extends Fragment {
 
@@ -47,9 +45,6 @@ public class WelcomeMainFragment extends Fragment {
         customization = new Customization();
         customization.setAnimationType(AnimationType.THIN_WORM);
         initViews(view);
-
-//        updateIndicators();
-
     }
 
 
@@ -57,6 +52,20 @@ public class WelcomeMainFragment extends Fragment {
         viewPager = view.findViewById(R.id.vpWelcome);
         goButton = view.findViewById(R.id.btnWelcomeGo);
         welcomeSkip = view.findViewById(R.id.tvWelcomeSkip);
+        welcomeSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(3);
+            }
+        });
+
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toLogin();
+            }
+        });
+
         final WelcomeFragmentAdapter WelcomeFragmentAdapter = new WelcomeFragmentAdapter(this.getFragmentManager());
         WelcomeFragmentAdapter.setData(createPageList());
         viewPager.setAdapter(WelcomeFragmentAdapter);
@@ -70,21 +79,9 @@ public class WelcomeMainFragment extends Fragment {
                 if (position == 3) {
                     welcomeSkip.setVisibility(View.INVISIBLE);
                     goButton.setVisibility(View.VISIBLE);
-                    goButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
                 } else {
                     goButton.setVisibility(View.INVISIBLE);
                     welcomeSkip.setVisibility(View.VISIBLE);
-                    welcomeSkip.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
                 }
             }
 
@@ -92,64 +89,45 @@ public class WelcomeMainFragment extends Fragment {
             public void onPageScrollStateChanged(int state) {
             }
         });
-
-//        viewPager.addOnAdapterChangeListener(new ViewPager.OnAdapterChangeListener() {
-//            @Override
-//            public void onAdapterChanged(@NonNull ViewPager viewPager, @Nullable PagerAdapter oldAdapter, @Nullable PagerAdapter newAdapter) {
-//                WelcomeChangeFragment fragment = (WelcomeChangeFragment)WelcomeFragmentAdapter.getRegisteredFragment(position);
-//            }
-//        });
-
-
-//        if (getArguments().getBoolean("last_page", false)) {
-//            welcomeSkip.setVisibility(View.INVISIBLE);
-//            goButton.setVisibility(View.VISIBLE);
-//            goButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-//        } else {
-//            goButton.setVisibility(View.GONE);
-//            welcomeSkip.setVisibility(View.VISIBLE);
-//            welcomeSkip.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-//        }
     }
 
+
+    public void toLogin() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new LoginFragment())
+                .addToBackStack(null)
+                .commit();
+
+    }
 
     @NonNull
     private List<Fragment> createPageList() {
         List<Fragment> pageList = new ArrayList<>();
 
         WelcomeChangeFragment fragmentWelcomeDescription = new WelcomeChangeFragment();
-        Bundle bundle1 = new Bundle();
-        bundle1.putString("type", "description");
-        bundle1.putBoolean("last_page", false);
-        fragmentWelcomeDescription.setArguments(bundle1);
+        Bundle bundle = new Bundle();
+        bundle.putString("type", "description");
+        bundle.putBoolean("last_page", false);
+        fragmentWelcomeDescription.setArguments(bundle);
 
         WelcomeChangeFragment fragmentWelcomeInvite = new WelcomeChangeFragment();
-        Bundle bundle2 = new Bundle();
-        bundle2.putString("type", "invite");
-        bundle2.putBoolean("last_page", false);
-        fragmentWelcomeInvite.setArguments(bundle2);
+        bundle.clear();
+        bundle.putString("type", "invite");
+        bundle.putBoolean("last_page", false);
+        fragmentWelcomeInvite.setArguments(bundle);
 
         WelcomeChangeFragment fragmentWelcomeAuthority = new WelcomeChangeFragment();
-        Bundle bundle3 = new Bundle();
-        bundle3.putString("type", "authority");
-        bundle3.putBoolean("last_page", false);
-        fragmentWelcomeAuthority.setArguments(bundle3);
+        bundle.clear();
+        bundle.putString("type", "authority");
+        bundle.putBoolean("last_page", false);
+        fragmentWelcomeAuthority.setArguments(bundle);
 
         WelcomeChangeFragment fragmentWelcomeGo = new WelcomeChangeFragment();
-        Bundle bundle4 = new Bundle();
-        bundle4.putString("type", "go");
-        bundle4.putBoolean("last_page", true);
-        fragmentWelcomeGo.setArguments(bundle4);
+        bundle.clear();
+        bundle.putString("type", "go");
+        bundle.putBoolean("last_page", true);
+        fragmentWelcomeGo.setArguments(bundle);
 
         pageList.add(fragmentWelcomeDescription);
         pageList.add(fragmentWelcomeInvite);
