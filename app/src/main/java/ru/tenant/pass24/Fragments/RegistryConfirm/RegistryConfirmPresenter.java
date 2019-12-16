@@ -2,8 +2,11 @@ package ru.tenant.pass24.Fragments.RegistryConfirm;
 
 import androidx.fragment.app.FragmentManager;
 
+import ru.tenant.pass24.Fragments.Login.LoginFragment;
+import ru.tenant.pass24.R;
+
 public class RegistryConfirmPresenter {
-    private final RegistryConfirmModel model;
+    public final RegistryConfirmModel model;
     private RegistryConfirmFragment view;
     private FragmentManager fragmentManager;
 
@@ -18,9 +21,26 @@ public class RegistryConfirmPresenter {
         fragmentManager = view.getActivity().getSupportFragmentManager();
     }
 
-    public void confirmTelephone(String code) {
+    public void confirmTelephone(String phone, String code,boolean fromRecovery) {
+        model.confirmTelephone(phone, code,fromRecovery);
 
     }
+    public void sendConfirmPhone(String phone) {
+        model.sendConfirmPhone(phone);
+    }
+
+    public void onError(String errorTitle, String errorMessage) {
+        view.showError(errorTitle, errorMessage);
+    }
+
+    public void toLogin() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new LoginFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
 
     public void detachView() {
         view = null;

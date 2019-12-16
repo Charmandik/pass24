@@ -74,6 +74,9 @@
                     android:id="@+id/etRegistryPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:maxLength="16"
+                    android:text="+7"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,6 +134,7 @@
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_red_button"
                 android:minHeight="56dp"
+                android:stateListAnimator="@null"
                 android:text="@string/text_registry_btn"
                 android:textAllCaps="false"
                 android:textColor="#ffffff" />

@@ -35,10 +35,22 @@ public class RegistryPresenter {
     }
 
     public void toLogin() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new LoginFragment()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new LoginFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
-    public void toRegistryConfirm() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new RegistryConfirmFragment()).commit();
+    public void toRegistryConfirm(String phone) {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone))
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void onError(String errorTitle, String errorMessage) {
+        view.showError(errorTitle, errorMessage);
     }
 }

@@ -2,7 +2,9 @@ package ru.tenant.pass24.Helpers.Retrofit;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
+
+import retrofit2.http.Header;
+
 import retrofit2.http.POST;
 import ru.tenant.pass24.Fragments.Login.apiModels.LoginRequestBody;
 import ru.tenant.pass24.Fragments.Login.apiModels.LoginResponse;
@@ -13,6 +15,9 @@ import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckResponse;
 import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryResponse;
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneResponse;
+
+import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneRequest;
+
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneResponse;
 
 public interface AuthApi {
@@ -20,7 +25,8 @@ public interface AuthApi {
     Observable<LoginResponse> login(@Body LoginRequestBody loginRequestBody);
 
     @POST("auth/register/")
-    Observable<RegistryResponse> registrate(@Body RegistryCheckRequestBody registryCheckRequestBody);
+    Observable<RegistryResponse> registrate(@Header("Authorization") String token,
+                                            @Body RegistryCheckRequestBody registryCheckRequestBody);
 
     @POST("auth/register/check")
     Observable<RegistryCheckResponse> checkRegistrationData(@Body RegistryCheckRequestBody registryCheckRequestBody);
@@ -29,7 +35,8 @@ public interface AuthApi {
     Observable<PasswordResetResponse> resetPassword(@Body PasswordResetRequest passwordResetRequest);
 
     @POST("auth/sendConfirmPhone/")
-    Observable<SendConfirmPhoneResponse> sendConfirmPhone(@Field("phone") String phone);
+
+    Observable<SendConfirmPhoneResponse> sendConfirmPhone(@Body SendConfirmPhoneRequest sendConfirmPhoneRequest);
 
     @POST("auth/confirmPhone/")
     Observable<ConfirmPhoneResponse> confirmPhone(@Body ConfirmPhoneRequest confirmPhoneRequest);

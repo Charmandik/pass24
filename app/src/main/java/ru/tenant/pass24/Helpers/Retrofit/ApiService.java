@@ -1,11 +1,12 @@
 package ru.tenant.pass24.Helpers.Retrofit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiService {
-    private static final String BASE_URL = "http://tenant-api.alpha.pass24.online/";
+    private static final String BASE_URL = "https://tenant-api.alpha.pass24.online/";
     private static ApiService mInstance;
     private Retrofit mRetrofit;
 

@@ -4,8 +4,8 @@ import androidx.fragment.app.FragmentManager;
 
 import ru.tenant.pass24.Fragments.MainScreen;
 import ru.tenant.pass24.Fragments.PasswordRecovery.PasswordRecoveryFragment;
-import ru.tenant.pass24.R;
 import ru.tenant.pass24.Fragments.Registration.RegistryFragment;
+import ru.tenant.pass24.R;
 
 public class LoginPresenter {
     private final LoginModel model;
@@ -36,14 +36,26 @@ public class LoginPresenter {
     }
 
     public void onLoggedIn() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new MainScreen()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new MainScreen())
+                .addToBackStack(null)
+                .commit();
     }
 
     public void toRegistry() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new RegistryFragment()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new RegistryFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     public void toForgotPass() {
-        fragmentManager.beginTransaction().replace(R.id.flMainContainer, new PasswordRecoveryFragment()).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flMainContainer, new PasswordRecoveryFragment())
+                .addToBackStack(null)
+                .commit();
     }
 }
