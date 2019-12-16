@@ -2,7 +2,9 @@ package ru.tenant.pass24.Helpers.Retrofit;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+
 import retrofit2.http.Header;
+
 import retrofit2.http.POST;
 import ru.tenant.pass24.Fragments.Login.apiModels.LoginRequestBody;
 import ru.tenant.pass24.Fragments.Login.apiModels.LoginResponse;
@@ -13,7 +15,9 @@ import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckResponse;
 import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryResponse;
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneResponse;
+
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneRequest;
+
 import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneResponse;
 
 public interface AuthApi {
@@ -31,6 +35,7 @@ public interface AuthApi {
     Observable<PasswordResetResponse> resetPassword(@Body PasswordResetRequest passwordResetRequest);
 
     @POST("auth/sendConfirmPhone/")
+
     Observable<SendConfirmPhoneResponse> sendConfirmPhone(@Body SendConfirmPhoneRequest sendConfirmPhoneRequest);
 
     @POST("auth/confirmPhone/")

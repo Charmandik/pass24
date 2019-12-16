@@ -52,7 +52,6 @@ public class RegistryConfirmFragment extends Fragment {
         tvSendAgain = view.findViewById(R.id.tvSendAgain);
         etConfirmRegistryCode = view.findViewById(R.id.etConfirmRegistryCode);
 
-
         btnRegistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

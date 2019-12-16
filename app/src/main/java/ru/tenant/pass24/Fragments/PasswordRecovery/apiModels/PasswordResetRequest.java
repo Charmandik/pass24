@@ -11,11 +11,12 @@ public class PasswordResetRequest {
     @SerializedName("password")
     @Expose
     private String password;
-
+  
     public PasswordResetRequest(String phone, String password) {
         this.phone = phone;
         this.password = password;
     }
+
 
     public String getPhone() {
         return phone;
