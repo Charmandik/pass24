@@ -158,6 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"
+                    android:textColor="#9C9C9C"
                     android:text="@string/text_registry_to_login_btn" />
             </LinearLayout>
         </LinearLayout>

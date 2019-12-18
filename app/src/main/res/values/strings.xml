@@ -29,7 +29,7 @@
     <string name="text_welcome_info_2">Отправляйте приглашения гостям, чтобы не заполнять данные самостоятельно и создавайте шаблоны на частых гостей.</string>
     <string name="text_welcome_info_3_1">Выдавайте временные доверенности на создание пропусков.</string>
     <string name="text_welcome_info_3_2">После завершения срока действия, они перестанут действовать автоматически.</string>
-    <string name="text_welcome_info_4">Получайте уведомления и прибытии и убытии гостей. История событий хранится в приложении.</string>
+    <string name="text_welcome_info_4">Получайте уведомления о прибытии и убытии гостей. История событий хранится в приложении.</string>
     <string name="text_welcome_skip">Пропустить</string>
     <string name="text_welcome_go">Поехали!</string>
     <string name="text_start_work">Начало работы</string>

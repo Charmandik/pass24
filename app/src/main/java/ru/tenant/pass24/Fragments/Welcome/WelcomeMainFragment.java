@@ -112,22 +112,22 @@ public class WelcomeMainFragment extends Fragment {
         fragmentWelcomeDescription.setArguments(bundle);
 
         WelcomeChangeFragment fragmentWelcomeInvite = new WelcomeChangeFragment();
-        bundle.clear();
-        bundle.putString("type", "invite");
-        bundle.putBoolean("last_page", false);
-        fragmentWelcomeInvite.setArguments(bundle);
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("type", "invite");
+        bundle1.putBoolean("last_page", false);
+        fragmentWelcomeInvite.setArguments(bundle1);
 
         WelcomeChangeFragment fragmentWelcomeAuthority = new WelcomeChangeFragment();
-        bundle.clear();
-        bundle.putString("type", "authority");
-        bundle.putBoolean("last_page", false);
-        fragmentWelcomeAuthority.setArguments(bundle);
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("type", "authority");
+        bundle2.putBoolean("last_page", false);
+        fragmentWelcomeAuthority.setArguments(bundle2);
 
         WelcomeChangeFragment fragmentWelcomeGo = new WelcomeChangeFragment();
-        bundle.clear();
-        bundle.putString("type", "go");
-        bundle.putBoolean("last_page", true);
-        fragmentWelcomeGo.setArguments(bundle);
+        Bundle bundle3 = new Bundle();
+        bundle3.putString("type", "go");
+        bundle3.putBoolean("last_page", true);
+        fragmentWelcomeGo.setArguments(bundle3);
 
         pageList.add(fragmentWelcomeDescription);
         pageList.add(fragmentWelcomeInvite);
