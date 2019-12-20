@@ -102,8 +102,10 @@ public class RegistryFragment extends Fragment {
                                 etRegistryEmail.getText().toString().trim(),
                                 etRegistryPass.getText().toString().trim());
                     }
-                } else
-                    ;
+                } else {
+                    showError("Ошибка", "Подвердите согласие на обработку персональных данных");
+                }
+
             }
         });
 
