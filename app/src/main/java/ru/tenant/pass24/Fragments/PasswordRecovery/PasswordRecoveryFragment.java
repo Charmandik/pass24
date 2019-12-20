@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import ru.tenant.pass24.Helpers.Dialog;
 import ru.tenant.pass24.R;
 
@@ -22,6 +24,7 @@ public class PasswordRecoveryFragment extends Fragment {
     private TextView tvBackToLogin;
     private Button btnRegistry;
     private EditText etPhone;
+    private TextInputLayout tilRegistryPhone;
 
     @Nullable
     @Override
@@ -42,6 +45,7 @@ public class PasswordRecoveryFragment extends Fragment {
         tvBackToLogin = view.findViewById(R.id.tvBackToLogin);
         btnRegistry = view.findViewById(R.id.btnRegistry);
         etPhone = view.findViewById(R.id.etPhone);
+        tilRegistryPhone = view.findViewById(R.id.tilRegistryPhone);
         this.phoneMask(etPhone);
 
         btnRegistry.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +65,13 @@ public class PasswordRecoveryFragment extends Fragment {
     public void showError(String errorTitle, String errorMessage) {
         final Dialog dialog = new Dialog(errorTitle, errorMessage);
         dialog.show(this.getFragmentManager(), "");
+    }
+
+    public void showErrorOnPhone(boolean show, String text) {
+        if (show)
+            tilRegistryPhone.setError(text);
+        else
+            tilRegistryPhone.setError("");
     }
 
     public void phoneMask(final EditText edTelData){

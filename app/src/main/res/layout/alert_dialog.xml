@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/ivDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -27,6 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:textAlignment="center"
             android:text="Не верный код из СМС"
             android:textStyle="bold" />
 
@@ -35,10 +39,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginStart="84dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="84dp"
-            android:text="Вы ввели неверный код из СМС ссобщения"
+            android:text="Вы ввели неверный код из СМС сообщения"
             android:textAlignment="center" />
     </LinearLayout>
 

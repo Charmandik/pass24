@@ -17,6 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 import ru.tenant.pass24.Helpers.Dialog;
 import ru.tenant.pass24.R;
@@ -29,6 +32,12 @@ public class RegistryFragment extends Fragment {
     private TextInputEditText etRegistryPhone;
     private TextInputEditText etRegistryPass;
     private TextInputEditText etRegistryConfirmPass;
+    private TextInputLayout tilRegistryFirstName;
+    private TextInputLayout tilRegistryLastName;
+    private TextInputLayout tilRegistryPhone;
+    private TextInputLayout tilRegistryEmail;
+    private TextInputLayout tilRegistryPassword;
+    private TextInputLayout tilRegistryPasswordConfirm;
     private Switch registrySwitch;
     private Button btnRegistry;
     private TextView tvRegistryToLoginBtn;
@@ -64,28 +73,37 @@ public class RegistryFragment extends Fragment {
         registrySwitch = view.findViewById(R.id.registrySwitch);
         btnRegistry = view.findViewById(R.id.btnRegistry);
         tvRegistryToLoginBtn = view.findViewById(R.id.tvRegistryToLoginBtn);
-
+        tilRegistryFirstName = view.findViewById(R.id.tilRegistryFirstName);
+        tilRegistryLastName = view.findViewById(R.id.tilRegistryLastName);
+        tilRegistryPhone = view.findViewById(R.id.tilRegistryPhone);
+        tilRegistryPassword = view.findViewById(R.id.tilRegistryPassword);
+        tilRegistryEmail = view.findViewById(R.id.tilRegistryEmail);
+        tilRegistryPasswordConfirm = view.findViewById(R.id.tilRegistryPasswordConfirm);
         this.phoneMask(etRegistryPhone);
 
         registrySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                isAccepted = b;
+            public void onCheckedChanged(CompoundButton compoundButton, boolean accept) {
+                isAccepted = accept;
             }
         });
         btnRegistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isDataValid())
-                    if (isAccepted)
+                if (isAccepted) {
+                    if (!Objects.requireNonNull(etRegistryPass.getText()).toString().trim().equals(etRegistryConfirmPass.getText().toString().trim())) {
+                        tilRegistryPasswordConfirm.setError("Пароли не совпадают");
+                    } else {
+                        tilRegistryPasswordConfirm.setError("");
                         registryPresenter.checkData(
                                 etRegistryFirstName.getText().toString().trim(),
                                 etRegistrySecondName.getText().toString().trim(),
                                 etRegistryPhone.getText().toString().trim(),
                                 etRegistryEmail.getText().toString().trim(),
                                 etRegistryPass.getText().toString().trim());
-                    else
-                        ;
+                    }
+                } else
+                    ;
             }
         });
 
@@ -97,41 +115,44 @@ public class RegistryFragment extends Fragment {
         });
     }
 
-    private boolean isDataValid() {
-        if (etRegistryFirstName.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Имя");
-            return false;
-        }
-        if (etRegistrySecondName.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Фамилия");
-            return false;
-        }
-        if (etRegistryEmail.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Email");
-            return false;
-        }
-        if (etRegistryPhone.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Телефон");
-            return false;
-        }
-        if (etRegistryPass.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Пароль");
-            return false;
-        }
-        if (etRegistryConfirmPass.getText().toString().equals("")) {
-            showError("Заполните поле", "Заполните поле Пароль еще раз");
-            return false;
-        }
-        if (!etRegistryConfirmPass.getText().toString().trim().equals(etRegistryPass.getText().toString().trim())) {
-            showError("Не совпадают пароли", "");
-            return false;
-        }
-        return true;
-    }
-
     public void showError(String errorTitle, String errorMessage) {
         final Dialog dialog = new Dialog(errorTitle, errorMessage);
         dialog.show(this.getFragmentManager(), "");
+    }
+
+    public void showErrorOnFirstName(boolean show, String text) {
+        if (show)
+            tilRegistryFirstName.setError(text);
+        else
+            tilRegistryFirstName.setError("");
+    }
+
+    public void showErrorOnLastName(boolean show, String text) {
+        if (show)
+            tilRegistryLastName.setError(text);
+        else
+            tilRegistryLastName.setError("");
+    }
+
+    public void showErrorOnEmail(boolean show, String text) {
+        if (show)
+            tilRegistryEmail.setError(text);
+        else
+            tilRegistryEmail.setError("");
+    }
+
+    public void showErrorOnPhone(boolean show, String text) {
+        if (show)
+            tilRegistryPhone.setError(text);
+        else
+            tilRegistryPhone.setError("");
+    }
+
+    public void showErrorOnPassword(boolean show, String text) {
+        if (show)
+            tilRegistryPassword.setError(text);
+        else
+            tilRegistryPassword.setError("");
     }
 
     public void phoneMask(final EditText edTelData) {

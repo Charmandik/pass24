@@ -34,10 +34,9 @@ public class PasswordRecoveryPresenter {
         model.passRecovery(phone);
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone))
+                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone, true))
                 .addToBackStack(null)
                 .commit();
-
     }
     public void sendConfirmPhone(String phone) {
         model.sendConfirmPhone(phone);
@@ -46,13 +45,17 @@ public class PasswordRecoveryPresenter {
     public void toRegistryConfirm(String phone) {
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone))
+                .replace(R.id.flMainContainer, new RegistryConfirmFragment(phone, true))
                 .addToBackStack(null)
                 .commit();
     }
 
     public void onError(String errorTitle, String errorMessage) {
         view.showError(errorTitle, errorMessage);
+    }
+
+    public void showErrorOnPhone(boolean show, String text) {
+        view.showErrorOnPhone(show, text);
     }
 
 

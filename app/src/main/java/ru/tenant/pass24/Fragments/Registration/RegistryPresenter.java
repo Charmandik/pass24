@@ -53,4 +53,24 @@ public class RegistryPresenter {
     public void onError(String errorTitle, String errorMessage) {
         view.showError(errorTitle, errorMessage);
     }
+
+    public void showErrorOnFirstName(boolean show, String text) {
+        view.showErrorOnFirstName(show, text);
+    }
+
+    public void showErrorOnLastName(boolean show, String text) {
+        view.showErrorOnLastName(show, text);
+    }
+
+    public void showErrorOnEmail(boolean show, String text) {
+        view.showErrorOnEmail(show, text);
+    }
+
+    public void showErrorOnPhone(boolean show, String text) {
+        view.showErrorOnPhone(show, text);
+    }
+
+    public void showErrorOnPassword(boolean show, String text) {
+        view.showErrorOnPassword(show, text);
+    }
 }
