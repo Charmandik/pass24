@@ -8,6 +8,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryCheckRequestBody;
 import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
+import ru.tenant.pass24.ChangeProfileRequest;
 import ru.tenant.pass24.ChangeProfileResponse;
 import ru.tenant.pass24.PasswordChangeResponse;
 import ru.tenant.pass24.PhoneChangeResponse;
@@ -21,7 +22,7 @@ public interface ProfileApi {
 
     @PATCH("profile/")
     Observable<ChangeProfileResponse> changeProfile(@Header("Authorization") String authToken,
-                                                    @Body RegistryCheckRequestBody registryCheckRequestBody); //TODO:check how to send patch requests
+                                                    @Body ChangeProfileRequest changeProfileRequest); //TODO:check how to send patch requests
 
     @POST("profile/password")
     Observable<PasswordChangeResponse> changePassword(@Header("Authorization") String authToken,
