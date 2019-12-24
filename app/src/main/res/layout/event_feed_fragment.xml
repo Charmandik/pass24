@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    Шапка ленты событий-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llEventHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp"
+        android:paddingTop="26dp"
+        android:paddingBottom="26dp"
+        >
+        <TextView
+            android:id="@+id/eventHeaderName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/text_event_header"
+            android:textColor="#2A2A2A"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/ibEventSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_event_settings"
+            android:background="#fff"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="fff" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#E0E0E0"
+        />
+
+<!--    Тело ленты событий-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFeed"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>
