@@ -6,19 +6,19 @@ import retrofit2.http.Body;
 import retrofit2.http.Header;
 
 import retrofit2.http.POST;
-import ru.tenant.pass24.Fragments.Login.apiModels.LoginRequestBody;
-import ru.tenant.pass24.Fragments.Login.apiModels.LoginResponse;
-import ru.tenant.pass24.Fragments.PasswordRecovery.apiModels.PasswordResetRequest;
-import ru.tenant.pass24.Fragments.PasswordRecovery.apiModels.PasswordResetResponse;
-import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckRequestBody;
-import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckResponse;
-import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryResponse;
-import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
-import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.ConfirmPhoneResponse;
+import ru.tenant.pass24.AuthorizationFragments.Login.apiModels.LoginRequestBody;
+import ru.tenant.pass24.AuthorizationFragments.Login.apiModels.LoginResponse;
+import ru.tenant.pass24.AuthorizationFragments.PasswordRecovery.apiModels.PasswordResetRequest;
+import ru.tenant.pass24.AuthorizationFragments.PasswordRecovery.apiModels.PasswordResetResponse;
+import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryCheckRequestBody;
+import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryCheckResponse;
+import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryResponse;
+import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
+import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.ConfirmPhoneResponse;
 
-import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneRequest;
+import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.SendConfirmPhoneRequest;
 
-import ru.tenant.pass24.Fragments.RegistryConfirm.apiModels.SendConfirmPhoneResponse;
+import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.SendConfirmPhoneResponse;
 
 public interface AuthApi {
     @POST("auth/login/")

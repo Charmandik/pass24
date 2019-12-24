@@ -1,6 +1,6 @@
 package ru.tenant.pass24.Helpers;
 
-import ru.tenant.pass24.Fragments.Registration.apiModels.RegistryCheckRequestBody;
+import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryCheckRequestBody;
 
 public class Constants {
     public static String authToken = "";

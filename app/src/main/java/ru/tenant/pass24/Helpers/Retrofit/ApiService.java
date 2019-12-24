@@ -1,6 +1,5 @@
 package ru.tenant.pass24.Helpers.Retrofit;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,6 +26,10 @@ public class ApiService {
 
     public AuthApi getAuthApi() {
         return mRetrofit.create(AuthApi.class);
+    }
+
+    public ProfileApi getProfileApi() {
+        return mRetrofit.create(ProfileApi.class);
     }
 
 }

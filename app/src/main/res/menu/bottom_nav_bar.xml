@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_menu_requests"
         android:title="" />
     <item
-        android:id="@+id/navigation_evtns"
+        android:id="@+id/navigation_events"
         android:icon="@drawable/ic_menu_events"
         android:title="" />
 </menu>
