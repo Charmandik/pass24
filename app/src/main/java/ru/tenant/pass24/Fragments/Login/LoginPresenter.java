@@ -1,10 +1,14 @@
 package ru.tenant.pass24.Fragments.Login;
 
+import android.content.Intent;
+
 import androidx.fragment.app.FragmentManager;
 
-import ru.tenant.pass24.Fragments.MainScreen;
+import java.util.Objects;
+
 import ru.tenant.pass24.Fragments.PasswordRecovery.PasswordRecoveryFragment;
 import ru.tenant.pass24.Fragments.Registration.RegistryFragment;
+import ru.tenant.pass24.MainScreenActivity;
 import ru.tenant.pass24.R;
 
 public class LoginPresenter {
@@ -36,11 +40,8 @@ public class LoginPresenter {
     }
 
     public void onLoggedIn() {
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.flMainContainer, new MainScreen())
-                .addToBackStack(null)
-                .commit();
+        Intent intent = new Intent(this.view.getContext(), MainScreenActivity.class);
+        Objects.requireNonNull(this.view.getActivity()).startActivity(intent);
     }
 
     public void toRegistry() {

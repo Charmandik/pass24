@@ -96,7 +96,6 @@ public class WelcomeMainFragment extends Fragment {
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.flMainContainer, new LoginFragment())
-                .addToBackStack(null)
                 .commit();
 
     }
