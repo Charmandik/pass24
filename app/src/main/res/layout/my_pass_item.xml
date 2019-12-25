@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/cardview_border">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMyPassItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivMyPassItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_my_pass_item" />
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:id="@+id/llMyPassInfo"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:id="@+id/tvMyPassName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Renault, E471PE21"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvMyPassType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Вне территории"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMyPassDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="21 янв 2018"
+                android:textSize="10sp"
+                android:textColor="#2A2A2A"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
