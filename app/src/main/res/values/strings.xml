@@ -52,6 +52,7 @@
     <string name="text_trust_people_header">Доверенные лица</string>
     <string name="text_my_pattern_header">Мои шаблоны</string>
     <string name="text_my_pass_header">Мои пропуска</string>
+    <string name="text_my_query_header">Мои запросы</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main_screen">MainScreenActivity</string>

@@ -8,19 +8,19 @@
     android:background="#fff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clPatternHeader"
+        android:id="@+id/clMyRequestHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="24dp"
         android:paddingStart="24dp"
         android:paddingTop="26dp"
-        android:paddingBottom="26dp"
-        >
+        android:paddingBottom="26dp">
+
         <TextView
-            android:id="@+id/patternHeaderName"
+            android:id="@+id/tvMyRequest"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/text_my_pattern_header"
+            android:text="@string/text_my_query_header"
             android:textColor="#2A2A2A"
             android:textSize="16sp"
             android:gravity="center_vertical"
@@ -30,7 +30,17 @@
             />
 
         <ImageView
-            android:id="@+id/ivPatternAdd"
+            android:id="@+id/tvRequestSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_event_settings"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/ivRequestAdd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivRequestAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add_item"
@@ -52,10 +62,10 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTrustPeople"
+        android:id="@+id/rvMyRequest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/my_pattern_item"
+        tools:listitem="@layout/my_request_item"
         android:minHeight="84dp">
 
     </androidx.recyclerview.widget.RecyclerView>

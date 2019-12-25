@@ -9,38 +9,30 @@
     android:background="@drawable/cardview_border">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvTrustPeopleItem"
+        android:id="@+id/cvMyPassItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-
-        app:cardElevation="0dp"
-        >
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/ivTrustPeopleItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_trust_people"
-                android:background="#000000"/>
-
             <LinearLayout
-                android:id="@+id/llTrustPeopleInfo"
+                android:layout_weight="2"
+                android:id="@+id/llMyPassInfo"
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp">
 
                 <TextView
-                    android:id="@+id/tvTrustPeopleName"
+                    android:id="@+id/tvMyPassName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Васильев Константин"
@@ -49,17 +41,24 @@
                     />
 
                 <TextView
-                    android:id="@+id/tvTrustPeopleDate"
+                    android:id="@+id/tvMyPassType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="до 12 января 2020"
+                    android:text="Новое доверенное лицо"
                     android:layout_marginTop="4dp"
                     android:textSize="12sp"
                     />
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivMyRequestStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_accept_status"
+                />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 </FrameLayout>
