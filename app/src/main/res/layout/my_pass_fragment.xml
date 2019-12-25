@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<!--    Шапка ленты событий-->
+    android:layout_height="match_parent"
+    android:background="#fff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clEventHeader"
+        android:id="@+id/clMyPassHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="24dp"
@@ -17,10 +17,10 @@
         android:paddingBottom="26dp"
         >
         <TextView
-            android:id="@+id/eventHeaderName"
+            android:id="@+id/tvMyPass"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/text_event_header"
+            android:text="@string/text_my_pass_header"
             android:textColor="#2A2A2A"
             android:textSize="16sp"
             android:gravity="center_vertical"
@@ -30,10 +30,20 @@
             />
 
         <ImageView
-            android:id="@+id/ibEventSettings"
+            android:id="@+id/tvPassSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event_settings"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/ivTrustAdd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivTrustAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_item"
             android:background="#fff"
             android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,17 +58,16 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:background="#E0E0E0"
+        android:layout_marginBottom="16dp"
         />
 
-<!--    Тело ленты событий-->
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFeed"
-        android:scrollbars="vertical"
+        android:id="@+id/rvMyPass"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/my_pass_item"
+        android:minHeight="84dp">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 
 </LinearLayout>
