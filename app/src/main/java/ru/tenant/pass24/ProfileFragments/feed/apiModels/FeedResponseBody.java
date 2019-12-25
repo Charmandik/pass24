@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class FeedResponseBody {
+public class FeedResponseBody {
     @SerializedName("pagination")
     @Expose
     private FeedPagination pagination;

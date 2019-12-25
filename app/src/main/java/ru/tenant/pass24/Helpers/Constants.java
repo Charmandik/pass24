@@ -6,4 +6,8 @@ public class Constants {
     public static String authToken = "";
     public static String confirmPhoneToken = "";
     public static RegistryCheckRequestBody registryBody;
+
+    public static String getAuthToken(){
+        return "Bearer " + authToken;
+    }
 }

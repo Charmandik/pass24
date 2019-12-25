@@ -8,7 +8,7 @@ import java.util.Date;
 class FeedCollection {
     @SerializedName("happenedAt")
     @Expose
-    private Date happenedAt;
+    private String happenedAt;
 
     @SerializedName("type")
     @Expose
@@ -18,11 +18,11 @@ class FeedCollection {
     @Expose
     private FeedCollectionData data;
 
-    public Date getHappenedAt() {
+    public String getHappenedAt() {
         return happenedAt;
     }
 
-    public void setHappenedAt(Date happenedAt) {
+    public void setHappenedAt(String happenedAt) {
         this.happenedAt = happenedAt;
     }
 

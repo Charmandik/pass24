@@ -32,4 +32,12 @@ public class ApiService {
         return mRetrofit.create(ProfileApi.class);
     }
 
+    public PassesApi getPassesApi() {
+        return mRetrofit.create(PassesApi.class);
+    }
+
+    public FeedApi getFeedApi() {
+        return mRetrofit.create(FeedApi.class);
+    }
+
 }

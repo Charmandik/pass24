@@ -2,6 +2,11 @@ package ru.tenant.pass24.ProfileFragments.feed;
 
 import androidx.fragment.app.FragmentManager;
 
+import java.util.List;
+
+import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponse;
+import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponseBody;
+
 public class FeedPresenter {
     private final FeedModel model;
     private FeedFragment view;
@@ -20,5 +25,9 @@ public class FeedPresenter {
 
     public void detachView() {
         view = null;
+    }
+
+    public void onDataLoaded(List<FeedResponseBody> feedResponses){
+        view.setDataForRecycler(feedResponses);
     }
 }
