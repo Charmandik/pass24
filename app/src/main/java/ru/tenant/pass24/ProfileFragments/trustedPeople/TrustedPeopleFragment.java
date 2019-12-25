@@ -6,14 +6,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.R;
 
 public class TrustedPeopleFragment extends Fragment {
-
+    private TrustedPeoplePresenter trustedPeoplePresenter;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_slideshow, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        init();
+    }
+
+    private void init() {
+        TrustedPeopleModel trustedPeopleModel = new TrustedPeopleModel();
+        trustedPeoplePresenter = new TrustedPeoplePresenter(trustedPeopleModel);
+        trustedPeoplePresenter.attachView(this);
     }
 }

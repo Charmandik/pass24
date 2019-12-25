@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="ru.tenant.pass24.ProfileFragments.passes.passesFragment"
+        android:name="ru.tenant.pass24.ProfileFragments.passes.PassesFragment"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
