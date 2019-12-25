@@ -3,6 +3,7 @@
     <item
         android:id="@+id/navigation_menu"
         android:icon="@drawable/ic_menu_nav_bar"
+        android:iconTintMode="screen"
         android:title="" />
     <item
         android:id="@+id/navigation_passes"
@@ -10,7 +11,7 @@
         android:title="" />
     <item
         android:id="@+id/navigation_main"
-        android:icon="@drawable/ic_menu_main"
+        android:icon="@drawable/ic_menu_main2"
         android:title="" />
     <item
         android:id="@+id/navigation_requests"
