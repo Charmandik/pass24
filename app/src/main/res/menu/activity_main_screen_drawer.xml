@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Баланс" />
+        <item
+            android:id="@+id/nav_home"
+            android:title="Мои пропуска" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:title="Мои шаблоны" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:title="Мои запросы" />
+
+        <item android:title="Лента событий" />
+
+        <item android:title="Объекты и пропуска" />
+
+        <item android:title="Доверенные лица" />
+    </group>
+    <item
+        android:id="@+id/btnLogout"
+        android:icon="@drawable/ic_profile_exit"
+        android:title="Выйти из профиля" />
+</menu>
