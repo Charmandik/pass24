@@ -5,10 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    Шапка ленты событий-->
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clEventHeader"
+        android:id="@+id/clMyPassHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="24dp"
@@ -17,10 +15,10 @@
         android:paddingBottom="26dp"
         >
         <TextView
-            android:id="@+id/eventHeaderName"
+            android:id="@+id/tvMyPass"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/text_event_header"
+            android:text="@string/text_my_pass_header"
             android:textColor="#2A2A2A"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -31,10 +29,20 @@
             />
 
         <ImageView
-            android:id="@+id/ibEventSettings"
+            android:id="@+id/tvPassSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event_settings"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/ivTrustAdd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivTrustAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_item"
             android:background="#fff"
             android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,15 +59,12 @@
         android:background="#E0E0E0"
         />
 
-<!--    Тело ленты событий-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFeed"
-        android:scrollbars="vertical"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMyPass"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
 
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

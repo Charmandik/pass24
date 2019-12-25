@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="22dp"
+    android:paddingBottom="22dp"
+    android:paddingStart="24dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/cardview_border"
+    >
+
+    <ImageView
+        android:id="@+id/ivTrustPeopleItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_trust_people"
+        android:background="#000000"/>
+
+    <LinearLayout
+        android:id="@+id/llTrustPeopleInfo"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvTrustPeopleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Васильев Константин"
+            android:textColor="#2A2A2A"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tvTrustPeopleDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="до 12 января 2020"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
