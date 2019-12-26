@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class PassesResponseBody {
+public class PassesResponseBody {
     @SerializedName("pagination")
     @Expose
     private PassesPagination pagination;

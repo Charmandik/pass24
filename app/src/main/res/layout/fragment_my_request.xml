@@ -30,7 +30,7 @@
             />
 
         <ImageView
-            android:id="@+id/tvRequestSetting"
+            android:id="@+id/ivRequestSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event_settings"
@@ -57,7 +57,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:background="#E0E0E0"
+        android:background="#F8F8F8"
         android:layout_marginBottom="16dp"
         />
 

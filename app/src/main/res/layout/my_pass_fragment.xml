@@ -30,17 +30,17 @@
             />
 
         <ImageView
-            android:id="@+id/tvPassSetting"
+            android:id="@+id/ivPassSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event_settings"
             android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/ivTrustAdd"
+            app:layout_constraintEnd_toStartOf="@+id/ivPassAdd"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
-            android:id="@+id/ivTrustAdd"
+            android:id="@+id/ivPassAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add_item"
@@ -57,7 +57,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:background="#E0E0E0"
+        android:background="#F8F8F8"
         android:layout_marginBottom="16dp"
         />
 
