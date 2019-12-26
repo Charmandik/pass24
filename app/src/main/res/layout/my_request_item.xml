@@ -9,7 +9,7 @@
     android:background="@drawable/cardview_border">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvMyPassItem"
+        android:id="@+id/cvMyRequestItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -25,14 +25,14 @@
 
             <LinearLayout
                 android:layout_weight="2"
-                android:id="@+id/llMyPassInfo"
+                android:id="@+id/llMyRequestInfo"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp">
 
                 <TextView
-                    android:id="@+id/tvMyPassName"
+                    android:id="@+id/tvMyRequestName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Васильев Константин"
@@ -41,7 +41,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tvMyPassType"
+                    android:id="@+id/tvMyRequestType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Новое доверенное лицо"

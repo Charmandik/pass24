@@ -40,4 +40,7 @@ public class ApiService {
         return mRetrofit.create(FeedApi.class);
     }
 
+    public RequestApi getRequestApi() {
+        return mRetrofit.create(RequestApi.class);
+    }
 }

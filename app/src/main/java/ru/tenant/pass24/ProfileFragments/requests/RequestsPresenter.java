@@ -2,6 +2,10 @@ package ru.tenant.pass24.ProfileFragments.requests;
 
 import androidx.fragment.app.FragmentManager;
 
+import java.util.List;
+
+import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
+
 public class RequestsPresenter {
 
     private final RequestsModel model;
@@ -21,5 +25,9 @@ public class RequestsPresenter {
 
     public void detachView() {
         view = null;
+    }
+
+    public void onDataLoaded(List<RequestCollection> requestResponses) {
+        view.setDataForRecycler(requestResponses);
     }
 }
