@@ -45,6 +45,5 @@ public class RequestsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         rvMyRequest.setLayoutManager(layoutManager);
 
-
     }
 }
