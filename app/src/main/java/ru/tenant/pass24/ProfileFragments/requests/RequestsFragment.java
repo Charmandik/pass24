@@ -46,15 +46,14 @@ public class RequestsFragment extends Fragment {
 
         ivRequestSetting = view.findViewById(R.id.ivRequestSetting);
         ivRequestAdd = view.findViewById(R.id.ivRequestAdd);
-
         rvMyRequest = view.findViewById(R.id.rvMyRequest);
-        rvMyRequest.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this.getContext());
-        rvMyRequest.setLayoutManager(layoutManager);
 
+        requestsModel.getRequest();
     }
 
     public void setDataForRecycler(List<RequestCollection> requestResponses) {
+        layoutManager = new LinearLayoutManager(this.getContext());
+        rvMyRequest.setLayoutManager(layoutManager);
         mAdapter = new RequestAdapter(requestResponses);
         rvMyRequest.setAdapter(mAdapter);
     }

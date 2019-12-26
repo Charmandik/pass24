@@ -19,8 +19,6 @@ import ru.tenant.pass24.R;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestAdapterHolder> {
     private List<RequestCollection> requestResponses;
-    private List<CollectionRequestData> requestData;
-
     public RequestAdapter(List<RequestCollection> requestResponses) {
         this.requestResponses = requestResponses;
     }
@@ -36,10 +34,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
     @Override
     public void onBindViewHolder(@NonNull RequestAdapterHolder holder, int position) {
         RequestCollection requestCollection = requestResponses.get(position);
-        CollectionRequestData collectionRequestData = requestData.get(position);
 
-        if (requestCollection != null && collectionRequestData != null) {
-            holder.requestName.setText(collectionRequestData.getAddress());
+        if (requestCollection != null) {
+            holder.requestName.setText(requestCollection.getRequestData().getAddress());
 
             if (requestCollection.getType() == 1) {
                 holder.requestType.setText("на присоединение к объекту");
@@ -49,9 +46,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
                 holder.requestType.setText("на договоренность");
             }
 
+            if (requestCollection.getStatus() == 1) {
+                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
+            }   else if (requestCollection.getStatus() == 2) {
+                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
+            } else if (requestCollection.getStatus() == 3) {
+                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
+            }
         }
-
-
     }
 
     @Override
