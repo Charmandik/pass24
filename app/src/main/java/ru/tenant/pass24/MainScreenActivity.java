@@ -61,14 +61,8 @@ public class MainScreenActivity extends AppCompatActivity implements NavigationV
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                Log.d("tag", destination.getId() + "id");
-                Log.d("tag", destination.getLabel() + "label");
-
                 if (destination.getId() == R.id.nav_events_feed) {
-                    Log.d("tag", "nav_events_feed");
-//                    fragmentManager.beginTransaction().replace(R.id.flMainScreenContainer, new FeedFragment()).commit();
                 } else {
-                    Log.d("tag", " not gallery");
                 }
             }
         });

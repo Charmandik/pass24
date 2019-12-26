@@ -1,9 +1,10 @@
-package ru.tenant.pass24;
+package ru.tenant.pass24.ProfileFragments.trustedPeople.apiModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ChangeProfileResponseBody {
+public class Confidant {
+
     @SerializedName("id")
     @Expose
     private int id;
@@ -11,6 +12,10 @@ class ChangeProfileResponseBody {
     @SerializedName("name")
     @Expose
     private String name;
+
+    @SerializedName("phone")
+    @Expose
+    private String phone;
 
     @SerializedName("firstName")
     @Expose
@@ -23,14 +28,6 @@ class ChangeProfileResponseBody {
     @SerializedName("middleName")
     @Expose
     private String middleName;
-
-    @SerializedName("phone")
-    @Expose
-    private String phone;
-
-    @SerializedName("email")
-    @Expose
-    private String email;
 
     public int getId() {
         return id;
@@ -46,6 +43,14 @@ class ChangeProfileResponseBody {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getFirstName() {
@@ -70,21 +75,5 @@ class ChangeProfileResponseBody {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

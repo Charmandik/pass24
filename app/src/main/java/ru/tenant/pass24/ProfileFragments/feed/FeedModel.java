@@ -27,6 +27,9 @@ public class FeedModel {
 
                     @Override
                     public void onNext(FeedResponse feedResponse) {
+                        if(feedResponse != null)
+                            if(feedResponse.getBody() != null)
+                                if(feedResponse.getBody().getCollection() != null)
                         if (feedResponse.getBody().getCollection().size() > 0)
                             feedResponses.addAll(feedResponse.getBody().getCollection());
                     }

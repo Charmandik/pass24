@@ -43,4 +43,8 @@ public class ApiService {
     public RequestApi getRequestApi() {
         return mRetrofit.create(RequestApi.class);
     }
+
+    public ConfidancesApi getConfidancesApi() {
+        return mRetrofit.create(ConfidancesApi.class);
+    }
 }

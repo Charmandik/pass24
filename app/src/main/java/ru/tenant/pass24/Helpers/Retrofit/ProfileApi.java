@@ -6,15 +6,14 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
-import ru.tenant.pass24.AuthorizationFragments.Registration.apiModels.RegistryCheckRequestBody;
 import ru.tenant.pass24.AuthorizationFragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
-import ru.tenant.pass24.ChangeProfileRequest;
-import ru.tenant.pass24.ChangeProfileResponse;
-import ru.tenant.pass24.PasswordChangeResponse;
-import ru.tenant.pass24.PhoneChangeResponse;
-import ru.tenant.pass24.ProfileAddressesResponse;
-import ru.tenant.pass24.ProfileObjectsResponse;
-import ru.tenant.pass24.ProfileResponse;
+import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileRequest;
+import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileResponse;
+import ru.tenant.pass24.apiModelsNonUsed.PasswordChangeResponse;
+import ru.tenant.pass24.apiModelsNonUsed.PhoneChangeResponse;
+import ru.tenant.pass24.apiModelsNonUsed.ProfileAddressesResponse;
+import ru.tenant.pass24.apiModelsNonUsed.ProfileObjectsResponse;
+import ru.tenant.pass24.apiModelsNonUsed.ProfileResponse;
 
 public interface ProfileApi {
     @GET("profile/")

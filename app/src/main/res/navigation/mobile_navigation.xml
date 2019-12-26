@@ -28,12 +28,10 @@
             android:id="@+id/action_nav_events_feed_to_nav_tools"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_trusted_people"
         android:name="ru.tenant.pass24.ProfileFragments.trustedPeople.TrustedPeopleFragment"
         tools:layout="@layout/trust_people_fragment" />
-
-
-    </fragment>
 </navigation>
