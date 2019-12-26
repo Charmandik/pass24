@@ -4,20 +4,24 @@
     <group android:checkableBehavior="single">
         <item android:title="Баланс" />
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_passes"
             android:title="Мои пропуска" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_templates"
             android:title="Мои шаблоны" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_requests"
             android:title="Мои запросы" />
 
-        <item android:title="Лента событий" />
+        <item
+            android:id="@+id/nav_events_feed"
+            android:title="Лента событий" />
 
         <item android:title="Объекты и пропуска" />
 
-        <item android:title="Доверенные лица" />
+        <item
+            android:id="@+id/nav_trusted_people"
+            android:title="Доверенные лица" />
     </group>
     <item
         android:id="@+id/btnLogout"

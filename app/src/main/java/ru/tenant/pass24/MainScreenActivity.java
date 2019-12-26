@@ -23,8 +23,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import ru.tenant.pass24.ProfileFragments.feed.FeedFragment;
-
 public class MainScreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -50,8 +48,8 @@ public class MainScreenActivity extends AppCompatActivity implements NavigationV
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_events_feed, R.id.nav_send)
+                R.id.nav_passes, R.id.nav_templates, R.id.nav_requests,
+                R.id.nav_events_feed, R.id.nav_trusted_people)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

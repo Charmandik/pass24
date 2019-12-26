@@ -1,4 +1,4 @@
-package ru .tenant.pass24.ProfileFragments.requests;
+package ru.tenant.pass24.ProfileFragments.requests;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
+import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
 import ru.tenant.pass24.R;
 
 public class RequestsFragment extends Fragment {
@@ -44,7 +47,11 @@ public class RequestsFragment extends Fragment {
         rvMyRequest.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         rvMyRequest.setLayoutManager(layoutManager);
+        requestsModel.getRequest();
+    }
 
-
+    public void setDataForRecycler(List<RequestCollection> requestResponses) {
+        RequestAdapter requestAdapter = new RequestAdapter(requestResponses);
+        rvMyRequest.setAdapter(requestAdapter);
     }
 }

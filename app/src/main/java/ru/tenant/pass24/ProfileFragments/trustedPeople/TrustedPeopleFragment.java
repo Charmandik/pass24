@@ -37,6 +37,5 @@ public class TrustedPeopleFragment extends Fragment {
 
         ivTrustAdd = view.findViewById(R.id.ivTrustAdd);
         rvTrustPeople = view.findViewById(R.id.rvTrustPeople);
-
     }
 }
