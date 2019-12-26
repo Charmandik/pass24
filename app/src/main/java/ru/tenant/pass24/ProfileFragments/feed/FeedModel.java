@@ -9,15 +9,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.Helpers.Constants;
 import ru.tenant.pass24.Helpers.Retrofit.ApiService;
+import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedCollection;
 import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponse;
-import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponseBody;
 
 public class FeedModel {
     public FeedPresenter feedPresenter;
-    private List<FeedResponseBody> feedResponses = new ArrayList();
+    private List<FeedCollection> feedResponses = new ArrayList();
 
     public void getEvents() {
-        Constants.authToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuYW50LWFwaS5hbHBoYS5wYXNzMjQub25saW5lXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NzI5ODAwMiwiZXhwIjoxNTc3Mzg0NDAyLCJuYmYiOjE1NzcyOTgwMDIsImp0aSI6ImFQWHpkTkhDaUM2cTJaZzEiLCJzdWIiOjEwMDAwMDcsInBydiI6IjQzMjYzMzc1ZjdmZmQ2YTJjZTVmMzhiZTkzOGZkMTJlM2YwNzlmYWUiLCJ1aWQiOiI3OTYwMzkyMzgxOTVlMDNhODUyYzFkOTAxLjE4MTczODI2In0.wQ-EwBPGYwZS1E25GUPThLeVB3r8-bB-AL1MD1x6Y88";
+        Constants.authToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuYW50LWFwaS5hbHBoYS5wYXNzMjQub25saW5lXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NzM0MjIzOSwiZXhwIjoxNTc3NDI4NjM5LCJuYmYiOjE1NzczNDIyMzksImp0aSI6Im9mVjRqTm9uaHV2VEx5S1YiLCJzdWIiOjEwMDAwMDcsInBydiI6IjQzMjYzMzc1ZjdmZmQ2YTJjZTVmMzhiZTkzOGZkMTJlM2YwNzlmYWUiLCJ1aWQiOiI3OTYwMzkyMzgxOTVlMDQ1NTFmZDZhNjU2Ljc3NTEyODU2In0.xtB9QHgmqfKSB5aHQXY0f8Ry2Y1ttJ5v97f8TnynmE8";
         ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -28,7 +28,8 @@ public class FeedModel {
 
                     @Override
                     public void onNext(FeedResponse feedResponse) {
-                        feedResponses.add(feedResponse.getBody());
+                        if (feedResponse.getBody().getCollection().size() > 0)
+                            feedResponses.addAll(feedResponse.getBody().getCollection());
                     }
 
                     @Override

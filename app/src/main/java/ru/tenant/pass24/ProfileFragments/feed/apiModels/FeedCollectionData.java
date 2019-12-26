@@ -3,7 +3,7 @@ package ru.tenant.pass24.ProfileFragments.feed.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class FeedCollectionData {
+public class FeedCollectionData {
     @SerializedName("passId")
     @Expose
     private int passId;
@@ -75,4 +75,5 @@ class FeedCollectionData {
     public void setHappenedAt(String happenedAt) {
         this.happenedAt = happenedAt;
     }
+
 }

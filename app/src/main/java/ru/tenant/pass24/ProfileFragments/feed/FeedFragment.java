@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponse;
-import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedResponseBody;
+import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedCollection;
 import ru.tenant.pass24.R;
 
 public class FeedFragment extends Fragment {
@@ -41,15 +40,14 @@ public class FeedFragment extends Fragment {
         feedPresenter = new FeedPresenter(feedModel);
         feedPresenter.attachView(this);
         ibEventSettings = view.findViewById(R.id.ibEventSettings);
-
         rvFeed = view.findViewById(R.id.rvFeed);
-        rvFeed.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this.getContext());
-        rvFeed.setLayoutManager(layoutManager);
+
         feedModel.getEvents();
     }
 
-    public void setDataForRecycler(List<FeedResponseBody> feedResponses) {
+    public void setDataForRecycler(List<FeedCollection> feedResponses) {
+        layoutManager = new LinearLayoutManager(getContext());
+        rvFeed.setLayoutManager(layoutManager);
         mAdapter = new FeedAdapter(feedResponses);
         rvFeed.setAdapter(mAdapter);
     }
