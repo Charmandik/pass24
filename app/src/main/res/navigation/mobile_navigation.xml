@@ -13,17 +13,17 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="ru.tenant.pass24.ProfileFragments.passes.PassesFragment"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/my_pass_fragment" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="ru.tenant.pass24.ProfileFragments.trustedPeople.TrustedPeopleFragment"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/trust_people_fragment" />
 
     <fragment
         android:id="@+id/nav_tools"
         android:name="ru.tenant.pass24.ProfileFragments.requests.RequestsFragment"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_my_request" />
 
     <fragment
         android:id="@+id/nav_events_feed"
