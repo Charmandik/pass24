@@ -17,7 +17,6 @@ public class FeedModel {
     private List<FeedCollection> feedResponses = new ArrayList();
 
     public void getEvents() {
-        Constants.authToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVuYW50LWFwaS5hbHBoYS5wYXNzMjQub25saW5lXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NzM0MjIzOSwiZXhwIjoxNTc3NDI4NjM5LCJuYmYiOjE1NzczNDIyMzksImp0aSI6Im9mVjRqTm9uaHV2VEx5S1YiLCJzdWIiOjEwMDAwMDcsInBydiI6IjQzMjYzMzc1ZjdmZmQ2YTJjZTVmMzhiZTkzOGZkMTJlM2YwNzlmYWUiLCJ1aWQiOiI3OTYwMzkyMzgxOTVlMDQ1NTFmZDZhNjU2Ljc3NTEyODU2In0.xtB9QHgmqfKSB5aHQXY0f8Ry2Y1ttJ5v97f8TnynmE8";
         ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

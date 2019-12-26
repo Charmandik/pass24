@@ -5,10 +5,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class PassesCollection {
+public class PassesCollection {
     @SerializedName("id")
     @Expose
     private int id;
+
+    @SerializedName("object")
+    @Expose
+    private PassesCollectionObject object;
 
     @SerializedName("tenant")
     @Expose
@@ -34,6 +38,10 @@ class PassesCollection {
     @Expose
     private String createdAt;
 
+    @SerializedName("updatedAt")
+    @Expose
+    private String updatedAt;
+
     @SerializedName("closedAt")
     @Expose
     private String closedAt;
@@ -48,7 +56,7 @@ class PassesCollection {
 
     @SerializedName("guestData")
     @Expose
-    private CollectionQuestData guestData;
+    private CollectionGuestData guestData;
 
     @SerializedName("status")
     @Expose
@@ -66,12 +74,24 @@ class PassesCollection {
     @Expose
     private List<CollectionOptions> options;
 
+    @SerializedName("inviteLink")
+    @Expose
+    private String inviteLink;
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public PassesCollectionObject getObject() {
+        return object;
+    }
+
+    public void setObject(PassesCollectionObject object) {
+        this.object = object;
     }
 
     public CollectionTenant getTenant() {
@@ -122,6 +142,14 @@ class PassesCollection {
         this.createdAt = createdAt;
     }
 
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public String getClosedAt() {
         return closedAt;
     }
@@ -146,11 +174,11 @@ class PassesCollection {
         this.guestType = guestType;
     }
 
-    public CollectionQuestData getGuestData() {
+    public CollectionGuestData getGuestData() {
         return guestData;
     }
 
-    public void setGuestData(CollectionQuestData guestData) {
+    public void setGuestData(CollectionGuestData guestData) {
         this.guestData = guestData;
     }
 
@@ -176,6 +204,15 @@ class PassesCollection {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+
+    public String getInviteLink() {
+        return inviteLink;
+    }
+
+    public void setInviteLink(String inviteLink) {
+        this.inviteLink = inviteLink;
     }
 
     public List<CollectionOptions> getOptions() {

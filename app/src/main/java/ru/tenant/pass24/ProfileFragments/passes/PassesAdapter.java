@@ -1,6 +1,6 @@
-package ru.tenant.pass24.ProfileFragments.passes;
+package ru.tenant.pass24.ProfileFragments.feed;
 
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -9,38 +9,49 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesResponseBody;
+import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesCollection;
+import ru.tenant.pass24.R;
 
 public class PassesAdapter extends RecyclerView.Adapter<PassesAdapter.PassesAdapterHolder> {
-    private List<PassesResponseBody> passesResponses;
+    private List<PassesCollection> passesCollections;
 
-    public PassesAdapter(List<PassesResponseBody> passesResponses) {
-        this.passesResponses = passesResponses;
+    public PassesAdapter(List<PassesCollection> passesCollections) {
+        this.passesCollections = passesCollections;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public PassesAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.my_pass_item, parent, false);
+        return new PassesAdapterHolder(mainGroup);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PassesAdapterHolder holder, int position) {
-
+        PassesCollection passesCollection = passesCollections.get(position);
+        if (passesCollection.getTitle() != null) {
+            holder.tvMyPassName.setText(passesCollection.getTitle());
+        }
+        if (passesCollection.getUpdatedAt() != null)
+            holder.tvMyPassDate.setText(passesCollection.getUpdatedAt().substring(0, 11));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return (passesCollections != null ? passesCollections.size() : 0);
     }
 
     public static class PassesAdapterHolder extends RecyclerView.ViewHolder {
+        TextView tvMyPassName, tvMyPassType, tvMyPassDate;
 
-        public TextView textView;
+        public PassesAdapterHolder(ViewGroup viewGroup) {
+            super(viewGroup);
+            tvMyPassName = viewGroup.findViewById(R.id.tvMyPassName);
+            tvMyPassType = viewGroup.findViewById(R.id.tvMyPassType);
+            tvMyPassDate = viewGroup.findViewById(R.id.tvMyPassDate);
 
-        public PassesAdapterHolder(TextView v) {
-            super(v);
-            textView = v;
         }
     }
 }

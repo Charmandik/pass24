@@ -3,7 +3,7 @@ package ru.tenant.pass24.ProfileFragments.passes.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class CollectionQuestData {
+class CollectionGuestData {
 
     @SerializedName("name")
     @Expose

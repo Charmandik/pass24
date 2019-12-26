@@ -4,7 +4,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesResponseBody;
+import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesCollection;
 
 public class PassesPresenter {
     private final PassesModel model;
@@ -26,7 +26,7 @@ public class PassesPresenter {
         view = null;
     }
 
-    public void onDataLoaded(List<PassesResponseBody> passesResponses) {
+    public void onDataLoaded(List<PassesCollection> passesResponses) {
         view.setDataForRecycler(passesResponses);
     }
 }

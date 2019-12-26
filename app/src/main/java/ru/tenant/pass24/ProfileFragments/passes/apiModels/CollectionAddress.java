@@ -11,8 +11,4 @@ class CollectionAddress {
     @SerializedName("name")
     @Expose
     private String name;
-
-    @SerializedName("objectId")
-    @Expose
-    private int objectId;
 }

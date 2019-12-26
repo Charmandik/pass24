@@ -3,14 +3,15 @@ package ru.tenant.pass24.Helpers.Retrofit;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
-import ru.tenant.pass24.ProfileFragments.passes.CreatePassRequest;
-import ru.tenant.pass24.ProfileFragments.passes.CreatePassResponse;
+import ru.tenant.pass24.ProfileFragments.passes.apiModels.CreatePassRequest;
+import ru.tenant.pass24.ProfileFragments.passes.apiModels.CreatePassResponse;
 import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesResponse;
 
 public interface PassesApi {
     @GET("passes/")
-    Observable<PassesResponse> getPasses();
+    Observable<PassesResponse> getPasses(@Header("Authorization") String authToken);
 
     @POST("passes/")
     Observable<CreatePassResponse> createPass(@Body CreatePassRequest createPassRequest);

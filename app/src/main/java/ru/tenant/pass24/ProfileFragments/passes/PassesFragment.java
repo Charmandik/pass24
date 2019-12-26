@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,16 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesResponseBody;
+import ru.tenant.pass24.ProfileFragments.feed.PassesAdapter;
+import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesCollection;
 import ru.tenant.pass24.R;
 
 public class PassesFragment extends Fragment {
     private PassesPresenter passesPresenter;
-    private PassesModel passesModel;
-    private ImageView ivPassSetting, ivPassAdd;
     private PassesAdapter mAdapter;
     private RecyclerView rvMyPass;
     private RecyclerView.LayoutManager layoutManager;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.my_pass_fragment, container, false);
@@ -40,9 +40,6 @@ public class PassesFragment extends Fragment {
         passesPresenter = new PassesPresenter(passesModel);
         passesPresenter.attachView(this);
 
-        ivPassSetting = view.findViewById(R.id.ivPassSetting);
-        ivPassAdd = view.findViewById(R.id.ivPassAdd);
-
         rvMyPass = view.findViewById(R.id.rvMyPass);
         rvMyPass.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
@@ -50,7 +47,7 @@ public class PassesFragment extends Fragment {
         passesModel.getPasses();
     }
 
-    public void setDataForRecycler(List<PassesResponseBody> passesResponses) {
+    public void setDataForRecycler(List<PassesCollection> passesResponses) {
         mAdapter = new PassesAdapter(passesResponses);
         rvMyPass.setAdapter(mAdapter);
     }
