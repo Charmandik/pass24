@@ -1,4 +1,4 @@
-package ru.tenant.pass24.ProfileFragments.feed;
+package ru.tenant.pass24.ProfileFragments.passes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

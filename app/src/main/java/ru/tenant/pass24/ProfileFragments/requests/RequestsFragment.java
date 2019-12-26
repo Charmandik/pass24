@@ -12,12 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
-import okhttp3.RequestBody;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.CollectionRequestData;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestResponseBody;
 import ru.tenant.pass24.R;
 
 public class RequestsFragment extends Fragment {
@@ -26,7 +20,6 @@ public class RequestsFragment extends Fragment {
     private ImageView ivRequestAdd;
     private RecyclerView rvMyRequest;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,10 +45,6 @@ public class RequestsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         rvMyRequest.setLayoutManager(layoutManager);
 
-    }
 
-    public void setDataForRecycler(List<RequestCollection> requestResponses) {
-        mAdapter = new RequestAdapter(requestResponses);
-        rvMyRequest.setAdapter(mAdapter);
     }
 }
