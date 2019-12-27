@@ -41,7 +41,6 @@
                     android:id="@+id/btnBack"
                     android:layout_height="match_parent"
                     android:layout_width="wrap_content"
-                    android:layout_weight=""
                     android:layout_gravity="center_vertical"
                     android:background="#fff"
                     android:src="@drawable/ic_arrow_back" />
@@ -91,25 +90,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clCarPassHeader">
 
 <!--            Поле номер автомобиля-->
-            <com.google.android.material.textfield.TextInputLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llCarNumberField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Статус запроса">
+                android:orientation="horizontal"
+                android:minHeight="64dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lines="1"
-                    android:textSize="14sp"
-                    android:text="Открытые, Завершённые"/>
+                    android:lines="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:hint="Номер автомобиля"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 <!--            Поле марка и вид транспорта-->
             <LinearLayout
@@ -125,23 +136,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/t1"
+                    <TextView
+                        android:id="@+id/tvBrandTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Марка"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent">
+                        />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lines="1"
-                            android:textSize="14sp"
-                            android:text="Renault"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/tvBrandName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBrandTitle"
+                        android:textSize="14sp"
+                        android:textColor="#2A2A2A"
+                        android:text="Renault"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -152,6 +167,15 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 <!--                Поле тип транспорта-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -161,22 +185,34 @@
                     android:layout_marginStart="32dp"
                     android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <TextView
+                        android:id="@+id/tvCarTypeTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:hint="Тип транспорта"/>
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:hint="Тип транспорта">
+                        app:layout_constraintTop_toBottomOf="@+id/tvCarTypeTitle"
+                        android:layout_marginTop="4dp"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:textColor="#2A2A2A"
+                        android:text="Грузовой 3,5 т."/>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lines="1"
-                            android:textSize="14sp"
-                            android:text="Грузовой 3,5 т."/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -194,24 +230,38 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clAddressField"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:minHeight="64dp">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/tvAddressTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:hint="Адрес"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddressTitle"
+                    android:lines="1"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp"
+                    android:text="Пр-кт Тамары Маркеловой, 53 д."/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:hint="Адрес">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:textSize="14sp"
-                        android:text="Пр-кт Тамары Маркеловой, 53 д."/>
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
                     android:layout_width="wrap_content"

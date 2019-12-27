@@ -39,7 +39,6 @@
                     android:id="@+id/btnBack"
                     android:layout_height="match_parent"
                     android:layout_width="wrap_content"
-                    android:layout_weight=""
                     android:layout_gravity="center_vertical"
                     android:background="#fff"
                     android:src="@drawable/ic_arrow_back" />

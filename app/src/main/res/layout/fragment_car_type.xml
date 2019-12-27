@@ -17,14 +17,14 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            <!--   Заголовок -->
 
+<!--            Заголовок -->
             <LinearLayout
                 android:id="@+id/llCarTypeHeader"
                 android:layout_width="match_parent"
@@ -41,8 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0"
-                    android:background="none"
                     android:src="@drawable/ic_arrow_back" />
 
                 <TextView
@@ -57,6 +55,7 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
+
 <!--            Легковой/авто-->
             <LinearLayout
                 android:id="@+id/llCar"
@@ -73,7 +72,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tvCarHead"
@@ -102,13 +101,15 @@
                     android:button="@drawable/radiobutton_selector"/>
 
             </LinearLayout>
+
 <!--            Грузовой 1-->
             <LinearLayout
                 android:id="@+id/llTruck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/rounded_type_transport"
+                android:background="@drawable/rounded_grey"
+                android:layout_marginTop="4dp"
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp"
                 android:paddingStart="24dp"
@@ -118,7 +119,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tvTruckHead"
@@ -154,7 +155,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/rounded_type_transport"
+                android:background="@drawable/rounded_grey"
+                android:layout_marginTop="4dp"
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp"
                 android:paddingStart="24dp"
@@ -164,7 +166,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tvBigTruckHead"
@@ -200,7 +202,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/rounded_type_transport"
+                android:background="@drawable/rounded_grey"
+                android:layout_marginTop="4dp"
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp"
                 android:paddingStart="24dp"
@@ -210,7 +213,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tvAnotherTruckHead"
