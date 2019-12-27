@@ -33,7 +33,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_vehicle_type" />
+        tools:listitem="@layout/item_vehicle_model" />
 
 
 </LinearLayout>
