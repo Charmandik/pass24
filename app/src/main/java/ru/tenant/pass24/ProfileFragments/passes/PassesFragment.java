@@ -25,7 +25,7 @@ public class PassesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.my_pass_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_my_pass, container, false);
     }
 
     @Override
