@@ -45,7 +45,7 @@
                     android:src="@drawable/ic_arrow_back" />
 
                 <TextView
-                    android:id="@+id/tvNewAddress"
+                    android:id="@+id/tvConfidantHeader"
                     android:layout_weight="3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,17 +59,27 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvQuery"
+                android:id="@+id/tvConfidantHeadTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Запрос на создание доверенного лица"
                 android:textColor="#B9B9B9"
                 android:textSize="12sp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/llConfidantHeader" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConfidantHeadTitle"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -78,10 +88,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clConfidantHeader">
 
+            <EditText
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_FIO"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_confidant_address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfidantAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textSize="14sp"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_confidant_validity">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfidantValidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textSize="14sp"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>

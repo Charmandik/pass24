@@ -75,4 +75,7 @@
     <string name="text_accept_status">Подтверждённые</string>
     <string name="text_open_status">Открытые</string>
     <string name="text_all_status">Все</string>
+    <string name="text_FIO">ФИО</string>
+    <string name="text_confidant_address">Адрес</string>
+    <string name="text_confidant_validity">Срок действия</string>
 </resources>
