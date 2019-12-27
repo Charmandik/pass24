@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:minHeight="54dp">
 
     <TextView
+        android:id="@+id/tvModelName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Renault" />
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="Renault"
+        android:textColor="@color/textPrimary"
+        android:textSize="14sp" />
 
-    <ImageView
+    <RadioButton
+        android:id="@+id/rbVehicleModel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
+</RelativeLayout>
