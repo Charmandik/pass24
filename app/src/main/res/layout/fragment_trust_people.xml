@@ -2,43 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="#fff"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clTrustPeopleHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="24dp"
         android:paddingStart="24dp"
         android:paddingTop="26dp"
-        android:paddingBottom="26dp"
-        >
+        android:paddingEnd="24dp"
+        android:paddingBottom="26dp">
+
         <TextView
             android:id="@+id/tvTrustPeopleName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/text_trust_people_header"
             android:textColor="#2A2A2A"
             android:textSize="16sp"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivTrustAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_item"
-            android:background="#fff"
             android:layout_gravity="center"
+            android:background="#fff"
+            android:src="@drawable/ic_add_item"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -47,19 +46,19 @@
         android:layout_height="1dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:background="#F8F8F8"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:background="#F8F8F8" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTrustPeople"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/trust_people_item"
-        android:minHeight="84dp">
+        android:layout_marginBottom="56dp"
+        android:minHeight="84dp"
+        tools:listitem="@layout/item_trust_people">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 
 
 </LinearLayout>

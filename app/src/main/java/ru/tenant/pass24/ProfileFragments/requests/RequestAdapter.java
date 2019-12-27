@@ -1,7 +1,6 @@
 package ru.tenant.pass24.ProfileFragments.requests;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,14 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.CollectionRequestData;
 import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestResponse;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestResponseBody;
 import ru.tenant.pass24.R;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestAdapterHolder> {
     private List<RequestCollection> requestResponses;
+
     public RequestAdapter(List<RequestCollection> requestResponses) {
         this.requestResponses = requestResponses;
     }
@@ -27,7 +24,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
     @Override
     public RequestAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
-        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.my_request_item, parent, false);
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.item_my_request, parent, false);
         return new RequestAdapterHolder(mainGroup);
     }
 
@@ -36,8 +33,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
         RequestCollection requestCollection = requestResponses.get(position);
 
         if (requestCollection != null) {
-            holder.requestName.setText(requestCollection.getRequestData().getAddress());
-
             if (requestCollection.getType() == 1) {
                 holder.requestType.setText("на присоединение к объекту");
             } else if (requestCollection.getType() == 2) {
@@ -46,19 +41,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
                 holder.requestType.setText("на договоренность");
             }
 
-            if (requestCollection.getStatus() == 1) {
-                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
-            }   else if (requestCollection.getStatus() == 2) {
-                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
-            } else if (requestCollection.getStatus() == 3) {
-                holder.requestStatus.setImageResource(R.drawable.ic_accept_status);
-            }
         }
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return requestResponses != null ? requestResponses.size() : 0;
     }
 
     public static class RequestAdapterHolder extends RecyclerView.ViewHolder {

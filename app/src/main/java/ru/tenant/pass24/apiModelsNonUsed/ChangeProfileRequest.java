@@ -1,16 +1,12 @@
-package ru.tenant.pass24;
+package ru.tenant.pass24.apiModelsNonUsed;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ProfileResponseBody {
-    @SerializedName("id")
+public class ChangeProfileRequest {
+    @SerializedName("email")
     @Expose
-    private int id;
-
-    @SerializedName("name")
-    @Expose
-    private String name;
+    private String email;
 
     @SerializedName("firstName")
     @Expose
@@ -24,28 +20,12 @@ class ProfileResponseBody {
     @Expose
     private String middleName;
 
-    @SerializedName("phone")
-    @Expose
-    private String phone;
-
-    @SerializedName("email")
-    @Expose
-    private String email;
-
-    public int getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -70,21 +50,5 @@ class ProfileResponseBody {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

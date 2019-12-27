@@ -1,13 +1,14 @@
-package ru.tenant.pass24;
+package ru.tenant.pass24.apiModelsNonUsed;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PasswordChangeResponse {
+public class ChangeProfileResponse {
     @SerializedName("body")
     @Expose
-    private boolean body;
+    private ChangeProfileResponseBody body;
+
     @SerializedName("error")
     @Expose
-    private ChangePasswordResponseError error;
+    private ChangeProfileResponseError error;
 }

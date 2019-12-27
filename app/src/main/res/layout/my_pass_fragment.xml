@@ -65,7 +65,7 @@
         android:id="@+id/rvMyPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/my_pass_item"
+        tools:listitem="@layout/item_my_pass"
         android:layout_marginBottom="56dp"
         android:minHeight="84dp">
 

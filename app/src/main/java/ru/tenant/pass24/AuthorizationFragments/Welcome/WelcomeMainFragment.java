@@ -35,7 +35,7 @@ public class WelcomeMainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.welcome_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_welcome, container, false);
 
     }
 

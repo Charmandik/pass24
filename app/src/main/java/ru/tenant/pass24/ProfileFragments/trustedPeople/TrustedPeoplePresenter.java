@@ -2,6 +2,10 @@ package ru.tenant.pass24.ProfileFragments.trustedPeople;
 
 import androidx.fragment.app.FragmentManager;
 
+import java.util.List;
+
+import ru.tenant.pass24.ProfileFragments.trustedPeople.apiModels.ConfidanceCollection;
+
 public class TrustedPeoplePresenter {
     private final TrustedPeopleModel model;
     private TrustedPeopleFragment view;
@@ -20,5 +24,9 @@ public class TrustedPeoplePresenter {
 
     public void detachView() {
         view = null;
+    }
+
+    public void onDataLoaded(List<ConfidanceCollection> confidanceCollections){
+        view.setDataForRecycler(confidanceCollections);
     }
 }

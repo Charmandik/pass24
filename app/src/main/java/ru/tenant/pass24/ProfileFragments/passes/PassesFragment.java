@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.tenant.pass24.ProfileFragments.feed.PassesAdapter;
 import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesCollection;
 import ru.tenant.pass24.R;
 

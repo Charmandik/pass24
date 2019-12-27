@@ -35,7 +35,7 @@ public class RegistryConfirmFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.registry_confirm_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_registry_confirm, container, false);
     }
 
     @Override

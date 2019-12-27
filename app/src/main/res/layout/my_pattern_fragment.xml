@@ -55,7 +55,7 @@
         android:id="@+id/rvTrustPeople"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/my_pattern_item"
+        tools:listitem="@layout/item_my_pattern"
         android:minHeight="84dp">
 
     </androidx.recyclerview.widget.RecyclerView>

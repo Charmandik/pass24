@@ -9,19 +9,25 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
+import ru.tenant.pass24.ProfileFragments.trustedPeople.apiModels.ConfidanceCollection;
 import ru.tenant.pass24.R;
 
 public class TrustedPeopleFragment extends Fragment {
     private TrustedPeoplePresenter trustedPeoplePresenter;
     private ImageView ivTrustAdd;
     private RecyclerView rvTrustPeople;
+    private RecyclerView.LayoutManager layoutManager;
+    private ConfidanceAdapter mAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.trust_people_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_trust_people, container, false);
     }
 
     @Override
@@ -37,6 +43,13 @@ public class TrustedPeopleFragment extends Fragment {
 
         ivTrustAdd = view.findViewById(R.id.ivTrustAdd);
         rvTrustPeople = view.findViewById(R.id.rvTrustPeople);
+        trustedPeopleModel.getConfidances();
+    }
 
+    public void setDataForRecycler(List<ConfidanceCollection> confidanceCollections) {
+        layoutManager = new LinearLayoutManager(getContext());
+        rvTrustPeople.setLayoutManager(layoutManager);
+        mAdapter = new ConfidanceAdapter(confidanceCollections);
+        rvTrustPeople.setAdapter(mAdapter);
     }
 }

@@ -1,9 +1,9 @@
-package ru.tenant.pass24;
+package ru.tenant.pass24.apiModelsNonUsed;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ChangeProfileResponseError {
+class ProfileResponseError {
     @SerializedName("message")
     @Expose
     private String message;
@@ -11,11 +11,6 @@ class ChangeProfileResponseError {
     @SerializedName("code")
     @Expose
     private String code;
-
-    @SerializedName("code")
-    @Expose
-    private ChangeProfileResponseErrorDetails details;
-
 
     public String getMessage() {
         return message;
@@ -31,13 +26,5 @@ class ChangeProfileResponseError {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public ChangeProfileResponseErrorDetails getDetails() {
-        return details;
-    }
-
-    public void setDetails(ChangeProfileResponseErrorDetails details) {
-        this.details = details;
     }
 }

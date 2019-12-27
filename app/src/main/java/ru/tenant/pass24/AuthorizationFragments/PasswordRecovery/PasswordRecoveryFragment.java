@@ -29,7 +29,7 @@ public class PasswordRecoveryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.password_recovery_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_password_recovery, container, false);
     }
 
     @Override

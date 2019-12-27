@@ -1,4 +1,4 @@
-package ru.tenant.pass24.ProfileFragments.feed;
+package ru.tenant.pass24.ProfileFragments.passes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -24,7 +24,7 @@ public class PassesAdapter extends RecyclerView.Adapter<PassesAdapter.PassesAdap
     @Override
     public PassesAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
-        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.my_pass_item, parent, false);
+        ViewGroup mainGroup = (ViewGroup) mInflater.inflate(R.layout.item_my_pass, parent, false);
         return new PassesAdapterHolder(mainGroup);
     }
 

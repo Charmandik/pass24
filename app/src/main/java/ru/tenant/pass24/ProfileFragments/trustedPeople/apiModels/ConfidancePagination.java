@@ -1,9 +1,9 @@
-package ru.tenant.pass24.ProfileFragments.requests.apiModels;
+package ru.tenant.pass24.ProfileFragments.trustedPeople.apiModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RequestPagination {
+public class ConfidancePagination {
     @SerializedName("prev")
     @Expose
     private int prev;
@@ -28,12 +28,12 @@ public class RequestPagination {
     @Expose
     private int total;
 
-    public int getPret() {
+    public int getPrev() {
         return prev;
     }
 
-    public void setPret(int pret) {
-        this.prev = pret;
+    public void setPrev(int prev) {
+        this.prev = prev;
     }
 
     public int getNext() {

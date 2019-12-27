@@ -1,4 +1,4 @@
-package ru .tenant.pass24.ProfileFragments.requests;
+package ru.tenant.pass24.ProfileFragments.requests;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import okhttp3.RequestBody;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.CollectionRequestData;
 import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
-import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestResponseBody;
 import ru.tenant.pass24.R;
 
 public class RequestsFragment extends Fragment {
@@ -26,7 +23,6 @@ public class RequestsFragment extends Fragment {
     private ImageView ivRequestAdd;
     private RecyclerView rvMyRequest;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,15 +42,16 @@ public class RequestsFragment extends Fragment {
 
         ivRequestSetting = view.findViewById(R.id.ivRequestSetting);
         ivRequestAdd = view.findViewById(R.id.ivRequestAdd);
-        rvMyRequest = view.findViewById(R.id.rvMyRequest);
 
+        rvMyRequest = view.findViewById(R.id.rvMyRequest);
+        rvMyRequest.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        rvMyRequest.setLayoutManager(layoutManager);
         requestsModel.getRequest();
     }
 
     public void setDataForRecycler(List<RequestCollection> requestResponses) {
-        layoutManager = new LinearLayoutManager(this.getContext());
-        rvMyRequest.setLayoutManager(layoutManager);
-        mAdapter = new RequestAdapter(requestResponses);
-        rvMyRequest.setAdapter(mAdapter);
+        RequestAdapter requestAdapter = new RequestAdapter(requestResponses);
+        rvMyRequest.setAdapter(requestAdapter);
     }
 }

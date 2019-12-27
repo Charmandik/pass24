@@ -1,15 +1,12 @@
 package ru.tenant.pass24.Helpers.WelcomeView.pageindicatorview.base;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import ru.tenant.pass24.R;
 
@@ -31,7 +28,7 @@ public class WelcomeChangeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_welcome_1, container, false);
+        View view = inflater.inflate(R.layout.item_welcome, container, false);
 
         welcomeInfo = view.findViewById(R.id.tvWelcomeInfo1);
         welcomeInfo2 = view.findViewById(R.id.tvWelcomeInfo1_1);
