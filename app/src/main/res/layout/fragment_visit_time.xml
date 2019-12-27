@@ -2,54 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#979797">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Время визита" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Пожалуйста, укажите дату начала действия пропуска и его период действия. " />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="21" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="c 12:30" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="до 21 фев" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="c 13:30" />
-
-    <Button
-        android:id="@+id/btnProfileSave"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_red_button"
-        android:minHeight="56dp"
-        android:text="Выбрать"
-        android:textAllCaps="false"
-        android:textColor="#ffffff" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_top_background">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="38dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <LinearLayout
+            android:id="@+id/llVisitTimeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvOrderPayTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Время визита"
+                android:textAlignment="center"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vStroke"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@+id/llVisitTimeTitle"
+            android:layout_marginTop="16dp"
+            android:background="#E0E0E0" />
 
 
+
+    </RelativeLayout>
 </LinearLayout>
