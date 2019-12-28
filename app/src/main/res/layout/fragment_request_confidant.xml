@@ -107,6 +107,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/rlRequestConfidantAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -150,6 +151,7 @@
                 android:background="#E0E0E0" />
 
             <RelativeLayout
+                android:id="@+id/rlRequestConfidantValidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
