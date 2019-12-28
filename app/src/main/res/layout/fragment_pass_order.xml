@@ -30,7 +30,7 @@
 
         <!--        Карточка доверенного лица   -->
         <LinearLayout
-            android:id="@+id/llConfidant"
+            android:id="@+id/llVehiclePass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -79,12 +79,12 @@
 
         <!--        Карточка нового адреса   -->
         <LinearLayout
-            android:id="@+id/llNewAddress"
+            android:id="@+id/llGuestPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/request_type_rounded"
-            app:layout_constraintTop_toBottomOf="@+id/llConfidant"
+            app:layout_constraintTop_toBottomOf="@+id/llVehiclePass"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:paddingTop="24dp"
@@ -127,12 +127,12 @@
 
         <!--        Карточка доверенного лица   -->
         <LinearLayout
-            android:id="@+id/llPermanentPass"
+            android:id="@+id/llInvitePass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/request_type_rounded"
-            app:layout_constraintTop_toBottomOf="@+id/llNewAddress"
+            app:layout_constraintTop_toBottomOf="@+id/llGuestPass"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:paddingTop="24dp"

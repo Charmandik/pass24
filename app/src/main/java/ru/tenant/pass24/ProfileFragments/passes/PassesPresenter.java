@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.List;
 
 import ru.tenant.pass24.ProfileFragments.passes.apiModels.PassesCollection;
+import ru.tenant.pass24.R;
 
 public class PassesPresenter {
     private final PassesModel model;
@@ -28,5 +29,13 @@ public class PassesPresenter {
 
     public void onDataLoaded(List<PassesCollection> passesResponses) {
         view.setDataForRecycler(passesResponses);
+    }
+
+    public void toPassOrderFragment() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flPassesContainer, new PassOrderFragment())
+                .addToBackStack("asd")
+                .commit();
     }
 }

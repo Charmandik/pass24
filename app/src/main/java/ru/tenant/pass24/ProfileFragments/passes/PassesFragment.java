@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ public class PassesFragment extends Fragment {
     private PassesAdapter mAdapter;
     private RecyclerView rvMyPass;
     private RecyclerView.LayoutManager layoutManager;
-
+    private ImageView ivPassAdd, ivPassSetting;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,10 +41,27 @@ public class PassesFragment extends Fragment {
         passesPresenter.attachView(this);
 
         rvMyPass = view.findViewById(R.id.rvMyPass);
+        ivPassAdd = view.findViewById(R.id.ivPassAdd);
+        ivPassSetting = view.findViewById(R.id.ivPassSetting);
         rvMyPass.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         rvMyPass.setLayoutManager(layoutManager);
         passesModel.getPasses();
+
+
+        ivPassAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passesPresenter.toPassOrderFragment();
+            }
+        });
+
+        ivPassSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void setDataForRecycler(List<PassesCollection> passesResponses) {

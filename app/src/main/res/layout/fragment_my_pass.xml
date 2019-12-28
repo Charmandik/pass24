@@ -1,74 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/flPassesContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clMyPassHeader"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingEnd="24dp"
-        android:paddingStart="24dp"
-        android:paddingTop="26dp"
-        android:paddingBottom="26dp"
-        >
-        <TextView
-            android:id="@+id/tvMyPass"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/text_my_pass_header"
-            android:textColor="#2A2A2A"
-            android:textSize="16sp"
-            android:gravity="center_vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivPassSetting"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMyPassHeader"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_event_settings"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/ivPassAdd"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:paddingStart="24dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="26dp">
 
-        <ImageView
-            android:id="@+id/ivPassAdd"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvMyPass"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/text_my_pass_header"
+                android:textColor="#2A2A2A"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivPassSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/ic_event_settings"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivPassAdd"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivPassAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#fff"
+                android:src="@drawable/ic_add_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F8F8F8" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMyPass"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_item"
-            android:background="#fff"
-            android:layout_gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginBottom="56dp"
+            android:minHeight="84dp"
+            tools:listitem="@layout/item_my_pass">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:background="#F8F8F8"
-        android:layout_marginBottom="16dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMyPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_my_pass"
-        android:layout_marginBottom="56dp"
-        android:minHeight="84dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-</LinearLayout>
+    </LinearLayout>
+</FrameLayout>
