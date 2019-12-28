@@ -4,7 +4,9 @@ import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
+import ru.tenant.pass24.ProfileFragments.feed.FeedFilter;
 import ru.tenant.pass24.ProfileFragments.trustedPeople.apiModels.ConfidanceCollection;
+import ru.tenant.pass24.R;
 
 public class TrustedPeoplePresenter {
     private final TrustedPeopleModel model;
@@ -28,5 +30,13 @@ public class TrustedPeoplePresenter {
 
     public void onDataLoaded(List<ConfidanceCollection> confidanceCollections){
         view.setDataForRecycler(confidanceCollections);
+    }
+
+    public void toTrustPeopleAdd() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flTrustPeopleContainer, new FeedFilter())
+                .addToBackStack(null)
+                .commit();
     }
 }

@@ -44,12 +44,19 @@ public class TrustedPeopleFragment extends Fragment {
         ivTrustAdd = view.findViewById(R.id.ivTrustAdd);
         rvTrustPeople = view.findViewById(R.id.rvTrustPeople);
         trustedPeopleModel.getConfidances();
+
+        ivTrustAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void setDataForRecycler(List<ConfidanceCollection> confidanceCollections) {
         layoutManager = new LinearLayoutManager(getContext());
         rvTrustPeople.setLayoutManager(layoutManager);
-        mAdapter = new ConfidanceAdapter(confidanceCollections);
+        mAdapter = new ConfidanceAdapter(confidanceCollections,getFragmentManager());
         rvTrustPeople.setAdapter(mAdapter);
     }
 }

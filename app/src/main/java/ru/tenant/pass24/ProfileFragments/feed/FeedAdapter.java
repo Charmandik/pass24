@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,10 +18,12 @@ import ru.tenant.pass24.R;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterHolder> {
     private List<FeedCollection> feedResponses;
+    private FragmentManager fragmentManager;
     private String prevData;
 
-    public FeedAdapter(List<FeedCollection> feedResponses) {
+    public FeedAdapter(List<FeedCollection> feedResponses, FragmentManager fragmentManager) {
         this.feedResponses = feedResponses;
+        this.fragmentManager = fragmentManager;
         notifyDataSetChanged();
     }
 
@@ -53,7 +56,21 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterHol
                     prevData = str.substring(0, 11);
                 }
             }
+            holder.llItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    toEventFeedSelected();
+                }
+            });
         }
+    }
+
+    public void toEventFeedSelected() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flFeedContainer, new FeedSelected())
+                .addToBackStack("")
+                .commit();
     }
 
     @Override

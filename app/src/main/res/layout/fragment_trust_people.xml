@@ -1,64 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flTrustPeopleContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clTrustPeopleHeader"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingTop="26dp"
-        android:paddingEnd="24dp"
-        android:paddingBottom="26dp">
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvTrustPeopleName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/text_trust_people_header"
-            android:textColor="#2A2A2A"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivTrustAdd"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTrustPeopleHeader"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#fff"
-            android:src="@drawable/ic_add_item"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingStart="24dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="26dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvTrustPeopleName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/text_trust_people_header"
+                android:textColor="#2A2A2A"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="16dp"
-        android:background="#F8F8F8" />
+            <ImageView
+                android:id="@+id/ivTrustAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#fff"
+                android:src="@drawable/ic_add_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F8F8F8" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTrustPeople"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:minHeight="84dp"
-        tools:listitem="@layout/item_trust_people">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrustPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="56dp"
+            android:minHeight="84dp"
+            tools:listitem="@layout/item_trust_people">
 
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-</LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+</FrameLayout>
