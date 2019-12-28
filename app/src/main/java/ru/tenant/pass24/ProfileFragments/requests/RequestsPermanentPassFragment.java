@@ -7,11 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import ru.tenant.pass24.ProfileFragments.AddressSearchFragment;
+import ru.tenant.pass24.ProfileFragments.VehicleBrandFragment;
 import ru.tenant.pass24.R;
 
 public class RequestsPermanentPassFragment extends Fragment {
+    private ConstraintLayout clBrandField, clCarTypeField, clAddressField;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -24,15 +28,54 @@ public class RequestsPermanentPassFragment extends Fragment {
         init(view);
     }
 
-    public void toRequestsAdd() {
+    private void init(View view) {
+        clBrandField = view.findViewById(R.id.clBrandField);
+        clCarTypeField = view.findViewById(R.id.clCarTypeField);
+        clAddressField = view.findViewById(R.id.clAddressField);
+
+        clBrandField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toVehicleBrand();
+            }
+        });
+
+        clCarTypeField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toVehicleType();
+            }
+        });
+
+        clAddressField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toAddressSearch();
+            }
+        });
+    }
+
+    public void toAddressSearch() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestTypeFragment())
+                .replace(R.id.flRequestsContainer, new AddressSearchFragment())
                 .addToBackStack("")
                 .commit();
     }
 
-    private void init(View view) {
+    public void toVehicleBrand() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new VehicleBrandFragment())
+                .addToBackStack("")
+                .commit();
+    }
 
+    public void toVehicleType() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestVehicleTypeFragment())
+                .addToBackStack("")
+                .commit();
     }
 }

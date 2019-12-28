@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import ru.tenant.pass24.ProfileFragments.AddressSearchFragment;
+import ru.tenant.pass24.ProfileFragments.ValidityFragment;
 import ru.tenant.pass24.R;
 
 public class RequestConfidantFragment extends Fragment {
@@ -42,15 +44,31 @@ public class RequestConfidantFragment extends Fragment {
         rlRequestConfidantAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                toSearchAddressFragment();
             }
         });
 
         rlRequestConfidantValidity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                toValidityFragment();
             }
         });
+    }
+
+    public void toSearchAddressFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new AddressSearchFragment())
+                .addToBackStack("")
+                .commit();
+    }
+
+    public void toValidityFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new ValidityFragment())
+                .addToBackStack("")
+                .commit();
     }
 }

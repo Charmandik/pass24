@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#979797">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,18 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_top_background"
         android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:background="@drawable/rounded_top_background">
+        android:paddingEnd="24dp">
 
-<!--        Head  -->
+        <!--        Head  -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clCarPassHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="23dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -33,29 +33,29 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
                     android:id="@+id/btnBack"
-                    android:layout_height="match_parent"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:background="#fff"
                     android:src="@drawable/ic_arrow_back" />
 
                 <TextView
                     android:id="@+id/tvCarPassHeader"
-                    android:layout_weight="3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="Авто/мото пропуск"
                     android:textAlignment="center"
                     android:textColor="#2A2A2A"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:text="Авто/мото пропуск"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -75,158 +75,173 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#E0E0E0"
                 android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="#E0E0E0"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCarPassTitle"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCarPassTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        Body    -->
+        <!--        Body    -->
 
         <LinearLayout
             android:id="@+id/llCarPassBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clCarPassHeader">
 
-<!--            Поле номер автомобиля-->
+            <!--            Поле номер автомобиля-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llCarNumberField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:minHeight="64dp">
+                android:minHeight="64dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lines="2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:hint="Номер автомобиля"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:hint="Номер автомобиля"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_vehicle_number"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:maxLength="10"
+                        android:hint="X000XX XXX"
+                        android:background="#fff"
+                        android:layout_marginStart="32dp"/>
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#E0E0E0"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="#E0E0E0"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--            Поле марка и вид транспорта-->
+            <!--            Поле марка и вид транспорта-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:minHeight="66dp">
+                android:minHeight="66dp"
+                android:orientation="horizontal">
 
-<!--                Поле марка-->
+                <!--                Поле марка-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clBrandField"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/tvBrandTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Марка"
                         android:layout_marginTop="12dp"
+                        android:hint="Марка"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tvBrandName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:lines="1"
                         android:layout_marginTop="4dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvBrandTitle"
-                        android:textSize="14sp"
+                        android:lines="1"
+                        android:text="Renault"
                         android:textColor="#2A2A2A"
-                        android:text="Renault"/>
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBrandTitle" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_text_view_shape"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E0E0E0"
                         android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="#E0E0E0"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-<!--                Поле тип транспорта-->
+                <!--                Поле тип транспорта-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clCarTypeField"
-                    android:layout_weight="2"
                     android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="32dp"
-                    android:layout_height="match_parent">
+                    android:layout_weight="2">
 
                     <TextView
                         android:id="@+id/tvCarTypeTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:hint="Тип транспорта"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:hint="Тип транспорта"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCarTypeTitle"
                         android:layout_marginTop="4dp"
                         android:lines="1"
-                        android:textSize="14sp"
+                        android:text="Грузовой 3,5 т."
                         android:textColor="#2A2A2A"
-                        android:text="Грузовой 3,5 т."/>
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCarTypeTitle" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#E0E0E0"
                         android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="#E0E0E0"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_text_view_shape"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
-<!--            Поле адрес-->
+            <!--            Поле адрес-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clAddressField"
                 android:layout_width="match_parent"
@@ -235,48 +250,47 @@
                 android:minHeight="64dp">
 
                 <TextView
-                    android:layout_marginTop="4dp"
                     android:id="@+id/tvAddressTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="Адрес"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:hint="Адрес"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvAddressTitle"
                     android:lines="1"
+                    android:text="Пр-кт Тамары Маркеловой, 53 д."
                     android:textColor="#2A2A2A"
                     android:textSize="14sp"
-                    android:text="Пр-кт Тамары Маркеловой, 53 д."/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAddressTitle" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#E0E0E0"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="#E0E0E0"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_text_view_shape"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
-<!--        Footer -->
+        <!--        Footer -->
         <Button
             android:id="@+id/btnSendCarPass"
             android:layout_width="match_parent"
@@ -296,11 +310,11 @@
             android:id="@+id/btnClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_close_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="16dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
