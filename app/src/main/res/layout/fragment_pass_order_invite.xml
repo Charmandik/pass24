@@ -44,6 +44,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Отправьте приглашение" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="#E0E0E0" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,6 +66,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rlPassInviteAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -93,9 +102,11 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="8dp"
                 android:background="#E0E0E0" />
 
             <RelativeLayout
+                android:id="@+id/rlPassInviteVisitTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
