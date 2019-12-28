@@ -44,6 +44,13 @@ public class TrustedPeopleFragment extends Fragment {
         ivTrustAdd = view.findViewById(R.id.ivTrustAdd);
         rvTrustPeople = view.findViewById(R.id.rvTrustPeople);
         trustedPeopleModel.getConfidances();
+
+        ivTrustAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void setDataForRecycler(List<ConfidanceCollection> confidanceCollections) {

@@ -48,6 +48,20 @@ public class RequestsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(this.getContext());
         rvMyRequest.setLayoutManager(layoutManager);
         requestsModel.getRequest();
+
+        ivRequestAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passesPresenter.toRequestsAdd();
+            }
+        });
+
+        ivRequestSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                passesPresenter.toRequestsFilter();
+            }
+        });
     }
 
     public void setDataForRecycler(List<RequestCollection> requestResponses) {

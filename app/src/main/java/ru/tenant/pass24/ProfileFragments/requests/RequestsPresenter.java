@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.List;
 
 import ru.tenant.pass24.ProfileFragments.requests.apiModels.RequestCollection;
+import ru.tenant.pass24.R;
 
 public class RequestsPresenter {
 
@@ -29,5 +30,21 @@ public class RequestsPresenter {
 
     public void onDataLoaded(List<RequestCollection> requestResponses) {
         view.setDataForRecycler(requestResponses);
+    }
+
+    public void toRequestsFilter() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestFilterFragment())
+                .addToBackStack("")
+                .commit();
+    }
+
+    public void toRequestsAdd() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestTypeFragment())
+                .addToBackStack("")
+                .commit();
     }
 }
