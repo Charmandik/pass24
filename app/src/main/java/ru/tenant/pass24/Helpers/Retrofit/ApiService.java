@@ -5,7 +5,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiService {
-    private static final String BASE_URL = "https://tenant-api.alpha.pass24.online/";
+    private static final String BASE_URL = "https://mobile-api.pass24online.ru/v1/";
     private static ApiService mInstance;
     private Retrofit mRetrofit;
 

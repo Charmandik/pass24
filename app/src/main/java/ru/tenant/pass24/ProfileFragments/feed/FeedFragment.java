@@ -41,14 +41,19 @@ public class FeedFragment extends Fragment {
         feedPresenter.attachView(this);
         ibEventSettings = view.findViewById(R.id.ibEventSettings);
         rvFeed = view.findViewById(R.id.rvFeed);
-
+        ibEventSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                feedPresenter.toEventFeedFilters();
+            }
+        });
         feedModel.getEvents();
     }
 
     public void setDataForRecycler(List<FeedCollection> feedResponses) {
         layoutManager = new LinearLayoutManager(getContext());
         rvFeed.setLayoutManager(layoutManager);
-        mAdapter = new FeedAdapter(feedResponses);
+        mAdapter = new FeedAdapter(feedResponses, getFragmentManager());
         rvFeed.setAdapter(mAdapter);
     }
 }

@@ -4,7 +4,9 @@ import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
+import ru.tenant.pass24.AuthorizationFragments.Registration.RegistryFragment;
 import ru.tenant.pass24.ProfileFragments.feed.apiModels.FeedCollection;
+import ru.tenant.pass24.R;
 
 public class FeedPresenter {
     private final FeedModel model;
@@ -28,5 +30,13 @@ public class FeedPresenter {
 
     public void onDataLoaded(List<FeedCollection> feedResponses) {
         view.setDataForRecycler(feedResponses);
+    }
+
+    public void toEventFeedFilters() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flFeedContainer, new FeedFilter())
+                .addToBackStack(null)
+                .commit();
     }
 }
