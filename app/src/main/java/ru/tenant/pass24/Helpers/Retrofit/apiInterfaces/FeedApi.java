@@ -1,4 +1,4 @@
-package ru.tenant.pass24.Helpers.Retrofit;
+package ru.tenant.pass24.Helpers.Retrofit.apiInterfaces;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

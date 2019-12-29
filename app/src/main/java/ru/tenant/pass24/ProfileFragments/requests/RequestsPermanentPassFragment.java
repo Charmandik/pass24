@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.ProfileFragments.AddressSearchFragment;
-import ru.tenant.pass24.ProfileFragments.VehicleBrandFragment;
+import ru.tenant.pass24.ProfileFragments.VehicleBrand.VehicleBrandFragment;
 import ru.tenant.pass24.R;
 
 public class RequestsPermanentPassFragment extends Fragment {

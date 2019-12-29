@@ -57,9 +57,9 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-            <!--            Легковой/авто-->
+
             <LinearLayout
-                android:id="@+id/llCar"
+                android:id="@+id/llSingleUsePass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/checked_rounded_green"
@@ -95,6 +95,7 @@
                 </LinearLayout>
 
                 <RadioButton
+                    android:id="@+id/rbSingleUse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -102,9 +103,9 @@
                     android:checked="true" />
 
             </LinearLayout>
-            <!--            Грузовой 1-->
+
             <LinearLayout
-                android:id="@+id/llTruck"
+                android:id="@+id/llPermanentPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_type_transport"
@@ -140,6 +141,7 @@
                 </LinearLayout>
 
                 <RadioButton
+                    android:id="@+id/rbPermanent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
