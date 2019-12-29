@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import ru.tenant.pass24.ProfileFragments.AddressSearchFragment;
 import ru.tenant.pass24.R;
 
 public class RequestFilterFragment extends Fragment {

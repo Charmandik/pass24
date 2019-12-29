@@ -11,7 +11,7 @@ import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileRequest;
 import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileResponse;
 import ru.tenant.pass24.apiModelsNonUsed.PasswordChangeResponse;
 import ru.tenant.pass24.apiModelsNonUsed.PhoneChangeResponse;
-import ru.tenant.pass24.apiModelsNonUsed.ProfileAddressesResponse;
+import ru.tenant.pass24.ProfileFragments.addressSearch.apiModels.ProfileAddressesResponse;
 import ru.tenant.pass24.apiModelsNonUsed.ProfileObjectsResponse;
 import ru.tenant.pass24.apiModelsNonUsed.ProfileResponse;
 
