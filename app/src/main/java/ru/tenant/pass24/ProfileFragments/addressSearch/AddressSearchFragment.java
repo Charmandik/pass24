@@ -20,7 +20,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.Helpers.Constants;
 import ru.tenant.pass24.Helpers.Retrofit.ApiService;
-import ru.tenant.pass24.ProfileFragments.VehicleBrand.apiModels.VehicleBrandCollection;
 import ru.tenant.pass24.ProfileFragments.addressSearch.apiModels.ProfileAddressesResponse;
 import ru.tenant.pass24.ProfileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
 import ru.tenant.pass24.R;
@@ -74,6 +73,7 @@ public class AddressSearchFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
+                        setDataForRecycler(profileAddressesBodiesList);
                     }
                 });
     }

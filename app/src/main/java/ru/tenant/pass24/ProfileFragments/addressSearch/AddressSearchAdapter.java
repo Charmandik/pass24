@@ -1,6 +1,7 @@
 package ru.tenant.pass24.ProfileFragments.addressSearch;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -37,7 +38,14 @@ public class AddressSearchAdapter extends RecyclerView.Adapter<AddressSearchAdap
 
     @Override
     public void onBindViewHolder(@NonNull final AddressSearchHolder holder, int position) {
+        ProfileAddressesResponseBody profileAddressesResponseBody = profileAddressesBodiesList.get(position);
+        holder.tvAddressName.setText(profileAddressesResponseBody.getName());
+        holder.rlAddressSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
     }
 
     @Override
@@ -46,15 +54,15 @@ public class AddressSearchAdapter extends RecyclerView.Adapter<AddressSearchAdap
     }
 
     public static class AddressSearchHolder extends RecyclerView.ViewHolder {
-        private TextView tvModelName;
-        private RadioButton rbVehicleModel;
-        private RelativeLayout rlVehicleBrand;
+        private TextView tvAddressName;
+        private RadioButton rbAddressSearch;
+        private RelativeLayout rlAddressSearch;
 
         public AddressSearchHolder(ViewGroup viewGroup) {
             super(viewGroup);
-            tvModelName = viewGroup.findViewById(R.id.tvModelName);
-            rbVehicleModel = viewGroup.findViewById(R.id.rbVehicleModel);
-            rlVehicleBrand = viewGroup.findViewById(R.id.rlVehicleBrand);
+            tvAddressName = viewGroup.findViewById(R.id.tvAddressName);
+            rbAddressSearch = viewGroup.findViewById(R.id.rbAddressSearch);
+            rlAddressSearch = viewGroup.findViewById(R.id.rlAddressSearch);
         }
     }
 }

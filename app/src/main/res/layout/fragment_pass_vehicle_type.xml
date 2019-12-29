@@ -94,7 +94,8 @@
 
                 </LinearLayout>
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbCar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -139,7 +140,8 @@
 
                 </LinearLayout>
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbTruck"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -185,7 +187,8 @@
 
                 </LinearLayout>
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbBigTruck"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -231,7 +234,8 @@
 
                 </LinearLayout>
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbAnotherType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
