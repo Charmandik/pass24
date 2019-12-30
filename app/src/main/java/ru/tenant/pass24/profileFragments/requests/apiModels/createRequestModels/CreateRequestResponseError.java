@@ -3,6 +3,8 @@ package ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceErrorDetails;
+
 class CreateRequestResponseError {
 
     @SerializedName("code")
@@ -12,6 +14,10 @@ class CreateRequestResponseError {
     @SerializedName("message")
     @Expose
     private String message;
+
+    @SerializedName("details")
+    @Expose
+    private NewConfidanceErrorDetails details;
 
     public String getCode() {
         return code;
@@ -27,5 +33,13 @@ class CreateRequestResponseError {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public NewConfidanceErrorDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(NewConfidanceErrorDetails details) {
+        this.details = details;
     }
 }

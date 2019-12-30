@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class NewConfidanceErrorDetails {
+public class NewConfidanceErrorDetails {
     @SerializedName("addressId")
     @Expose
     private List<String> addressId;
@@ -33,6 +33,30 @@ class NewConfidanceErrorDetails {
     @SerializedName("confidant.lastName")
     @Expose
     private List<String> confidant_lastName;
+
+    @SerializedName("type")
+    @Expose
+    private List<String> type;
+
+    @SerializedName("requestData")
+    @Expose
+    private List<String> requestData;
+
+    public List<String> getType() {
+        return type;
+    }
+
+    public void setType(List<String> type) {
+        this.type = type;
+    }
+
+    public List<String> getRequestData() {
+        return requestData;
+    }
+
+    public void setRequestData(List<String> requestData) {
+        this.requestData = requestData;
+    }
 
     public List<String> getAddressId() {
         return addressId;

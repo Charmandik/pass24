@@ -32,8 +32,10 @@ import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestsFragment;
-import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestBody;
+import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestData;
 import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestResponse;
+import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceRequest;
+import ru.tenant.pass24.profileFragments.trustedPeople.apiModels.Confidant;
 
 public class RequestConfidantFragment extends Fragment {
     public static String TAG = "RequestConfidantFragment";
@@ -150,11 +152,21 @@ public class RequestConfidantFragment extends Fragment {
     }
 
     public void createNewConfidance() {
-        CreateRequestBody createRequestBody = new CreateRequestBody();
+        NewConfidanceRequest createRequestBody = new NewConfidanceRequest();
         createRequestBody.setType(Constants.confidanceType);
+        CreateRequestData createRequestData = new CreateRequestData();
+        Confidant confidant = new Confidant();
+        confidant.setFirstName("asd");
+        confidant.setLastName("asd");
+        confidant.setPhone("79603923819");
+
+        createRequestData.setConfidant(confidant);
+        createRequestData.setObjectId(objectId);
+        createRequestData.setStartsAt("11.03.2020");
+        createRequestData.setExpiresAt("11.04.2020");
         Random random = new Random();
 
-//        createRequestBody.setRequestData(new CreateRequestData(1, tilNewAddress.getEditText().getText().toString()));
+        createRequestBody.setRequestData(createRequestData);
         ApiService.getInstance().getRequestApi().createRequest(Constants.getAuthToken(), createRequestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

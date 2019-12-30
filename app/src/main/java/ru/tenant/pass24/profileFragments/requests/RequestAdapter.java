@@ -34,11 +34,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
 
         if (requestCollection != null) {
             if (requestCollection.getType() == 1) {
-                holder.requestType.setText("на присоединение к объекту");
+                holder.requestType.setText("Новый адрес");
             } else if (requestCollection.getType() == 2) {
-                holder.requestType.setText("на новый пропуск");
+                holder.requestType.setText("Постоянный пропуск");
             } else if (requestCollection.getType() == 3) {
-                holder.requestType.setText("на договоренность");
+                holder.requestType.setText("Новое доверенное лицо");
             }
             if (requestCollection.getRequestData() != null)
                 if (requestCollection.getRequestData().getAddress() != null)
