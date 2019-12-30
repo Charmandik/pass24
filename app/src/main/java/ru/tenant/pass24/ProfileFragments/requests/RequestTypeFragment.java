@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ public class RequestTypeFragment extends Fragment {
     public static String TAG = "RequestTypeFragment";
     private static RequestTypeFragment mInstance;
     private LinearLayout llConfidant, llNewAddress, llPermanentPass;
+    private ImageView btnClose;
 
     private RequestTypeFragment() {
     }
@@ -39,9 +41,14 @@ public class RequestTypeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init(view);
+
+    }
+
+    private void init(View view) {
         llConfidant = view.findViewById(R.id.llConfidant);
         llNewAddress = view.findViewById(R.id.llNewAddress);
         llPermanentPass = view.findViewById(R.id.llPermanentPass);
+        btnClose = view.findViewById(R.id.btnClose);
 
         llConfidant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +68,13 @@ public class RequestTypeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 toRequestPermanentPass();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestsFragment();
             }
         });
     }
@@ -89,7 +103,12 @@ public class RequestTypeFragment extends Fragment {
                 .commit();
     }
 
-    private void init(View view) {
-
+    public void toRequestsFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestsFragment())
+                .addToBackStack("")
+                .commit();
     }
+
 }

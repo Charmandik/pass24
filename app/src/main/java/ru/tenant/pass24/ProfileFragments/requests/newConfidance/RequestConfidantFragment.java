@@ -162,9 +162,13 @@ public class RequestConfidantFragment extends Fragment {
     }
 
     public void toSearchAddressFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", RequestTypeFragment.TAG);
+        AddressSearchFragment requestNewAddressFragment = new AddressSearchFragment();
+        requestNewAddressFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new AddressSearchFragment())
+                .replace(R.id.flRequestsContainer, requestNewAddressFragment)
                 .addToBackStack("")
                 .commit();
     }

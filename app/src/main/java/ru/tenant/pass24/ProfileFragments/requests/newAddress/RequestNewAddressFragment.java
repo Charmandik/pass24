@@ -57,7 +57,6 @@ public class RequestNewAddressFragment extends Fragment {
                 toRequestType();
             }
         });
-
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

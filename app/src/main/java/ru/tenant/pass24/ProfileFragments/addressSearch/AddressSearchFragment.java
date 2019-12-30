@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,6 +24,7 @@ import ru.tenant.pass24.Helpers.Constants;
 import ru.tenant.pass24.Helpers.Retrofit.ApiService;
 import ru.tenant.pass24.ProfileFragments.addressSearch.apiModels.ProfileAddressesResponse;
 import ru.tenant.pass24.ProfileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
+import ru.tenant.pass24.ProfileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.R;
 
 public class AddressSearchFragment extends Fragment {
@@ -29,6 +32,8 @@ public class AddressSearchFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private AddressSearchAdapter mAdapter;
     private List<ProfileAddressesResponseBody> profileAddressesBodiesList = new ArrayList();
+    private ImageView backBtn;
+    private AddressSearchFragment mInstance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,11 +43,25 @@ public class AddressSearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mInstance = this;
         init(view);
     }
 
     private void init(View view) {
         rvAddressSearch = view.findViewById(R.id.rvAddressSearch);
+        backBtn = view.findViewById(R.id.backBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mInstance.getArguments() != null)
+                    if (Objects.equals(mInstance.getArguments().getString("fragment"), RequestTypeFragment.TAG)) {
+                        toRequestType();
+                    }
+            }
+        });
+
+
         getAddresses();
     }
 
@@ -76,5 +95,13 @@ public class AddressSearchFragment extends Fragment {
                         setDataForRecycler(profileAddressesBodiesList);
                     }
                 });
+    }
+
+    public void toRequestType() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
+                .addToBackStack(RequestTypeFragment.TAG)
+                .commit();
     }
 }
