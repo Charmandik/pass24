@@ -43,7 +43,7 @@ public class RequestsPresenter {
     public void toRequestsAdd() {
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestTypeFragment())
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
                 .addToBackStack("")
                 .commit();
     }

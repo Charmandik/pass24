@@ -13,7 +13,19 @@ import androidx.fragment.app.Fragment;
 import ru.tenant.pass24.R;
 
 public class RequestTypeFragment extends Fragment {
+    private static RequestTypeFragment mInstance;
     private LinearLayout llConfidant, llNewAddress, llPermanentPass;
+
+    private RequestTypeFragment() {
+    }
+
+    public static RequestTypeFragment getInstance() {
+        if (mInstance == null) {
+            mInstance = new RequestTypeFragment();
+        }
+        return mInstance;
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

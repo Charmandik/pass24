@@ -4,17 +4,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import ru.tenant.pass24.ProfileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.ProfileFragments.ValidityFragment;
+import ru.tenant.pass24.ProfileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.R;
 
 public class RequestConfidantFragment extends Fragment {
+    private ImageView btnBack, btnClose;
 
     private RelativeLayout rlRequestConfidantAddress, rlRequestConfidantValidity;
 
@@ -32,7 +34,7 @@ public class RequestConfidantFragment extends Fragment {
     public void toRequestsAdd() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestTypeFragment())
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
                 .addToBackStack("")
                 .commit();
     }
@@ -40,6 +42,8 @@ public class RequestConfidantFragment extends Fragment {
     private void init(View view) {
         rlRequestConfidantAddress = view.findViewById(R.id.rlRequestConfidantAddress);
         rlRequestConfidantValidity = view.findViewById(R.id.rlRequestConfidantValidity);
+        btnBack = view.findViewById(R.id.btnBack);
+        btnClose = view.findViewById(R.id.btnClose);
 
         rlRequestConfidantAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,28 @@ public class RequestConfidantFragment extends Fragment {
                 toValidityFragment();
             }
         });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestType();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestType();
+            }
+        });
+    }
+
+    public void toRequestType() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
+                .addToBackStack("")
+                .commit();
     }
 
     public void toSearchAddressFragment() {

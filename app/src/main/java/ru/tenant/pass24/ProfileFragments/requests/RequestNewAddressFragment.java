@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import ru.tenant.pass24.R;
 
 public class RequestNewAddressFragment extends Fragment {
+    private ImageView btnBack, btnClose;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,12 +29,36 @@ public class RequestNewAddressFragment extends Fragment {
     public void toRequestsAdd() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestTypeFragment())
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
                 .addToBackStack("")
                 .commit();
     }
 
     private void init(View view) {
+        btnBack = view.findViewById(R.id.btnBack);
+        btnClose = view.findViewById(R.id.btnClose);
 
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestType();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestType();
+            }
+        });
+    }
+
+    public void toRequestType() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
+                .addToBackStack("")
+                .commit();
     }
 }

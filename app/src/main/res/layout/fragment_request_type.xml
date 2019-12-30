@@ -6,184 +6,182 @@
     android:background="#979797"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clRequestType"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRequestType"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_top_background"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:id="@+id/tvRequestTypeHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_top_background"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text="Тип запроса"
+            android:textColor="#2A2A2A"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        Карточка доверенного лица   -->
+        <LinearLayout
+            android:id="@+id/llConfidant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/request_type_rounded"
+            android:orientation="horizontal"
             android:paddingStart="24dp"
-            android:paddingEnd="24dp">
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRequestTypeHeader">
 
-            <TextView
-                android:id="@+id/tvRequestTypeHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:text="Тип запроса"
-                android:textColor="#2A2A2A"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!--        Карточка доверенного лица   -->
             <LinearLayout
-                android:id="@+id/llConfidant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/request_type_rounded"
-                android:orientation="horizontal"
-                android:paddingStart="24dp"
-                android:paddingTop="24dp"
-                android:paddingEnd="24dp"
-                android:paddingBottom="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvRequestTypeHeader">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvConfidantHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Доверенное лицо"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvConfidantBody"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvConfidantHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Доверенное лицо"
-                        android:textColor="#2A2A2A"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvConfidantBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="4dp"
-                        android:text="Доверенное писание с текстом с текстом с текстом"
-                        android:textColor="#2A2A2A"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_confidant_image" />
-
-            </LinearLayout>
-
-            <!--        Карточка нового адреса   -->
-            <LinearLayout
-                android:id="@+id/llNewAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/request_type_rounded"
-                android:orientation="horizontal"
-                android:paddingStart="24dp"
-                android:paddingTop="24dp"
-                android:paddingEnd="24dp"
-                android:paddingBottom="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llConfidant">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvAddressHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Новый адрес"
-                        android:textColor="#2A2A2A"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvAddressBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="4dp"
-                        android:text="Небольшой текст для описания в две строки"
-                        android:textColor="#2A2A2A"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_new_address_image" />
-
-            </LinearLayout>
-
-            <!--        Карточка доверенного лица   -->
-            <LinearLayout
-                android:id="@+id/llPermanentPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/request_type_rounded"
-                android:orientation="horizontal"
-                android:paddingStart="24dp"
-                android:paddingTop="24dp"
-                android:paddingEnd="24dp"
-                android:paddingBottom="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llNewAddress">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvPermanentPassHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Постоянный пропуск"
-                        android:textColor="#2A2A2A"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvPermanentPasstBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="4dp"
-                        android:text="Текст в две строки описание приглашения"
-                        android:textColor="#2A2A2A"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_permanent_pass_image" />
+                    android:layout_marginTop="4dp"
+                    android:text="Доверенное писание с текстом с текстом с текстом"
+                    android:textColor="#2A2A2A"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/btnClose"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_close_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_confidant_image" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        </LinearLayout>
+
+        <!--        Карточка нового адреса   -->
+        <LinearLayout
+            android:id="@+id/llNewAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/request_type_rounded"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llConfidant">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAddressHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Новый адрес"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvAddressBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:text="Небольшой текст для описания в две строки"
+                    android:textColor="#2A2A2A"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_new_address_image" />
+
+        </LinearLayout>
+
+        <!--        Карточка доверенного лица   -->
+        <LinearLayout
+            android:id="@+id/llPermanentPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/request_type_rounded"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llNewAddress">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPermanentPassHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Постоянный пропуск"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvPermanentPasstBody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:text="Текст в две строки описание приглашения"
+                    android:textColor="#2A2A2A"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_permanent_pass_image" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/ic_close_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llPermanentPass" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
