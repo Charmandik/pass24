@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Random;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -28,16 +31,31 @@ import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
-import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceRequest;
-import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceResponse;
+import ru.tenant.pass24.profileFragments.requests.RequestsFragment;
+import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestBody;
+import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestResponse;
 
 public class RequestConfidantFragment extends Fragment {
+    public static String TAG = "RequestConfidantFragment";
+    public static RequestConfidantFragment mInstance;
     private ImageView btnBack, btnClose;
     private Button btnSendConfidant;
     private TextInputLayout tilConfidantInfo;
     private Context mContext;
-
     private RelativeLayout rlRequestConfidantAddress, rlRequestConfidantValidity;
+    private String userName = "";
+    private TextView tvAddressInfo;
+    private int objectId = 1;
+
+    private RequestConfidantFragment() {
+    }
+
+    public static RequestConfidantFragment getInstance() {
+        if (mInstance == null)
+            return new RequestConfidantFragment();
+        else
+            return mInstance;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,16 +66,10 @@ public class RequestConfidantFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mContext = this.getContext();
+        mInstance = this;
         init(view);
     }
 
-    public void toRequestsAdd() {
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
-                .addToBackStack(RequestTypeFragment.TAG)
-                .commit();
-    }
 
     private void init(View view) {
         rlRequestConfidantAddress = view.findViewById(R.id.rlRequestConfidantAddress);
@@ -66,6 +78,15 @@ public class RequestConfidantFragment extends Fragment {
         btnClose = view.findViewById(R.id.btnClose);
         btnSendConfidant = view.findViewById(R.id.btnSendConfidant);
         tilConfidantInfo = view.findViewById(R.id.tilConfidantInfo);
+        tvAddressInfo = view.findViewById(R.id.tvAddressInfo);
+        tilConfidantInfo.getEditText().setText(userName);
+        if (this.getArguments() != null)
+            if (this.getArguments().getString("addressName") != null) {
+                tvAddressInfo.setVisibility(View.VISIBLE);
+                tvAddressInfo.setText(this.getArguments().getString("addressName"));
+                objectId = this.getArguments().getInt("objectId");
+            }
+
 
         tilConfidantInfo.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
@@ -80,8 +101,8 @@ public class RequestConfidantFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable text) {
+                userName = text.toString();
                 checkFields();
-
             }
         });
 
@@ -129,28 +150,43 @@ public class RequestConfidantFragment extends Fragment {
     }
 
     public void createNewConfidance() {
-        NewConfidanceRequest confidanceRequest = new NewConfidanceRequest();
-        //TODO:fill request fields
-        ApiService.getInstance().getConfidancesApi().createConfidance(Constants.getAuthToken(), confidanceRequest)
+        CreateRequestBody createRequestBody = new CreateRequestBody();
+        createRequestBody.setType(Constants.confidanceType);
+        Random random = new Random();
+
+//        createRequestBody.setRequestData(new CreateRequestData(1, tilNewAddress.getEditText().getText().toString()));
+        ApiService.getInstance().getRequestApi().createRequest(Constants.getAuthToken(), createRequestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<NewConfidanceResponse>() {
+                .subscribe(new Observer<CreateRequestResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onNext(NewConfidanceResponse newConfidanceResponse) {
+                    public void onNext(CreateRequestResponse createRequestResponse) {
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
+
                     }
 
                     @Override
                     public void onComplete() {
+                        toRequestsFragment();
                     }
                 });
+    }
+
+    public void toRequestsFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestsFragment())
+                .addToBackStack(RequestTypeFragment.TAG)
+                .commit();
     }
 
     public void toRequestType() {
@@ -163,7 +199,7 @@ public class RequestConfidantFragment extends Fragment {
 
     public void toSearchAddressFragment() {
         Bundle bundle = new Bundle();
-        bundle.putString("fragment", RequestTypeFragment.TAG);
+        bundle.putString("fragment", RequestConfidantFragment.TAG);
         AddressSearchFragment requestNewAddressFragment = new AddressSearchFragment();
         requestNewAddressFragment.setArguments(bundle);
         getFragmentManager()

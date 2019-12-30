@@ -1,5 +1,6 @@
 package ru.tenant.pass24.profileFragments.addressSearch;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
 
 public class AddressSearchAdapter extends RecyclerView.Adapter<AddressSearchAdapter.AddressSearchHolder> {
-    private FragmentManager fragmentManager;
     private List<ProfileAddressesResponseBody> profileAddressesBodiesList;
     private List<RadioButton> radioButtonList = new ArrayList();
+    private Context mContext;
 
-    public AddressSearchAdapter(List<ProfileAddressesResponseBody> profileAddressesBodiesList, FragmentManager fragmentManager) {
+    public AddressSearchAdapter(List<ProfileAddressesResponseBody> profileAddressesBodiesList, Context context) {
         this.profileAddressesBodiesList = profileAddressesBodiesList;
-        this.fragmentManager = fragmentManager;
+        this.mContext = context;
         notifyDataSetChanged();
     }
 
@@ -40,10 +40,26 @@ public class AddressSearchAdapter extends RecyclerView.Adapter<AddressSearchAdap
     public void onBindViewHolder(@NonNull final AddressSearchHolder holder, int position) {
         ProfileAddressesResponseBody profileAddressesResponseBody = profileAddressesBodiesList.get(position);
         holder.tvAddressName.setText(profileAddressesResponseBody.getName());
+
+        holder.addressName = profileAddressesResponseBody.getName();
+        holder.objectId = profileAddressesResponseBody.getId();
+        radioButtonList.add(holder.rbAddressSearch);
         holder.rlAddressSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for (int i = 0; i < radioButtonList.size(); i++) {
+                    radioButtonList.get(i).setChecked(false);
+                }
+                holder.rbAddressSearch.setChecked(true);
+                AddressSearchFragment.addressName = holder.addressName;
+                AddressSearchFragment.objectId = holder.objectId;
 
+            }
+        });
+
+        holder.rbAddressSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
@@ -57,6 +73,8 @@ public class AddressSearchAdapter extends RecyclerView.Adapter<AddressSearchAdap
         private TextView tvAddressName;
         private RadioButton rbAddressSearch;
         private RelativeLayout rlAddressSearch;
+        private String addressName = "";
+        private int objectId = 1;
 
         public AddressSearchHolder(ViewGroup viewGroup) {
             super(viewGroup);

@@ -82,7 +82,7 @@ public class RequestTypeFragment extends Fragment {
     public void toRequestsConfidant() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestConfidantFragment())
+                .replace(R.id.flRequestsContainer, RequestConfidantFragment.getInstance())
                 .addToBackStack("")
                 .commit();
     }

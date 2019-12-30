@@ -46,7 +46,10 @@ public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapte
                 holder.rbVehicleModel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        holder.rbVehicleModel.toggle();
+                        for (int i = 0; i < radioButtonList.size(); i++) {
+                            radioButtonList.get(i).setChecked(false);
+                        }
+                        holder.rbVehicleModel.setChecked(true);
                         for (int i = 0; i < radioButtonList.size(); i++) {
                             if (radioButtonList.get(i).isChecked() && radioButtonList.get(i) != holder.rbVehicleModel)
                                 radioButtonList.get(i).setChecked(false);
@@ -56,11 +59,10 @@ public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapte
                 holder.rlVehicleBrand.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        holder.rbVehicleModel.toggle();
                         for (int i = 0; i < radioButtonList.size(); i++) {
-                            if (radioButtonList.get(i).isChecked() && radioButtonList.get(i) != holder.rbVehicleModel)
-                                radioButtonList.get(i).setChecked(false);
+                            radioButtonList.get(i).setChecked(false);
                         }
+                        holder.rbVehicleModel.setChecked(true);
                     }
                 });
             }
