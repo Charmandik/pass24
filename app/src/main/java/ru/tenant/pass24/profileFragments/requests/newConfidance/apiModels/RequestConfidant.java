@@ -3,7 +3,7 @@ package ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class RequestConfidant {
+public class RequestConfidant {
 
     @SerializedName("phone")
     @Expose

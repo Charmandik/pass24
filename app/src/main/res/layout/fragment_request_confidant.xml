@@ -93,16 +93,50 @@
             app:layout_constraintTop_toBottomOf="@+id/clConfidantHeader">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilConfidantInfo"
+                android:id="@+id/tilConfidantFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ФИО">
+                android:hint="Имя">
 
                 <com.google.android.material.textfield.TextInputEditText
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfidantSecondName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:hint="Фамилия">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilConfidantPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:hint="Номер телефона">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:lines="1"
+                    android:maxLength="16"
+                    android:text="+7"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -126,7 +160,8 @@
                         android:layout_height="wrap_content"
                         android:alpha="0.5"
                         android:text="Адрес"
-                        android:textColor="@color/textPrimary" />
+                        android:textColor="@color/textPrimary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tvAddressInfo"
@@ -171,13 +206,15 @@
                         android:layout_height="wrap_content"
                         android:alpha="0.5"
                         android:text="Срок действия"
-                        android:textColor="@color/textPrimary" />
+                        android:textColor="@color/textPrimary"
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tvVisitTimeInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Пр-кт Тамары Маркеловой, 53 д…"
+                        android:text=""
                         android:textColor="@color/textPrimary"
                         android:visibility="gone" />
                 </LinearLayout>

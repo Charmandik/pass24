@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceErrorDetails;
 
-class CreateRequestResponseError {
+public class CreateRequestResponseError {
 
     @SerializedName("code")
     @Expose

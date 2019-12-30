@@ -4,51 +4,28 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class NewConfidanceRequest {
-    @SerializedName("addressId")
+    @SerializedName("type")
     @Expose
-    private int addressId;
+    private int type;
 
-    @SerializedName("confidant")
+    @SerializedName("requestData")
     @Expose
-    private RequestConfidant confidant;
+    private NewConfidanceRequestData requestData;
 
-    @SerializedName("startsAt")
-    @Expose
-    private String startsAt;
 
-    @SerializedName("expiresAt")
-    @Expose
-    private String expiresAt;
-
-    public int getAddressId() {
-        return addressId;
+    public int getType() {
+        return type;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setType(int type) {
+        this.type = type;
     }
 
-    public RequestConfidant getConfidant() {
-        return confidant;
+    public NewConfidanceRequestData getRequestData() {
+        return requestData;
     }
 
-    public void setConfidant(RequestConfidant confidant) {
-        this.confidant = confidant;
-    }
-
-    public String getStartsAt() {
-        return startsAt;
-    }
-
-    public void setStartsAt(String startsAt) {
-        this.startsAt = startsAt;
-    }
-
-    public String getExpiresAt() {
-        return expiresAt;
-    }
-
-    public void setExpiresAt(String expiresAt) {
-        this.expiresAt = expiresAt;
+    public void setRequestData(NewConfidanceRequestData requestData) {
+        this.requestData = requestData;
     }
 }

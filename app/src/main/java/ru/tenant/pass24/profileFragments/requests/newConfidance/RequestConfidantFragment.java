@@ -32,21 +32,23 @@ import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestsFragment;
-import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestData;
 import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestResponse;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceRequest;
-import ru.tenant.pass24.profileFragments.trustedPeople.apiModels.Confidant;
+import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.NewConfidanceRequestData;
+import ru.tenant.pass24.profileFragments.requests.newConfidance.apiModels.RequestConfidant;
 
 public class RequestConfidantFragment extends Fragment {
     public static String TAG = "RequestConfidantFragment";
     public static RequestConfidantFragment mInstance;
     private ImageView btnBack, btnClose;
     private Button btnSendConfidant;
-    private TextInputLayout tilConfidantInfo;
+    private TextInputLayout tilConfidantFirstName, tilConfidantSecondName, tilConfidantPhone;
     private Context mContext;
     private RelativeLayout rlRequestConfidantAddress, rlRequestConfidantValidity;
-    private String userName = "";
-    private TextView tvAddressInfo;
+    private String firstName = "";
+    private String secondName = "";
+    private String phone = "7";
+    private TextView tvAddressInfo, tvVisitTimeInfo;
     private int objectId = 1;
 
     private RequestConfidantFragment() {
@@ -79,34 +81,30 @@ public class RequestConfidantFragment extends Fragment {
         btnBack = view.findViewById(R.id.btnBack);
         btnClose = view.findViewById(R.id.btnClose);
         btnSendConfidant = view.findViewById(R.id.btnSendConfidant);
-        tilConfidantInfo = view.findViewById(R.id.tilConfidantInfo);
+        tilConfidantFirstName = view.findViewById(R.id.tilConfidantFirstName);
+        tilConfidantSecondName = view.findViewById(R.id.tilConfidantSecondName);
+        tilConfidantPhone = view.findViewById(R.id.tilConfidantPhone);
         tvAddressInfo = view.findViewById(R.id.tvAddressInfo);
-        tilConfidantInfo.getEditText().setText(userName);
-        if (this.getArguments() != null)
+        tvVisitTimeInfo = view.findViewById(R.id.tvVisitTimeInfo);
+        tilConfidantFirstName.getEditText().setText(firstName);
+        tilConfidantSecondName.getEditText().setText(secondName);
+        tilConfidantPhone.getEditText().setText(phone);
+
+        configureTextInputLayouts();
+        if (this.getArguments() != null) {
             if (this.getArguments().getString("addressName") != null) {
                 tvAddressInfo.setVisibility(View.VISIBLE);
                 tvAddressInfo.setText(this.getArguments().getString("addressName"));
                 objectId = this.getArguments().getInt("objectId");
             }
 
-
-        tilConfidantInfo.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            if (this.getArguments().getString("startsAt") != null) {
+                tvVisitTimeInfo.setVisibility(View.VISIBLE);
+                String data = this.getArguments().getString("startsAt") + this.getArguments().getString("expiresAt");
+                tvVisitTimeInfo.setText(data);
             }
+        }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable text) {
-                userName = text.toString();
-                checkFields();
-            }
-        });
 
         rlRequestConfidantAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,30 +142,88 @@ public class RequestConfidantFragment extends Fragment {
         });
     }
 
+    public void configureTextInputLayouts() {
+        tilConfidantFirstName.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
+                firstName = text.toString();
+                checkFields();
+            }
+        });
+
+        tilConfidantSecondName.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
+                secondName = text.toString();
+                checkFields();
+            }
+        });
+
+        tilConfidantPhone.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable text) {
+                phone = text.toString();
+                checkFields();
+            }
+        });
+    }
+
     public void checkFields() {
-        if (tilConfidantInfo.getEditText().getText().length() > 0)
+        if ((tilConfidantFirstName.getEditText().getText().length() > 0)
+                && (tilConfidantSecondName.getEditText().getText().length() > 0)
+                && (tilConfidantPhone.getEditText().getText().length() > 0))
             btnSendConfidant.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_red_button));
         else
             btnSendConfidant.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_gray_button));
     }
 
     public void createNewConfidance() {
-        NewConfidanceRequest createRequestBody = new NewConfidanceRequest();
-        createRequestBody.setType(Constants.confidanceType);
-        CreateRequestData createRequestData = new CreateRequestData();
-        Confidant confidant = new Confidant();
-        confidant.setFirstName("asd");
-        confidant.setLastName("asd");
-        confidant.setPhone("79603923819");
+        NewConfidanceRequest newConfidanceRequest = new NewConfidanceRequest();
+        newConfidanceRequest.setType(Constants.confidanceType);
+        NewConfidanceRequestData createRequestData = new NewConfidanceRequestData();
+        RequestConfidant confidant = new RequestConfidant();
+        confidant.setFirstName(tilConfidantFirstName.getEditText().getText().toString());
+        confidant.setLastName(tilConfidantSecondName.getEditText().getText().toString());
+        confidant.setPhone(tilConfidantPhone.getEditText().getText().toString());
 
         createRequestData.setConfidant(confidant);
-        createRequestData.setObjectId(objectId);
+        createRequestData.setAddressId(objectId);
         createRequestData.setStartsAt("11.03.2020");
         createRequestData.setExpiresAt("11.04.2020");
         Random random = new Random();
 
-        createRequestBody.setRequestData(createRequestData);
-        ApiService.getInstance().getRequestApi().createRequest(Constants.getAuthToken(), createRequestBody)
+        newConfidanceRequest.setRequestData(createRequestData);
+        ApiService.getInstance().getRequestApi().createRequestNewConfidant(Constants.getAuthToken(), newConfidanceRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<CreateRequestResponse>() {
@@ -178,7 +234,22 @@ public class RequestConfidantFragment extends Fragment {
 
                     @Override
                     public void onNext(CreateRequestResponse createRequestResponse) {
+                        if (createRequestResponse.getError() != null) {
+                            if (createRequestResponse.getError().getDetails() != null) {
+                                if (createRequestResponse.getError().getDetails().getConfidant_firstName() != null)
+                                    showErrorOnFirstName(true, createRequestResponse.getError().getDetails().getConfidant_firstName().get(0));
+                                else showErrorOnFirstName(false, "");
 
+                                if (createRequestResponse.getError().getDetails().getConfidant_lastName() != null)
+                                    showErrorOnLastName(true, createRequestResponse.getError().getDetails().getConfidant_lastName().get(0));
+                                else showErrorOnLastName(false, "");
+
+                                if (createRequestResponse.getError().getDetails().getConfidant_phone() != null)
+                                    showErrorOnPhone(true, createRequestResponse.getError().getDetails().getConfidant_phone().get(0));
+                                else showErrorOnPhone(false, "");
+                            }
+                        } else
+                            toRequestsFragment();
                     }
 
                     @Override
@@ -188,7 +259,7 @@ public class RequestConfidantFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
-                        toRequestsFragment();
+
                     }
                 });
     }
@@ -222,10 +293,35 @@ public class RequestConfidantFragment extends Fragment {
     }
 
     public void toValidityFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", RequestConfidantFragment.TAG);
+        ValidityFragment validityFragment = new ValidityFragment();
+        validityFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new ValidityFragment())
+                .replace(R.id.flRequestsContainer, validityFragment)
                 .addToBackStack("")
                 .commit();
+    }
+
+    public void showErrorOnFirstName(boolean show, String text) {
+        if (show)
+            tilConfidantFirstName.setError(text);
+        else
+            tilConfidantFirstName.setError("");
+    }
+
+    public void showErrorOnLastName(boolean show, String text) {
+        if (show)
+            tilConfidantSecondName.setError(text);
+        else
+            tilConfidantSecondName.setError("");
+    }
+
+    public void showErrorOnPhone(boolean show, String text) {
+        if (show)
+            tilConfidantPhone.setError(text);
+        else
+            tilConfidantPhone.setError("");
     }
 }
