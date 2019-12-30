@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import ru.tenant.pass24.ProfileFragments.requests.RequestConfidantFragment;
 import ru.tenant.pass24.R;
 
 public class PassOrderFragment extends Fragment {

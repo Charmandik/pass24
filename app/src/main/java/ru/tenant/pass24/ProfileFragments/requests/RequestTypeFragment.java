@@ -10,9 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import ru.tenant.pass24.ProfileFragments.requests.newAddress.RequestNewAddressFragment;
+import ru.tenant.pass24.ProfileFragments.requests.newConfidance.RequestConfidantFragment;
 import ru.tenant.pass24.R;
 
 public class RequestTypeFragment extends Fragment {
+    public static String TAG = "RequestTypeFragment";
     private static RequestTypeFragment mInstance;
     private LinearLayout llConfidant, llNewAddress, llPermanentPass;
 

@@ -101,7 +101,7 @@ public class RequestsPermanentPassFragment extends Fragment {
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
-                .addToBackStack("")
+                .addToBackStack(RequestTypeFragment.TAG)
                 .commit();
     }
 }
