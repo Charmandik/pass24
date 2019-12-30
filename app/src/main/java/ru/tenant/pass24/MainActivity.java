@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import ru.tenant.pass24.Helpers.Constants;
+import ru.tenant.pass24.helpers.Constants;
 
 public class MainActivity extends AppCompatActivity {
 

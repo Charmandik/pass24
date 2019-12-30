@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/nav_passes"
-        android:name="ru.tenant.pass24.ProfileFragments.passes.PassesFragment"
+        android:name="ru.tenant.pass24.profileFragments.passes.PassesFragment"
         tools:layout="@layout/fragment_my_pass" />
 
     <fragment
         android:id="@+id/nav_templates"
-        android:name="ru.tenant.pass24.ProfileFragments.templates.TemplatesFragment"
+        android:name="ru.tenant.pass24.profileFragments.templates.TemplatesFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_requests"
-        android:name="ru.tenant.pass24.ProfileFragments.requests.RequestsFragment"
+        android:name="ru.tenant.pass24.profileFragments.requests.RequestsFragment"
         tools:layout="@layout/fragment_my_request" />
 
     <fragment
         android:id="@+id/nav_events_feed"
-        android:name="ru.tenant.pass24.ProfileFragments.feed.FeedFragment"
+        android:name="ru.tenant.pass24.profileFragments.feed.FeedFragment"
         tools:layout="@layout/fragment_event_feed">
         <action
             android:id="@+id/action_nav_events_feed_to_nav_tools"
@@ -32,6 +32,6 @@
 
     <fragment
         android:id="@+id/nav_trusted_people"
-        android:name="ru.tenant.pass24.ProfileFragments.trustedPeople.TrustedPeopleFragment"
+        android:name="ru.tenant.pass24.profileFragments.trustedPeople.TrustedPeopleFragment"
         tools:layout="@layout/fragment_trust_people" />
 </navigation>

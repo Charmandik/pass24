@@ -48,7 +48,7 @@
     </androidx.viewpager.widget.ViewPager>
 
 
-    <ru.tenant.pass24.Helpers.WelcomeView.PageIndicatorView
+    <ru.tenant.pass24.helpers.WelcomeView.PageIndicatorView
         android:id="@+id/pageIndicatorView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
