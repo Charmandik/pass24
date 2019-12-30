@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Random;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -83,7 +85,9 @@ public class RequestNewAddressFragment extends Fragment {
     public void createNewAddress() {
         CreateRequestBody createRequestBody = new CreateRequestBody();
         createRequestBody.setType(Constants.objectJoinType);
-        createRequestBody.setRequestData(new CreateRequestData(1, "New address"));
+        Random random = new Random();
+
+        createRequestBody.setRequestData(new CreateRequestData(random.nextInt(), "New address"));
         ApiService.getInstance().getRequestApi().createRequest(Constants.getAuthToken(), createRequestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

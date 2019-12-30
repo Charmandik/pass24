@@ -40,7 +40,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
             } else if (requestCollection.getType() == 3) {
                 holder.requestType.setText("на договоренность");
             }
-
+            if (requestCollection.getRequestData() != null)
+                if (requestCollection.getRequestData().getAddress() != null)
+                    holder.requestName.setText(requestCollection.getRequestData().getAddress());
         }
 
 
