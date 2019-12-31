@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
 import java.util.Calendar;
 
 import ru.tenant.pass24.R;
@@ -24,8 +27,122 @@ import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidant
 public class ValidityFragment extends Fragment {
     Calendar startDataTime = Calendar.getInstance();
     Calendar expirestDataTime = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener expiresDataListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            expirestDataTime.set(Calendar.YEAR, year);
+            expirestDataTime.set(Calendar.MONTH, monthOfYear);
+            expirestDataTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            String monthName = "";
+            switch (monthOfYear) {
+                case 0:
+                    monthName = "янв";
+                    break;
+                case 1:
+                    monthName = "фев";
+                    break;
+                case 2:
+                    monthName = "марта";
+                    break;
+                case 3:
+                    monthName = "апр";
+                    break;
+                case 4:
+                    monthName = "мая";
+                    break;
+                case 5:
+                    monthName = "июня";
+                    break;
+                case 6:
+                    monthName = "июля";
+                    break;
+                case 7:
+                    monthName = "авг";
+                    break;
+                case 8:
+                    monthName = "сен";
+                    break;
+                case 9:
+                    monthName = "окт";
+                    break;
+                case 10:
+                    monthName = "ноя";
+                    break;
+                case 11:
+                    monthName = "дек";
+                    break;
+            }
+            tvDataEditExpires.setText(dayOfMonth + " " + monthName + "");
+        }
+    };
+    TimePickerDialog.OnTimeSetListener expiresTimeListener = new TimePickerDialog.OnTimeSetListener() {
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            expirestDataTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            expirestDataTime.set(Calendar.MINUTE, minute);
+            tvTimeEditExpires.setText(expirestDataTime.getTime().toString().substring(11, 16));
+        }
+    };
+    TimePickerDialog.OnTimeSetListener startTimeListener = new TimePickerDialog.OnTimeSetListener() {
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            startDataTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            startDataTime.set(Calendar.MINUTE, minute);
+            tvTimeEditStart.setText(startDataTime.getTime().toString().substring(11, 16));
+        }
+    };
     private TextView tvDataEditStart, tvTimeEditStart, tvTimeEditExpires, tvDataEditExpires;
+    DatePickerDialog.OnDateSetListener startDataListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            startDataTime.set(Calendar.YEAR, year);
+            startDataTime.set(Calendar.MONTH, monthOfYear);
+            startDataTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            String monthName = "";
+            switch (monthOfYear) {
+                case 0:
+                    monthName = "янв";
+                    break;
+                case 1:
+                    monthName = "фев";
+                    break;
+                case 2:
+                    monthName = "марта";
+                    break;
+                case 3:
+                    monthName = "апр";
+                    break;
+                case 4:
+                    monthName = "мая";
+                    break;
+                case 5:
+                    monthName = "июня";
+                    break;
+                case 6:
+                    monthName = "июля";
+                    break;
+                case 7:
+                    monthName = "авг";
+                    break;
+                case 8:
+                    monthName = "сен";
+                    break;
+                case 9:
+                    monthName = "окт";
+                    break;
+                case 10:
+                    monthName = "ноя";
+                    break;
+                case 11:
+                    monthName = "дек";
+                    break;
+            }
+            tvDataEditStart.setText(dayOfMonth + " " + monthName + "");
+        }
+    };
     private ImageView backBtn;
+
+    public static String MillstoDateNum(long inp) {
+        String out = "";
+        out = new DateTime(inp, DateTimeZone.getDefault()).toString("dd.MM.yyyy HH:mm");
+        return out;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -95,64 +212,6 @@ public class ValidityFragment extends Fragment {
                 .show();
     }
 
-    DatePickerDialog.OnDateSetListener expiresDataListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            expirestDataTime.set(Calendar.YEAR, year);
-            expirestDataTime.set(Calendar.MONTH, monthOfYear);
-            expirestDataTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String monthName = "";
-            switch (monthOfYear) {
-                case 0:
-                    monthName = "янв";
-                    break;
-                case 1:
-                    monthName = "фев";
-                    break;
-                case 2:
-                    monthName = "марта";
-                    break;
-                case 3:
-                    monthName = "апр";
-                    break;
-                case 4:
-                    monthName = "мая";
-                    break;
-                case 5:
-                    monthName = "июня";
-                    break;
-                case 6:
-                    monthName = "июля";
-                    break;
-                case 7:
-                    monthName = "авг";
-                    break;
-                case 8:
-                    monthName = "сен";
-                    break;
-                case 9:
-                    monthName = "окт";
-                    break;
-                case 10:
-                    monthName = "ноя";
-                    break;
-                case 11:
-                    monthName = "дек";
-                    break;
-            }
-            tvDataEditExpires.setText(dayOfMonth + " " + monthName + "");
-        }
-    };
-
-
-    TimePickerDialog.OnTimeSetListener expiresTimeListener = new TimePickerDialog.OnTimeSetListener() {
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            expirestDataTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            expirestDataTime.set(Calendar.MINUTE, minute);
-            tvTimeEditExpires.setText(expirestDataTime.getTime().toString().substring(11, 16));
-        }
-    };
-
-
     public void setExpiresDate() {
         new DatePickerDialog(this.getContext(), expiresDataListener,
                 expirestDataTime.get(Calendar.YEAR),
@@ -168,68 +227,11 @@ public class ValidityFragment extends Fragment {
                 .show();
     }
 
-    DatePickerDialog.OnDateSetListener startDataListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            startDataTime.set(Calendar.YEAR, year);
-            startDataTime.set(Calendar.MONTH, monthOfYear);
-            startDataTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String monthName = "";
-            switch (monthOfYear) {
-                case 0:
-                    monthName = "янв";
-                    break;
-                case 1:
-                    monthName = "фев";
-                    break;
-                case 2:
-                    monthName = "марта";
-                    break;
-                case 3:
-                    monthName = "апр";
-                    break;
-                case 4:
-                    monthName = "мая";
-                    break;
-                case 5:
-                    monthName = "июня";
-                    break;
-                case 6:
-                    monthName = "июля";
-                    break;
-                case 7:
-                    monthName = "авг";
-                    break;
-                case 8:
-                    monthName = "сен";
-                    break;
-                case 9:
-                    monthName = "окт";
-                    break;
-                case 10:
-                    monthName = "ноя";
-                    break;
-                case 11:
-                    monthName = "дек";
-                    break;
-            }
-            tvDataEditStart.setText(dayOfMonth + " " + monthName + "");
-        }
-    };
-
-
-    TimePickerDialog.OnTimeSetListener startTimeListener = new TimePickerDialog.OnTimeSetListener() {
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            startDataTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            startDataTime.set(Calendar.MINUTE, minute);
-            tvTimeEditStart.setText(startDataTime.getTime().toString().substring(11, 16));
-        }
-    };
-
     public void toRequestConfidantFragment() {
         if (startDataTime != null) {
             Bundle bundle = new Bundle();
-            bundle.putString("startsAt", startDataTime.getTime().toString());
-            bundle.putString("expiresAt", expirestDataTime.getTime().toString());
+            bundle.putString("startsAt", MillstoDateNum(startDataTime.getTimeInMillis()));
+            bundle.putString("expiresAt", MillstoDateNum(expirestDataTime.getTimeInMillis()));
             RequestConfidantFragment requestConfidantFragment = RequestConfidantFragment.getInstance();
             requestConfidantFragment.setArguments(bundle);
             getFragmentManager()
@@ -245,4 +247,6 @@ public class ValidityFragment extends Fragment {
                     .commit();
         }
     }
+
+
 }

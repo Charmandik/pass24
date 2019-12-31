@@ -28,6 +28,7 @@ import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddresse
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
+import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
 
 public class AddressSearchFragment extends Fragment {
     public static String addressName = "";
@@ -63,6 +64,8 @@ public class AddressSearchFragment extends Fragment {
                 if (mInstance.getArguments() != null)
                     if (Objects.equals(mInstance.getArguments().getString("fragment"), RequestConfidantFragment.TAG)) {
                         toRequestConfidantFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), RequestsPermanentPassFragment.TAG)) {
+                        toRequestsPermanentPassFragment();
                     }
             }
         });
@@ -125,6 +128,27 @@ public class AddressSearchFragment extends Fragment {
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flRequestsContainer, RequestConfidantFragment.getInstance())
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        }
+    }
+
+    public void toRequestsPermanentPassFragment() {
+        if (!addressName.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("addressName", addressName);
+            bundle.putInt("objectId", objectId);
+            RequestsPermanentPassFragment requestsPermanentPassFragment = RequestsPermanentPassFragment.getInstance();
+            requestsPermanentPassFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flRequestsContainer, requestsPermanentPassFragment)
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flRequestsContainer, RequestsPermanentPassFragment.getInstance())
                     .addToBackStack(RequestTypeFragment.TAG)
                     .commit();
         }

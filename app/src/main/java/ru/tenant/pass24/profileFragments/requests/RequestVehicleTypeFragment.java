@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -14,11 +15,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.R;
+import ru.tenant.pass24.helpers.Constants;
+import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
 
 public class RequestVehicleTypeFragment extends Fragment {
     private LinearLayout llCar, llTruck, llBigTruck, llAnotherTruck;
     private RadioButton rbCar, rbTruck, rbBigTruck, rbAnotherType;
     private Context mContext;
+    private ImageView btnBack;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +46,14 @@ public class RequestVehicleTypeFragment extends Fragment {
         rbTruck = view.findViewById(R.id.rbTruck);
         rbBigTruck = view.findViewById(R.id.rbBigTruck);
         rbAnotherType = view.findViewById(R.id.rbAnotherType);
+
+        btnBack = view.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestsPermanentPassFragment();
+            }
+        });
 
         llCar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,5 +156,24 @@ public class RequestVehicleTypeFragment extends Fragment {
             llBigTruck.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_type_transport));
         if (layoutRounded != llAnotherTruck)
             llAnotherTruck.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_type_transport));
+    }
+
+    public void toRequestsPermanentPassFragment() {
+        Bundle bundle = new Bundle();
+        if (rbCar.isChecked())
+            bundle.putInt("carType", Constants.vehicleType_light);
+        else if (rbTruck.isChecked())
+            bundle.putInt("carType", Constants.vehicleType_normal);
+        else if (rbBigTruck.isChecked())
+            bundle.putInt("carType", Constants.vehicleType_heavy);
+        else if (rbAnotherType.isChecked())
+            bundle.putInt("carType", Constants.vehicleType_super_heavy);
+        RequestsPermanentPassFragment requestsPermanentPassFragment = RequestsPermanentPassFragment.getInstance();
+        requestsPermanentPassFragment.setArguments(bundle);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, requestsPermanentPassFragment)
+                .addToBackStack(RequestTypeFragment.TAG)
+                .commit();
     }
 }

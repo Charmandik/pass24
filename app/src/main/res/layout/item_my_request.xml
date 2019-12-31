@@ -37,10 +37,12 @@
                     android:layout_height="wrap_content"
                     android:text="Васильев Константин"
                     android:textColor="#2A2A2A"
+                    android:visibility="gone"
                     android:textSize="14sp"
                     />
 
                 <TextView
+
                     android:id="@+id/tvMyRequestType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

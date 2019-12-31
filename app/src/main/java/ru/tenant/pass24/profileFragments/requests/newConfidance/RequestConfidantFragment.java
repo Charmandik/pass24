@@ -48,6 +48,9 @@ public class RequestConfidantFragment extends Fragment {
     private String firstName = "";
     private String secondName = "";
     private String phone = "7";
+    private String startsAt = "";
+    private String expiresAt = "";
+    private String address = "";
     private TextView tvAddressInfo, tvVisitTimeInfo;
     private int objectId = 1;
 
@@ -89,18 +92,29 @@ public class RequestConfidantFragment extends Fragment {
         tilConfidantFirstName.getEditText().setText(firstName);
         tilConfidantSecondName.getEditText().setText(secondName);
         tilConfidantPhone.getEditText().setText(phone);
+        if (!startsAt.equals("")) {
+            tvVisitTimeInfo.setText(startsAt + " - " + expiresAt);
+            tvVisitTimeInfo.setVisibility(View.VISIBLE);
+        }
+        if (!address.equals("")) {
+            tvAddressInfo.setText(address);
+            tvAddressInfo.setVisibility(View.VISIBLE);
+        }
 
         configureTextInputLayouts();
         if (this.getArguments() != null) {
             if (this.getArguments().getString("addressName") != null) {
                 tvAddressInfo.setVisibility(View.VISIBLE);
                 tvAddressInfo.setText(this.getArguments().getString("addressName"));
+                address = this.getArguments().getString("addressName");
                 objectId = this.getArguments().getInt("objectId");
             }
 
             if (this.getArguments().getString("startsAt") != null) {
                 tvVisitTimeInfo.setVisibility(View.VISIBLE);
-                String data = this.getArguments().getString("startsAt") + this.getArguments().getString("expiresAt");
+                String data = this.getArguments().getString("startsAt") + " - " + this.getArguments().getString("expiresAt");
+                startsAt = this.getArguments().getString("startsAt");
+                expiresAt = this.getArguments().getString("expiresAt");
                 tvVisitTimeInfo.setText(data);
             }
         }
@@ -218,8 +232,8 @@ public class RequestConfidantFragment extends Fragment {
 
         createRequestData.setConfidant(confidant);
         createRequestData.setAddressId(objectId);
-        createRequestData.setStartsAt("11.03.2020");
-        createRequestData.setExpiresAt("11.04.2020");
+        createRequestData.setStartsAt(this.getArguments().getString("startsAt"));
+        createRequestData.setExpiresAt(this.getArguments().getString("expiresAt"));
         Random random = new Random();
 
         newConfidanceRequest.setRequestData(createRequestData);

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.requests.newAddress.RequestNewAddressFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
+import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
 
 public class RequestTypeFragment extends Fragment {
     public static String TAG = "RequestTypeFragment";
@@ -98,7 +99,7 @@ public class RequestTypeFragment extends Fragment {
     public void toRequestPermanentPass() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestsPermanentPassFragment())
+                .replace(R.id.flRequestsContainer, RequestsPermanentPassFragment.getInstance())
                 .addToBackStack("")
                 .commit();
     }

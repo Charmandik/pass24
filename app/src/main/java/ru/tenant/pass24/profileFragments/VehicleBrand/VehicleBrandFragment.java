@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +24,16 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.VehicleBrand.apiModels.VehicleBrandCollection;
 import ru.tenant.pass24.profileFragments.VehicleBrand.apiModels.VehicleBrandResponse;
+import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
+import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
 
 public class VehicleBrandFragment extends Fragment {
+    public static String vehicleBrand = "";
     private RecyclerView rvVehicleBrand;
     private RecyclerView.LayoutManager layoutManager;
     private VehicleBrandAdapter mAdapter;
     private List<VehicleBrandCollection> vehicleBrandCollections = new ArrayList();
+    private ImageView backBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +48,13 @@ public class VehicleBrandFragment extends Fragment {
 
     private void init(View view) {
         rvVehicleBrand = view.findViewById(R.id.rvVehicleBrand);
+        backBtn = view.findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toRequestsPermanentPassFragment();
+            }
+        });
         getVehicleBrands();
     }
 
@@ -77,4 +89,25 @@ public class VehicleBrandFragment extends Fragment {
                     }
                 });
     }
+
+    public void toRequestsPermanentPassFragment() {
+        if (!vehicleBrand.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("vehicleBrand", vehicleBrand);
+            RequestsPermanentPassFragment requestsPermanentPassFragment = RequestsPermanentPassFragment.getInstance();
+            requestsPermanentPassFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flRequestsContainer, requestsPermanentPassFragment)
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flRequestsContainer, RequestsPermanentPassFragment.getInstance())
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        }
+    }
 }
+
