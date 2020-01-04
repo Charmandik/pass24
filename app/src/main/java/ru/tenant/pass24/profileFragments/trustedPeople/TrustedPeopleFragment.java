@@ -56,7 +56,7 @@ public class TrustedPeopleFragment extends Fragment {
     public void setDataForRecycler(List<ConfidanceCollection> confidanceCollections) {
         layoutManager = new LinearLayoutManager(getContext());
         rvTrustPeople.setLayoutManager(layoutManager);
-        mAdapter = new ConfidanceAdapter(confidanceCollections,getFragmentManager());
+        mAdapter = new ConfidanceAdapter(confidanceCollections, getFragmentManager());
         rvTrustPeople.setAdapter(mAdapter);
     }
 }

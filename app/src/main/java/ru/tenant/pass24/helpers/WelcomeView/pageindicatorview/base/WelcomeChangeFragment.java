@@ -39,7 +39,7 @@ public class WelcomeChangeFragment extends Fragment {
         } else if (getArguments().get("type").equals("invite")) {
             welcomeInfo.setText(R.string.text_welcome_info_2);
             welcomeInfo2.setVisibility(View.INVISIBLE);
-         } else if (getArguments().get("type").equals("authority")) {
+        } else if (getArguments().get("type").equals("authority")) {
             welcomeInfo.setText(R.string.text_welcome_info_3_1);
             welcomeInfo2.setText(R.string.text_welcome_info_3_2);
         } else if (getArguments().get("type").equals("go")) {

@@ -21,7 +21,7 @@ public interface RequestApi {
 
     @POST("requests/")
     Observable<CreateRequestResponse> createRequestNewConfidant(@Header("Authorization") String authToken,
-                                                    @Body NewConfidanceRequest newConfidanceRequest);
+                                                                @Body NewConfidanceRequest newConfidanceRequest);
 
     @POST("requests/")
     Observable<CreateRequestResponse> createPassRequest(@Header("Authorization") String authToken,

@@ -28,7 +28,7 @@ public class TrustedPeoplePresenter {
         view = null;
     }
 
-    public void onDataLoaded(List<ConfidanceCollection> confidanceCollections){
+    public void onDataLoaded(List<ConfidanceCollection> confidanceCollections) {
         view.setDataForRecycler(confidanceCollections);
     }
 

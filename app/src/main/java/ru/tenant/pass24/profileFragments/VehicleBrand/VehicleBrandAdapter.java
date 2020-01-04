@@ -1,4 +1,4 @@
-package ru.tenant.pass24.profileFragments.VehicleBrand;
+package ru.tenant.pass24.profileFragments.vehicleBrand;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.tenant.pass24.R;
-import ru.tenant.pass24.profileFragments.VehicleBrand.apiModels.VehicleBrandCollection;
+import ru.tenant.pass24.profileFragments.vehicleBrand.apiModels.VehicleBrandCollection;
 
 public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapter.VehicleBrandHolder> {
     private FragmentManager fragmentManager;

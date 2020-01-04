@@ -28,6 +28,7 @@ public class LoginModel {
                             loginPresenter.onError(loginResponse.getError().getCode(), loginResponse.getError().getMessage());
                         else if (loginResponse.getBody() != null) {
                             Constants.authToken = loginResponse.getBody();
+                            loginPresenter.saveToken(loginResponse.getBody());
                             loginPresenter.onLoggedIn();
                         }
                     }

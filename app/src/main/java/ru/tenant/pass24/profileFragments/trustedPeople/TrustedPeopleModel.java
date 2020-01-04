@@ -28,10 +28,10 @@ public class TrustedPeopleModel {
 
                     @Override
                     public void onNext(ConfidanceResponse confidanceResponse) {
-                        if(confidanceResponse != null)
-                            if(confidanceResponse.getBody() != null)
-                                if(confidanceResponse.getBody().getCollection() != null)
-                                    if(confidanceResponse.getBody().getCollection().size() > 0)
+                        if (confidanceResponse != null)
+                            if (confidanceResponse.getBody() != null)
+                                if (confidanceResponse.getBody().getCollection() != null)
+                                    if (confidanceResponse.getBody().getCollection().size() > 0)
                                         confidanceCollections.addAll(confidanceResponse.getBody().getCollection());
                     }
 

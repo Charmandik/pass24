@@ -23,6 +23,7 @@ public class PassesFragment extends Fragment {
     private RecyclerView rvMyPass;
     private RecyclerView.LayoutManager layoutManager;
     private ImageView ivPassAdd, ivPassSetting;
+    private Navigation_clicks navigation_clicks;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class PassesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init(view);
+    }
+
+    public void registerCallBack(Navigation_clicks navigation_clicks){
+        this.navigation_clicks = navigation_clicks;
     }
 
     private void init(View view) {
@@ -53,6 +58,7 @@ public class PassesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 passesPresenter.toPassOrderFragment();
+//                navigation_clicks.toPassOrder();
             }
         });
 

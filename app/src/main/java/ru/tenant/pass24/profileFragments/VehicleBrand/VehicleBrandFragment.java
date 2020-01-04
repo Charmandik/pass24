@@ -1,4 +1,4 @@
-package ru.tenant.pass24.profileFragments.VehicleBrand;
+package ru.tenant.pass24.profileFragments.vehicleBrand;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,10 +22,10 @@ import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
-import ru.tenant.pass24.profileFragments.VehicleBrand.apiModels.VehicleBrandCollection;
-import ru.tenant.pass24.profileFragments.VehicleBrand.apiModels.VehicleBrandResponse;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
+import ru.tenant.pass24.profileFragments.vehicleBrand.apiModels.VehicleBrandCollection;
+import ru.tenant.pass24.profileFragments.vehicleBrand.apiModels.VehicleBrandResponse;
 
 public class VehicleBrandFragment extends Fragment {
     public static String vehicleBrand = "";

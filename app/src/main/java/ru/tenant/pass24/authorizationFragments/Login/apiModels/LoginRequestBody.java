@@ -4,17 +4,16 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginRequestBody {
-    public LoginRequestBody(String phone, String password) {
-        this.phone = phone;
-        this.password = password;
-    }
-
     @SerializedName("phone")
     @Expose
     private String phone;
     @SerializedName("password")
     @Expose
     private String password;
+    public LoginRequestBody(String phone, String password) {
+        this.phone = phone;
+        this.password = password;
+    }
 
     public String getPhone() {
         return phone;

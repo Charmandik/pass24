@@ -38,6 +38,7 @@ public class PasswordRecoveryPresenter {
                 .addToBackStack(null)
                 .commit();
     }
+
     public void sendConfirmPhone(String phone) {
         model.sendConfirmPhone(phone);
     }

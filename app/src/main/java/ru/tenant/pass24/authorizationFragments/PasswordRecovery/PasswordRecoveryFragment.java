@@ -74,7 +74,7 @@ public class PasswordRecoveryFragment extends Fragment {
             tilRegistryPhone.setError("");
     }
 
-    public void phoneMask(final EditText edTelData){
+    public void phoneMask(final EditText edTelData) {
         edTelData.addTextChangedListener(new PhoneNumberFormattingTextWatcher() {
             //we need to know if the user is erasing or inputing some new character
             private boolean backspacingFlag = false;
@@ -86,7 +86,7 @@ public class PasswordRecoveryFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //we store the cursor local relative to the end of the string in the EditText before the edition
-                cursorComplement = s.length()-edTelData.getSelectionStart();
+                cursorComplement = s.length() - edTelData.getSelectionStart();
                 //we check if the user ir inputing or erasing a character
                 if (count > after) {
                     backspacingFlag = true;
@@ -117,19 +117,19 @@ public class PasswordRecoveryFragment extends Fragment {
                         //we will edit. next call on this textWatcher will be ignored
                         editedFlag = true;
                         //here is the core. we substring the raw digits and add the mask as convenient
-                        String ans = "7(" + phone.substring(1, 4) + ") " + phone.substring(4,7) + "-" + phone.substring(7,9) + "-" + phone.substring(9);
+                        String ans = "7(" + phone.substring(1, 4) + ") " + phone.substring(4, 7) + "-" + phone.substring(7, 9) + "-" + phone.substring(9);
                         edTelData.setText(ans);
                         //we deliver the cursor to its original position relative to the end of the string
-                        edTelData.setSelection(edTelData.getText().length()-cursorComplement);
+                        edTelData.setSelection(edTelData.getText().length() - cursorComplement);
 
                         //we end at the most simple case, when just one character mask is needed
                         //example: 99999 <- 3+ digits already typed
                         // masked: (999) 99
                     } else if (phone.length() >= 4 && !backspacingFlag) {
                         editedFlag = true;
-                        String ans = "7(" +phone.substring(1, 4) + ") " + phone.substring(4);
+                        String ans = "7(" + phone.substring(1, 4) + ") " + phone.substring(4);
                         edTelData.setText(ans);
-                        edTelData.setSelection(edTelData.getText().length()-cursorComplement);
+                        edTelData.setSelection(edTelData.getText().length() - cursorComplement);
                     }
                     // We just edited the field, ignoring this cicle of the watcher and getting ready for the next
                 } else {

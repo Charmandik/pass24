@@ -19,7 +19,6 @@ import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
-import ru.tenant.pass24.profileFragments.VehicleBrand.VehicleBrandFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassRequestBody;
@@ -27,6 +26,7 @@ import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestVehicleTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestResponse;
+import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class RequestsPermanentPassFragment extends Fragment {
     public static RequestsPermanentPassFragment mInstance;
@@ -157,14 +157,14 @@ public class RequestsPermanentPassFragment extends Fragment {
         createPassRequest.setAddressId(3);
         createPassRequest.setStartsAt("21.03.2020");
         createPassRequest.setExpiresAt("21.03.2021");
-        createPassRequest.setDurationType(2);
+        createPassRequest.setDurationType(3);
         createPassRequest.setGuestType(1);
         GuestData guestData = new GuestData();
         guestData.setVehicleType(1);
-        guestData.setModelId(1);
-        guestData.setPlateNumber("xx000xx102");
+        guestData.setModelId(3);
+        guestData.setPlateNumber("Y004TM26");
         createPassRequest.setGuestData(guestData);
-        createPassRequest.setComment("");
+        createPassRequest.setComment("some comment");
         createPassRequestBody.setRequestData(createPassRequest);
 //        createRequestBody.setRequestData(new CreateRequestData(1, tilNewAddress.getEditText().getText().toString()));
         ApiService.getInstance().getRequestApi().createPassRequest(Constants.getAuthToken(), createPassRequestBody)

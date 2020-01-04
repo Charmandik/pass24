@@ -21,10 +21,11 @@ public class RegistryConfirmPresenter {
         fragmentManager = view.getActivity().getSupportFragmentManager();
     }
 
-    public void confirmTelephone(String phone, String code,boolean fromRecovery) {
-        model.confirmTelephone(phone, code,fromRecovery);
+    public void confirmTelephone(String phone, String code, boolean fromRecovery) {
+        model.confirmTelephone(phone, code, fromRecovery);
 
     }
+
     public void sendConfirmPhone(String phone) {
         model.sendConfirmPhone(phone);
     }

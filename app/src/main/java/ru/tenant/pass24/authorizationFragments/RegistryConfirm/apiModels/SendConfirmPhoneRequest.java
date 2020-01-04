@@ -8,15 +8,15 @@ public class SendConfirmPhoneRequest {
     @Expose
     private String phone;
 
+    public SendConfirmPhoneRequest(String phone) {
+        this.phone = phone;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public  SendConfirmPhoneRequest(String phone){
         this.phone = phone;
     }
 }

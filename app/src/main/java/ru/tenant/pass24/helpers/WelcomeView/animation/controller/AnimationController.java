@@ -1,4 +1,5 @@
 package ru.tenant.pass24.helpers.WelcomeView.animation.controller;
+
 import androidx.annotation.NonNull;
 
 import ru.tenant.pass24.helpers.WelcomeView.animation.type.AnimationType;

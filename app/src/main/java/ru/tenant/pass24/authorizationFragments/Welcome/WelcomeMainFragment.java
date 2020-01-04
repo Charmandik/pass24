@@ -1,5 +1,7 @@
 package ru.tenant.pass24.authorizationFragments.Welcome;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import ru.tenant.pass24.MainScreenActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.authorizationFragments.Login.LoginFragment;
 import ru.tenant.pass24.helpers.WelcomeView.PageIndicatorView;
@@ -22,6 +26,8 @@ import ru.tenant.pass24.helpers.WelcomeView.animation.type.AnimationType;
 import ru.tenant.pass24.helpers.WelcomeView.pageindicatorview.base.WelcomeChangeFragment;
 import ru.tenant.pass24.helpers.WelcomeView.pageindicatorview.data.Customization;
 import ru.tenant.pass24.helpers.WelcomeView.pageindicatorview.home.WelcomeFragmentAdapter;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class WelcomeMainFragment extends Fragment {
 
@@ -42,6 +48,12 @@ public class WelcomeMainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SharedPreferences sharedPreferences = this.getActivity().getPreferences(MODE_PRIVATE);
+        String savedText = sharedPreferences.getString("AUTH_TOKEN", "");
+        if (savedText.length() > 0) {
+            Intent intent = new Intent(this.getContext(), MainScreenActivity.class);
+            Objects.requireNonNull(this.getActivity()).startActivity(intent);
+        }
         customization = new Customization();
         customization.setAnimationType(AnimationType.THIN_WORM);
         initViews(view);

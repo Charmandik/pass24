@@ -31,7 +31,6 @@ public interface AuthApi {
     Observable<PasswordResetResponse> resetPassword(@Body PasswordResetRequest passwordResetRequest);
 
     @POST("auth/sendConfirmPhone/")
-
     Observable<SendConfirmPhoneResponse> sendConfirmPhone(@Body SendConfirmPhoneRequest sendConfirmPhoneRequest);
 
     @POST("auth/confirmPhone/")

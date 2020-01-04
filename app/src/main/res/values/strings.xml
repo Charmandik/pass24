@@ -65,7 +65,7 @@
     <string name="action_settings">Settings</string>
     <string name="text_filter_header_name">Фильтр</string>
     <string name="text_reject_status">Отклонённые</string>
-    
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

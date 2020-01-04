@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -55,10 +56,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:lines="1"
                 android:maxLength="16"
-                android:text="+7"
-                android:inputType="phone" />
+                android:text="+7" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,13 +81,13 @@
             android:id="@+id/btnLoginEnter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="56dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/rounded_red_button"
-            android:text="@string/text_login_button"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"
+            android:minHeight="56dp"
             android:stateListAnimator="@null"
+            android:text="@string/text_login_button"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
             app:layout_constraintTop_toBottomOf="@id/etLoginPass" />
 
         <LinearLayout
@@ -109,8 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:textColor="#9C9C9C"
-                android:text="@string/text_to_registry" />
+                android:text="@string/text_to_registry"
+                android:textColor="#9C9C9C" />
         </LinearLayout>
 
         <TextView
@@ -119,8 +120,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="40dp"
             android:text="@string/text_forgot_pass"
-            android:textColor="#9C9C9C"
             android:textAlignment="center"
+            android:textColor="#9C9C9C"
             app:layout_constraintTop_toBottomOf="@id/llLoginNeedHelp" />
     </LinearLayout>
 </LinearLayout>

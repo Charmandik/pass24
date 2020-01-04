@@ -8,7 +8,20 @@
     <fragment
         android:id="@+id/nav_passes"
         android:name="ru.tenant.pass24.profileFragments.passes.PassesFragment"
-        tools:layout="@layout/fragment_my_pass" />
+        tools:layout="@layout/fragment_my_pass">
+        <action
+            android:id="@+id/action_nav_passes_to_passOrderFragment"
+            app:destination="@id/passOrderFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/passOrderFragment" />
+        <action
+            android:id="@+id/action_nav_passes_self"
+            app:destination="@id/nav_passes"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_templates"
@@ -34,4 +47,24 @@
         android:id="@+id/nav_trusted_people"
         android:name="ru.tenant.pass24.profileFragments.trustedPeople.TrustedPeopleFragment"
         tools:layout="@layout/fragment_trust_people" />
+    <fragment
+        android:id="@+id/passOrderFragment"
+        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderFragment"
+        android:label="fragment_pass_order"
+        tools:layout="@layout/fragment_pass_order" />
+    <fragment
+        android:id="@+id/passOrderVehicleFragment"
+        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment"
+        android:label="fragment_pass_order_vehicle"
+        tools:layout="@layout/fragment_pass_order_vehicle" />
+    <fragment
+        android:id="@+id/passOrderGuestFragment"
+        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderGuestFragment"
+        android:label="fragment_pass_order_guest"
+        tools:layout="@layout/fragment_pass_order_guest" />
+    <fragment
+        android:id="@+id/passOrderInviteFragment"
+        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderInviteFragment"
+        android:label="fragment_pass_order_invite"
+        tools:layout="@layout/fragment_pass_order_invite" />
 </navigation>

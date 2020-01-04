@@ -1,6 +1,7 @@
 package ru.tenant.pass24.authorizationFragments.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -10,6 +11,8 @@ import ru.tenant.pass24.MainScreenActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.authorizationFragments.PasswordRecovery.PasswordRecoveryFragment;
 import ru.tenant.pass24.authorizationFragments.Registration.RegistryFragment;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class LoginPresenter {
     private final LoginModel model;
@@ -42,6 +45,13 @@ public class LoginPresenter {
     public void onLoggedIn() {
         Intent intent = new Intent(this.view.getContext(), MainScreenActivity.class);
         Objects.requireNonNull(this.view.getActivity()).startActivity(intent);
+    }
+
+    public void saveToken(String token) {
+        SharedPreferences sharedPreferences = this.view.getActivity().getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("AUTH_TOKEN", token);
+        editor.apply();
     }
 
     public void toRegistry() {

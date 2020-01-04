@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
-import ru.tenant.pass24.profileFragments.VehicleBrand.VehicleBrandFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
+import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class PassOrderVehicleFragment extends Fragment {
     private RelativeLayout rlPassOrderAddress, rlPassOrderType, rlPassOrderVehicleBrand, rlPassOrderVehicleType, rlPassOrderVisitTime;

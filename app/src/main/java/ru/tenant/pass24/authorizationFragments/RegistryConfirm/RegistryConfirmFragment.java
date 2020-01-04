@@ -27,7 +27,7 @@ public class RegistryConfirmFragment extends Fragment {
         this.phone = phone;
     }
 
-    public RegistryConfirmFragment(String phone,boolean fromRecovery) {
+    public RegistryConfirmFragment(String phone, boolean fromRecovery) {
         this.fromRecovery = fromRecovery;
         this.phone = phone;
     }
@@ -55,7 +55,7 @@ public class RegistryConfirmFragment extends Fragment {
         btnRegistry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim(),fromRecovery);
+                registryConfirmPresenter.confirmTelephone(phone, etConfirmRegistryCode.getText().toString().trim(), fromRecovery);
             }
         });
 
@@ -66,6 +66,7 @@ public class RegistryConfirmFragment extends Fragment {
             }
         });
     }
+
     public void showError(String errorTitle, String errorMessage) {
         final Dialog dialog = new Dialog(errorTitle, errorMessage);
         dialog.show(this.getFragmentManager(), "");

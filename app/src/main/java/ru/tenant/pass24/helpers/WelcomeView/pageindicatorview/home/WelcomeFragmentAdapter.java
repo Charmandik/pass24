@@ -9,13 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.List;
 
 public class WelcomeFragmentAdapter extends FragmentPagerAdapter {
-    private List<Fragment> fragmentList;
     SparseArray<Fragment> registeredFragments = new SparseArray<>();
+    private List<Fragment> fragmentList;
 
     public WelcomeFragmentAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
     }
-
 
 
     public void setData(List<Fragment> fragmentList) {

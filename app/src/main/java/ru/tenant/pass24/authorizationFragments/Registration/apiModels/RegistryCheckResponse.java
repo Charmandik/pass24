@@ -12,8 +12,6 @@ public class RegistryCheckResponse {
     private ErrorRegistryCheckResponse error;
 
 
-
-
     public boolean isBody() {
         return body;
     }
