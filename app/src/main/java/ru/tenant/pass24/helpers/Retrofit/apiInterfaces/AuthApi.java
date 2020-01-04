@@ -36,8 +36,8 @@ public interface AuthApi {
     @POST("auth/confirmPhone/")
     Observable<ConfirmPhoneResponse> confirmPhone(@Body ConfirmPhoneRequest confirmPhoneRequest);
 
-//    @POST("auth/refresh/")
-//    Observable<RefreshTokenResponse> refreshToken(@Body RefreshtokenRequest refreshtokenRequest);
+    @POST("auth/refresh/")
+    Observable<LoginResponse> refreshToken(@Header("Authorization") String token);
 //
 //    @POST("auth/logout/")
 //    Observable<LogoutResponse> logout(@Body LogoutResponse logoutResponse);

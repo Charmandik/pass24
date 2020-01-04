@@ -160,14 +160,19 @@ public class RequestVehicleTypeFragment extends Fragment {
 
     public void toRequestsPermanentPassFragment() {
         Bundle bundle = new Bundle();
-        if (rbCar.isChecked())
+        if (rbCar.isChecked()) {
             bundle.putInt("carType", Constants.vehicleType_light);
-        else if (rbTruck.isChecked())
+            bundle.putString("carTypeName", "Легковой/мото");
+        } else if (rbTruck.isChecked()) {
             bundle.putInt("carType", Constants.vehicleType_normal);
-        else if (rbBigTruck.isChecked())
+            bundle.putString("carTypeName", "Грузовой До 3,5 тонн");
+        } else if (rbBigTruck.isChecked()) {
             bundle.putInt("carType", Constants.vehicleType_heavy);
-        else if (rbAnotherType.isChecked())
+            bundle.putString("carTypeName", "Грузовой от 3,5 до 10 тонн");
+        } else if (rbAnotherType.isChecked()) {
             bundle.putInt("carType", Constants.vehicleType_super_heavy);
+            bundle.putString("carTypeName", "Остальные");
+        }
         RequestsPermanentPassFragment requestsPermanentPassFragment = RequestsPermanentPassFragment.getInstance();
         requestsPermanentPassFragment.setArguments(bundle);
         getFragmentManager()

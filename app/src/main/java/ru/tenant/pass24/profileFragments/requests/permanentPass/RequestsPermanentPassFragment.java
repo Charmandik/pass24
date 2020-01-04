@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,8 +36,20 @@ public class RequestsPermanentPassFragment extends Fragment {
     private ConstraintLayout clBrandField, clCarTypeField, clAddressField;
     private ImageView backBtn, btnClose;
     private Button btnSendCarPass;
+    private String addressName = "";
+    private String vehicleBrand = "";
+    private String carTypeName = "";
+    private int carType = 0;
+    private int objectId;
+    private int modelId;
+
+
+    private TextView tvPermanentPassAddress, tvBrandName, tvCarTypeName;
+    private EditText etCarNumber;
+
 
     private RequestsPermanentPassFragment() {
+        mInstance = this;
     }
 
     public static RequestsPermanentPassFragment getInstance() {
@@ -51,8 +65,8 @@ public class RequestsPermanentPassFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         init(view);
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private void init(View view) {
@@ -62,6 +76,48 @@ public class RequestsPermanentPassFragment extends Fragment {
         backBtn = view.findViewById(R.id.btnBack);
         btnClose = view.findViewById(R.id.btnClose);
         btnSendCarPass = view.findViewById(R.id.btnSendCarPass);
+        tvPermanentPassAddress = view.findViewById(R.id.tvPermanentPassAddress);
+        tvBrandName = view.findViewById(R.id.tvBrandName);
+        tvCarTypeName = view.findViewById(R.id.tvCarTypeName);
+        etCarNumber = view.findViewById(R.id.etCarNumber);
+
+        if (!addressName.equals("")) {
+            tvPermanentPassAddress.setText(addressName);
+            tvPermanentPassAddress.setVisibility(View.VISIBLE);
+        }
+
+        if (!vehicleBrand.equals("")) {
+            tvBrandName.setText(vehicleBrand);
+            tvBrandName.setVisibility(View.VISIBLE);
+        }
+
+        if (!carTypeName.equals("")) {
+            tvCarTypeName.setText(carTypeName);
+            tvCarTypeName.setVisibility(View.VISIBLE);
+        }
+
+        if (this.getArguments() != null) {
+            if (this.getArguments().getString("addressName") != null) {
+                tvPermanentPassAddress.setVisibility(View.VISIBLE);
+                tvPermanentPassAddress.setText(this.getArguments().getString("addressName"));
+                addressName = this.getArguments().getString("addressName");
+                objectId = this.getArguments().getInt("objectId");
+            }
+
+            if (this.getArguments().getString("vehicleBrand") != null) {
+                vehicleBrand = this.getArguments().getString("vehicleBrand");
+                modelId = this.getArguments().getInt("modelId");
+                tvBrandName.setVisibility(View.VISIBLE);
+                tvBrandName.setText(vehicleBrand);
+            }
+
+            if (this.getArguments().getString("carTypeName") != null) {
+                carTypeName = this.getArguments().getString("carTypeName");
+                carType = this.getArguments().getInt("carType");
+                tvCarTypeName.setVisibility(View.VISIBLE);
+                tvCarTypeName.setText(carTypeName);
+            }
+        }
 
         clBrandField.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,14 +210,14 @@ public class RequestsPermanentPassFragment extends Fragment {
         CreatePassRequestBody createPassRequestBody = new CreatePassRequestBody();
         createPassRequestBody.setType(Constants.passJoinType);
         CreatePassRequest createPassRequest = new CreatePassRequest();
-        createPassRequest.setAddressId(3);
-        createPassRequest.setStartsAt("21.03.2020");
-        createPassRequest.setExpiresAt("21.03.2021");
+        createPassRequest.setAddressId(objectId);
+//        createPassRequest.setStartsAt("21.03.2020");
+//        createPassRequest.setExpiresAt("21.03.2021");
         createPassRequest.setDurationType(3);
         createPassRequest.setGuestType(1);
         GuestData guestData = new GuestData();
-        guestData.setVehicleType(1);
-        guestData.setModelId(3);
+        guestData.setVehicleType(carType);
+        guestData.setModelId(modelId);
         guestData.setPlateNumber("Y004TM26");
         createPassRequest.setGuestData(guestData);
         createPassRequest.setComment("some comment");

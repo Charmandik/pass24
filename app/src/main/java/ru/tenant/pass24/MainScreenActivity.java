@@ -68,8 +68,7 @@ public class MainScreenActivity extends AppCompatActivity implements Navigation_
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_passes:
-                        Bundle bundle = new Bundle();
-                        navController.navigate(R.id.nav_passes, bundle);
+                        navController.navigate(R.id.nav_passes);
                         drawer.closeDrawer(Gravity.LEFT, true);
                         break;
                     case R.id.nav_templates:
@@ -90,16 +89,11 @@ public class MainScreenActivity extends AppCompatActivity implements Navigation_
                         break;
                     case R.id.btnLogout:
                         clearToken();
-                        //add movement to MainActivity then to Login Fragment
-
                         Intent intent = new Intent(mContext, MainActivity.class);
                         intent.putExtra("toLogin", true);
                         startActivity(intent);
-                        fragmentManager.beginTransaction().replace(R.id.flRequestsContainer, new LoginFragment()).commit();
                         break;
                 }
-
-//                fragmentManager.beginTransaction().replace(R.id.flMainContainer, fragment).commit();
                 menuItem.setChecked(true);
                 setTitle(menuItem.getTitle());
                 drawer.closeDrawers();

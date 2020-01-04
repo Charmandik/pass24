@@ -1,5 +1,6 @@
 package ru.tenant.pass24.authorizationFragments.Welcome;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,11 +17,17 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.MainScreenActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.authorizationFragments.Login.LoginFragment;
+import ru.tenant.pass24.authorizationFragments.Login.apiModels.LoginResponse;
+import ru.tenant.pass24.helpers.Constants;
+import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.helpers.WelcomeView.PageIndicatorView;
 import ru.tenant.pass24.helpers.WelcomeView.animation.type.AnimationType;
 import ru.tenant.pass24.helpers.WelcomeView.pageindicatorview.base.WelcomeChangeFragment;
@@ -36,6 +43,8 @@ public class WelcomeMainFragment extends Fragment {
     private Button goButton;
     private TextView welcomeSkip;
     private PageIndicatorView pageIndicatorView;
+    private SharedPreferences sharedPreferences;
+    private Context mContext;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -48,12 +57,14 @@ public class WelcomeMainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getPreferences(MODE_PRIVATE);
         String savedText = sharedPreferences.getString("AUTH_TOKEN", "");
         if (savedText.length() > 0) {
-            Intent intent = new Intent(this.getContext(), MainScreenActivity.class);
-            Objects.requireNonNull(this.getActivity()).startActivity(intent);
+            refreshToken();
+            Constants.authToken = savedText;
         }
+
+        mContext = this.getContext();
         customization = new Customization();
         customization.setAnimationType(AnimationType.THIN_WORM);
         initViews(view);
@@ -109,7 +120,6 @@ public class WelcomeMainFragment extends Fragment {
                 .beginTransaction()
                 .replace(R.id.flMainContainer, new LoginFragment())
                 .commit();
-
     }
 
     @NonNull
@@ -146,5 +156,34 @@ public class WelcomeMainFragment extends Fragment {
         pageList.add(fragmentWelcomeGo);
 
         return pageList;
+    }
+
+
+    public void refreshToken() {
+        ApiService.getInstance().getAuthApi().refreshToken("Bearer " + sharedPreferences.getString("AUTH_TOKEN", ""))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<LoginResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(LoginResponse loginResponse) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        //todo add dialog
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Intent intent = new Intent(mContext, MainScreenActivity.class);
+                        mContext.startActivity(intent);
+                    }
+                });
     }
 }

@@ -26,6 +26,7 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponse;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
+import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
 import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
@@ -66,6 +67,8 @@ public class AddressSearchFragment extends Fragment {
                         toRequestConfidantFragment();
                     } else if (Objects.equals(mInstance.getArguments().getString("fragment"), RequestsPermanentPassFragment.TAG)) {
                         toRequestsPermanentPassFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderVehicleFragment.TAG)) {
+                        toPassOrderVehicleFragment();
                     }
             }
         });
@@ -90,7 +93,9 @@ public class AddressSearchFragment extends Fragment {
 
                     @Override
                     public void onNext(ProfileAddressesResponse profileAddressesResponse) {
-                        profileAddressesBodiesList.addAll(profileAddressesResponse.getBody());
+                        if (profileAddressesResponse != null)
+                            if (profileAddressesResponse.getBody() != null)
+                                profileAddressesBodiesList.addAll(profileAddressesResponse.getBody());
                     }
 
                     @Override
@@ -149,6 +154,27 @@ public class AddressSearchFragment extends Fragment {
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flRequestsContainer, RequestsPermanentPassFragment.getInstance())
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        }
+    }
+
+    public void toPassOrderVehicleFragment() {
+        if (!addressName.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("addressName", addressName);
+            bundle.putInt("objectId", objectId);
+            PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();
+            passOrderVehicleFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, passOrderVehicleFragment)
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, PassOrderVehicleFragment.getInstance())
                     .addToBackStack(RequestTypeFragment.TAG)
                     .commit();
         }

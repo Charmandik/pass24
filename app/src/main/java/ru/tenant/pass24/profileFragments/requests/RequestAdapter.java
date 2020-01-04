@@ -35,14 +35,18 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
         if (requestCollection != null) {
             if (requestCollection.getType() == 1) {
                 holder.requestType.setText("Новый адрес");
+                if (requestCollection.getRequestData() != null)
+                    if (requestCollection.getRequestData().getAddress() != null)
+                        holder.requestName.setText(requestCollection.getRequestData().getAddress());
             } else if (requestCollection.getType() == 2) {
                 holder.requestType.setText("Постоянный пропуск");
+                if (requestCollection.getRequestData() != null)//todo добавить все поля в респонсы и вытаскивать их в запросы
+                    if (requestCollection.getRequestData().getAddress() != null)
+                        holder.requestName.setText(requestCollection.getRequestData().getAddress());
             } else if (requestCollection.getType() == 3) {
                 holder.requestType.setText("Новое доверенное лицо");
             }
-            if (requestCollection.getRequestData() != null)
-                if (requestCollection.getRequestData().getAddress() != null)
-                    holder.requestName.setText(requestCollection.getRequestData().getAddress());
+
 
             holder.requestName.setText("");
         }
@@ -61,7 +65,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
 
         public RequestAdapterHolder(ViewGroup viewGroup) {
             super(viewGroup);
-            this.requestName = viewGroup.findViewById(R.id.tvMyRequestName);
+            this.requestName = viewGroup.findViewById(R.id.tvMyRequestInfo);
             this.requestType = viewGroup.findViewById(R.id.tvMyRequestType);
             this.requestStatus = viewGroup.findViewById(R.id.ivMyRequestStatus);
         }

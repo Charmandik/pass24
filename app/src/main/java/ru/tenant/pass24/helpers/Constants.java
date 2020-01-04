@@ -14,6 +14,9 @@ public class Constants {
     public static int vehicleType_heavy = 3;
     public static int vehicleType_super_heavy = 4;
 
+    public static int SINGLE_USE_PASS = 1;
+    public static int TEMPORARY_PASS = 2;
+
     public static String getAuthToken() {
         return "Bearer " + authToken;
     }

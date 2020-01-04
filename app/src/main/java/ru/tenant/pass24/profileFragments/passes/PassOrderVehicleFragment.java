@@ -16,7 +16,19 @@ import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class PassOrderVehicleFragment extends Fragment {
+    public static String TAG = "PassOrderVehicleFragment";
     private RelativeLayout rlPassOrderAddress, rlPassOrderType, rlPassOrderVehicleBrand, rlPassOrderVehicleType, rlPassOrderVisitTime;
+    private static PassOrderVehicleFragment mInstance;
+
+    private PassOrderVehicleFragment() {
+        mInstance = this;
+    }
+
+    public static PassOrderVehicleFragment getInstance() {
+        if (mInstance == null) {
+            return new PassOrderVehicleFragment();
+        } else return mInstance;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,41 +86,61 @@ public class PassOrderVehicleFragment extends Fragment {
 
 
     public void toAddressSearchFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderVehicleFragment.TAG);
+        AddressSearchFragment addressSearchFragment = new AddressSearchFragment();
+        addressSearchFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new AddressSearchFragment())
+                .replace(R.id.flPassesContainer, addressSearchFragment)
                 .addToBackStack("")
                 .commit();
     }
 
     public void toPassOrderTypeFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderVehicleFragment.TAG);
+        PassOrderTypeFragment passOrderTypeFragment = new PassOrderTypeFragment();
+        passOrderTypeFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderTypeFragment())
+                .replace(R.id.flPassesContainer, passOrderTypeFragment)
                 .addToBackStack("")
                 .commit();
     }
 
     public void toVehicleBrandFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderVehicleFragment.TAG);
+        VehicleBrandFragment vehicleBrandFragment = new VehicleBrandFragment();
+        vehicleBrandFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new VehicleBrandFragment())
+                .replace(R.id.flPassesContainer, vehicleBrandFragment)
                 .addToBackStack("")
                 .commit();
     }
 
     public void toPassOrderVehicleTypeFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderVehicleFragment.TAG);
+        PassOrderVehicleTypeFragment passOrderVehicleTypeFragment = new PassOrderVehicleTypeFragment();
+        passOrderVehicleTypeFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderVehicleTypeFragment())
+                .replace(R.id.flPassesContainer, passOrderVehicleTypeFragment)
                 .addToBackStack("")
                 .commit();
     }
 
     public void toValidityFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderVehicleFragment.TAG);
+        ValidityFragment validityFragment = new ValidityFragment();
+        validityFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new ValidityFragment())
+                .replace(R.id.flPassesContainer, validityFragment)
                 .addToBackStack("")
                 .commit();
     }

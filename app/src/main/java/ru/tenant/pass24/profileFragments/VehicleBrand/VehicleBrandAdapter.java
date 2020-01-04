@@ -42,19 +42,21 @@ public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapte
         if (vehicleBrandCollection != null)
             if (vehicleBrandCollection.getName() != null) {
                 holder.tvModelName.setText(vehicleBrandCollection.getName());
+                holder.modelId = vehicleBrandCollection.getId();
                 radioButtonList.add(holder.rbVehicleModel);
                 holder.rbVehicleModel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        for (int i = 0; i < radioButtonList.size(); i++) {
-                            radioButtonList.get(i).setChecked(false);
-                        }
-
-                        for (int i = 0; i < radioButtonList.size(); i++) {
-                            if (radioButtonList.get(i).isChecked() && radioButtonList.get(i) != holder.rbVehicleModel)
-                                radioButtonList.get(i).setChecked(false);
-                        }
-                        holder.rbVehicleModel.setChecked(true);
+//                        for (int i = 0; i < radioButtonList.size(); i++) {
+//                            radioButtonList.get(i).setChecked(false);
+//                        }
+//
+//                        for (int i = 0; i < radioButtonList.size(); i++) {
+//                            if (radioButtonList.get(i).isChecked() && radioButtonList.get(i) != holder.rbVehicleModel)
+//                                radioButtonList.get(i).setChecked(false);
+//                        }
+//                        holder.rbVehicleModel.setChecked(true);
+                        holder.rlVehicleBrand.callOnClick();
                     }
                 });
                 holder.rlVehicleBrand.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +67,7 @@ public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapte
                         }
                         holder.rbVehicleModel.setChecked(true);
                         VehicleBrandFragment.vehicleBrand = holder.tvModelName.getText().toString();
+                        VehicleBrandFragment.modelId = holder.modelId;
                     }
                 });
             }
@@ -79,6 +82,7 @@ public class VehicleBrandAdapter extends RecyclerView.Adapter<VehicleBrandAdapte
         private TextView tvModelName;
         private RadioButton rbVehicleModel;
         private RelativeLayout rlVehicleBrand;
+        private int modelId = 3;
 
         public VehicleBrandHolder(ViewGroup viewGroup) {
             super(viewGroup);

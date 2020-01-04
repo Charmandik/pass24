@@ -12,6 +12,13 @@ public class CollectionRequestData {
     @Expose
     private String address;
 
+    @SerializedName("tenant")
+    @Expose
+    private Tenant tenant;
+
+    @SerializedName("guestData")
+    @Expose
+    private RequestGuestData guestData;
     public int getObjectId() {
         return objectId;
     }
@@ -26,5 +33,13 @@ public class CollectionRequestData {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
     }
 }

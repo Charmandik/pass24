@@ -32,22 +32,21 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvMyRequestName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Васильев Константин"
-                    android:textColor="#2A2A2A"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
-                <TextView
-
                     android:id="@+id/tvMyRequestType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Новое доверенное лицо"
                     android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMyRequestInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Васильев Константин"
+                    android:textColor="#2A2A2A"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

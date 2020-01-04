@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -14,11 +15,15 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.R;
+import ru.tenant.pass24.helpers.Constants;
+import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 
 public class PassOrderTypeFragment extends Fragment {
     private LinearLayout llSingleUsePass, llPermanentPass;
     private RadioButton rbSingleUse, rbPermanent;
     private Context mContext;
+    private ImageButton btnBack;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +42,14 @@ public class PassOrderTypeFragment extends Fragment {
         llPermanentPass = view.findViewById(R.id.llPermanentPass);
         rbSingleUse = view.findViewById(R.id.rbSingleUse);
         rbPermanent = view.findViewById(R.id.rbPermanent);
+        btnBack = view.findViewById(R.id.btnBack);
+        rbSingleUse.setChecked(true);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toPassOrderVehicleFragment();
+            }
+        });
 
         rbPermanent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +86,19 @@ public class PassOrderTypeFragment extends Fragment {
         });
     }
 
-    public void toPassOrderFragment() {
+    public void toPassOrderVehicleFragment() {
+        Bundle bundle = new Bundle();
+        if (rbSingleUse.isChecked())
+            bundle.putInt("passType", Constants.SINGLE_USE_PASS);
+        else
+            bundle.putInt("passType", Constants.TEMPORARY_PASS);
+        PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();
+        passOrderVehicleFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderFragment())
-                .addToBackStack(null)
+                .replace(R.id.flPassesContainer, passOrderVehicleFragment)
+                .addToBackStack(RequestTypeFragment.TAG)
                 .commit();
+
     }
 }
