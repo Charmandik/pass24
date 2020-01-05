@@ -3,6 +3,8 @@ package ru.tenant.pass24.profileFragments.passes.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
+
 public class CreatePassRequestBody {
     @SerializedName("type")
     @Expose
@@ -10,7 +12,7 @@ public class CreatePassRequestBody {
 
     @SerializedName("requestData")
     @Expose
-    private CreatePassRequest requestData;
+    private CreateVehiclePassRequest requestData;
 
     public int getType() {
         return type;
@@ -20,11 +22,11 @@ public class CreatePassRequestBody {
         this.type = type;
     }
 
-    public CreatePassRequest getRequestData() {
+    public CreateVehiclePassRequest getRequestData() {
         return requestData;
     }
 
-    public void setRequestData(CreatePassRequest requestData) {
+    public void setRequestData(CreateVehiclePassRequest requestData) {
         this.requestData = requestData;
     }
 }

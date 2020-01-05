@@ -1,11 +1,13 @@
-package ru.tenant.pass24.profileFragments.passes.apiModels;
+package ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class CreatePassRequest {
+import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
+
+public class CreateVehiclePassRequest {
 
     @SerializedName("addressId")
     @Expose

@@ -88,10 +88,13 @@ public class PassOrderTypeFragment extends Fragment {
 
     public void toPassOrderVehicleFragment() {
         Bundle bundle = new Bundle();
-        if (rbSingleUse.isChecked())
+        if (rbSingleUse.isChecked()) {
             bundle.putInt("passType", Constants.SINGLE_USE_PASS);
-        else
+            bundle.putString("passName", "Одноразовый");
+        } else {
             bundle.putInt("passType", Constants.TEMPORARY_PASS);
+            bundle.putString("passName", "Временный");
+        }
         PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();
         passOrderVehicleFragment.setArguments(bundle);
         getFragmentManager()

@@ -56,12 +56,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
                             holder.requestName.setVisibility(View.VISIBLE);
                         }//todo разобраться почему не показывает текст
             }
-
-
-            holder.requestName.setText("");
+            if (requestCollection.getStatus() == 3)
+                holder.requestStatus.setBackgroundResource(R.drawable.ic_reject);
         }
-
-
     }
 
     @Override

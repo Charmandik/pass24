@@ -171,7 +171,7 @@ public class RequestVehicleTypeFragment extends Fragment {
             bundle.putString("carTypeName", "Грузовой от 3,5 до 10 тонн");
         } else if (rbAnotherType.isChecked()) {
             bundle.putInt("carType", Constants.vehicleType_super_heavy);
-            bundle.putString("carTypeName", "Остальные");
+            bundle.putString("carTypeName", "Грузовой от 10 тонн");
         }
         RequestsPermanentPassFragment requestsPermanentPassFragment = RequestsPermanentPassFragment.getInstance();
         requestsPermanentPassFragment.setArguments(bundle);

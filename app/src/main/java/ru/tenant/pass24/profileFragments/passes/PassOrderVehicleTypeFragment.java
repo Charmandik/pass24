@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -14,11 +15,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import ru.tenant.pass24.R;
+import ru.tenant.pass24.helpers.Constants;
+import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 
 public class PassOrderVehicleTypeFragment extends Fragment {
     private LinearLayout llCar, llTruck, llBigTruck, llAnotherTruck;
     private RadioButton rbCar, rbTruck, rbBigTruck, rbAnotherType;
     private Context mContext;
+    private ImageButton btnBack;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +46,13 @@ public class PassOrderVehicleTypeFragment extends Fragment {
         rbTruck = view.findViewById(R.id.rbTruck);
         rbBigTruck = view.findViewById(R.id.rbBigTruck);
         rbAnotherType = view.findViewById(R.id.rbAnotherType);
+        btnBack = view.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toPassOrderVehicleFragment();
+            }
+        });
 
         llCar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,14 +135,6 @@ public class PassOrderVehicleTypeFragment extends Fragment {
         });
     }
 
-    public void toPassOrderFragment() {
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
     private void setRadioButtonChecked(RadioButton radioButton) {
         if (radioButton != rbCar)
             rbCar.setChecked(false);
@@ -152,5 +155,37 @@ public class PassOrderVehicleTypeFragment extends Fragment {
             llBigTruck.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_type_transport));
         if (layoutRounded != llAnotherTruck)
             llAnotherTruck.setBackground(ContextCompat.getDrawable(mContext, R.drawable.rounded_type_transport));
+    }
+
+    public void toPassOrderFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flPassesContainer, new PassOrderFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void toPassOrderVehicleFragment() {
+        Bundle bundle = new Bundle();
+        if (rbCar.isChecked()) {
+            bundle.putInt("carType", Constants.vehicleType_light);
+            bundle.putString("carTypeName", "Легковой/мото");
+        } else if (rbTruck.isChecked()) {
+            bundle.putInt("carType", Constants.vehicleType_normal);
+            bundle.putString("carTypeName", "Грузовой До 3,5 тонн");
+        } else if (rbBigTruck.isChecked()) {
+            bundle.putInt("carType", Constants.vehicleType_heavy);
+            bundle.putString("carTypeName", "Грузовой от 3,5 до 10 тонн");
+        } else if (rbAnotherType.isChecked()) {
+            bundle.putInt("carType", Constants.vehicleType_super_heavy);
+            bundle.putString("carTypeName", "Грузовой от 10 тонн");
+        }
+        PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();
+        passOrderVehicleFragment.setArguments(bundle);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flPassesContainer, passOrderVehicleFragment)
+                .addToBackStack(RequestTypeFragment.TAG)
+                .commit();
     }
 }

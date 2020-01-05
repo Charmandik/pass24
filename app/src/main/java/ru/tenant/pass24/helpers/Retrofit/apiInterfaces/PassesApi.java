@@ -5,16 +5,20 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassRequest;
-import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassResponse;
 import ru.tenant.pass24.profileFragments.passes.apiModels.PassesResponse;
+import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
+import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
 
 public interface PassesApi {
     @GET("passes/")
     Observable<PassesResponse> getPasses(@Header("Authorization") String authToken);
 
     @POST("passes/")
-    Observable<CreatePassResponse> createPass(@Body CreatePassRequest createPassRequest);
+    Observable<CreateVehiclePassResponse> createVehiclePass(@Header("Authorization") String authToken,
+                                                            @Body CreateVehiclePassRequest createVehiclePassRequest);
+
+    @POST("passes/")
+    Observable<CreateVehiclePassResponse> createGuestPass(@Body CreateVehiclePassRequest createVehiclePassRequest);
 
 //    @GET("passes/")  TODO::method to get single pass
 //    Observable<PassesResponse> getPasses();

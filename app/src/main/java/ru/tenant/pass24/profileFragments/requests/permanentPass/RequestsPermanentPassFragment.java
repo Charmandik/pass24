@@ -22,9 +22,9 @@ import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
-import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.CreatePassRequestBody;
 import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
+import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestVehicleTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestResponse;
@@ -209,19 +209,19 @@ public class RequestsPermanentPassFragment extends Fragment {
     public void sendRequest() {
         CreatePassRequestBody createPassRequestBody = new CreatePassRequestBody();
         createPassRequestBody.setType(Constants.passJoinType);
-        CreatePassRequest createPassRequest = new CreatePassRequest();
-        createPassRequest.setAddressId(objectId);
-//        createPassRequest.setStartsAt("21.03.2020");
-//        createPassRequest.setExpiresAt("21.03.2021");
-        createPassRequest.setDurationType(3);
-        createPassRequest.setGuestType(1);
+        CreateVehiclePassRequest createVehiclePassRequest = new CreateVehiclePassRequest();
+        createVehiclePassRequest.setAddressId(objectId);
+//        createVehiclePassRequest.setStartsAt("21.03.2020");
+//        createVehiclePassRequest.setExpiresAt("21.03.2021");
+        createVehiclePassRequest.setDurationType(3);
+        createVehiclePassRequest.setGuestType(1);
         GuestData guestData = new GuestData();
         guestData.setVehicleType(carType);
         guestData.setModelId(modelId);
         guestData.setPlateNumber("Y004TM26");
-        createPassRequest.setGuestData(guestData);
-        createPassRequest.setComment("some comment");
-        createPassRequestBody.setRequestData(createPassRequest);
+        createVehiclePassRequest.setGuestData(guestData);
+        createVehiclePassRequest.setComment("some comment");
+        createPassRequestBody.setRequestData(createVehiclePassRequest);
 //        createRequestBody.setRequestData(new CreateRequestData(1, tilNewAddress.getEditText().getText().toString()));
         ApiService.getInstance().getRequestApi().createPassRequest(Constants.getAuthToken(), createPassRequestBody)
                 .subscribeOn(Schedulers.io())

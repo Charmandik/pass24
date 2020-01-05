@@ -19,14 +19,30 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import ru.tenant.pass24.R;
+import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
 
 public class ValidityFragment extends Fragment {
     Calendar startDataTime = Calendar.getInstance();
     Calendar expirestDataTime = Calendar.getInstance();
+    private ValidityFragment mInstance;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_visit_time, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mInstance = this;
+        init(view);
+    }
+
     DatePickerDialog.OnDateSetListener expiresDataListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             expirestDataTime.set(Calendar.YEAR, year);
@@ -144,17 +160,6 @@ public class ValidityFragment extends Fragment {
         return out;
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_visit_time, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        init(view);
-    }
-
     private void init(View view) {
         tvDataEditStart = view.findViewById(R.id.tvDataEditStart);
         tvTimeEditStart = view.findViewById(R.id.tvTimeEditStart);
@@ -165,7 +170,12 @@ public class ValidityFragment extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toRequestConfidantFragment();
+                if (mInstance.getArguments() != null)
+                    if (Objects.equals(mInstance.getArguments().getString("fragment"), RequestConfidantFragment.TAG)) {
+                        toRequestConfidantFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderVehicleFragment.TAG)) {
+                        toPassOrderVehicleFragment();
+                    }
             }
         });
         tvTimeEditStart.setOnClickListener(new View.OnClickListener() {
@@ -248,5 +258,24 @@ public class ValidityFragment extends Fragment {
         }
     }
 
-
+    public void toPassOrderVehicleFragment() {
+        if (startDataTime != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("startsAt", MillstoDateNum(startDataTime.getTimeInMillis()));
+            bundle.putString("expiresAt", MillstoDateNum(expirestDataTime.getTimeInMillis()));
+            PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();
+            passOrderVehicleFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, passOrderVehicleFragment)
+                    .addToBackStack(PassOrderVehicleFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, PassOrderVehicleFragment.getInstance())
+                    .addToBackStack(PassOrderVehicleFragment.TAG)
+                    .commit();
+        }
+    }
 }
