@@ -1,6 +1,7 @@
 package ru.tenant.pass24.profileFragments.requests;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,11 +41,20 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
                         holder.requestName.setText(requestCollection.getRequestData().getAddress());
             } else if (requestCollection.getType() == 2) {
                 holder.requestType.setText("Постоянный пропуск");
-                if (requestCollection.getRequestData() != null)//todo добавить все поля в респонсы и вытаскивать их в запросы
-                    if (requestCollection.getRequestData().getAddress() != null)
-                        holder.requestName.setText(requestCollection.getRequestData().getAddress());
+                if (requestCollection.getRequestData() != null)
+                    if (requestCollection.getRequestData().getGuestData() != null)
+                        if (requestCollection.getRequestData().getGuestData().getPlateNumber() != null) {
+                            holder.requestName.setText(requestCollection.getRequestData().getGuestData().getPlateNumber());
+                            holder.requestName.setVisibility(View.VISIBLE);
+                        }
             } else if (requestCollection.getType() == 3) {
                 holder.requestType.setText("Новое доверенное лицо");
+                if (requestCollection.getRequestData() != null)
+                    if (requestCollection.getRequestData().getConfidant() != null)
+                        if (requestCollection.getRequestData().getConfidant().getName() != null) {
+                            holder.requestName.setText(requestCollection.getRequestData().getConfidant().getName());
+                            holder.requestName.setVisibility(View.VISIBLE);
+                        }//todo разобраться почему не показывает текст
             }
 
 

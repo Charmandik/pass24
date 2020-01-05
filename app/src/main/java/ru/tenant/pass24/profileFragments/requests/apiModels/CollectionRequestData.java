@@ -3,6 +3,8 @@ package ru.tenant.pass24.profileFragments.requests.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ru.tenant.pass24.profileFragments.trustedPeople.apiModels.Confidant;
+
 public class CollectionRequestData {
     @SerializedName("objectId")
     @Expose
@@ -19,6 +21,11 @@ public class CollectionRequestData {
     @SerializedName("guestData")
     @Expose
     private RequestGuestData guestData;
+
+    @SerializedName("confidant")
+    @Expose
+    private Confidant confidant;
+
     public int getObjectId() {
         return objectId;
     }
@@ -41,5 +48,21 @@ public class CollectionRequestData {
 
     public void setTenant(Tenant tenant) {
         this.tenant = tenant;
+    }
+
+    public RequestGuestData getGuestData() {
+        return guestData;
+    }
+
+    public void setGuestData(RequestGuestData guestData) {
+        this.guestData = guestData;
+    }
+
+    public Confidant getConfidant() {
+        return confidant;
+    }
+
+    public void setConfidant(Confidant confidant) {
+        this.confidant = confidant;
     }
 }
