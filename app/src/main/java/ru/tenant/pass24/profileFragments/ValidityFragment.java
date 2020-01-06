@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.passes.PassOrderGuestFragment;
+import ru.tenant.pass24.profileFragments.passes.PassOrderInviteFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
@@ -178,6 +179,8 @@ public class ValidityFragment extends Fragment {
                         toPassOrderVehicleFragment();
                     } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderGuestFragment.TAG)) {
                         toPassOrderGuestFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderInviteFragment.TAG)) {
+                        toPassOrderInviteFragment();
                     }
             }
         });
@@ -299,6 +302,27 @@ public class ValidityFragment extends Fragment {
                     .beginTransaction()
                     .replace(R.id.flPassesContainer, PassOrderGuestFragment.getInstance())
                     .addToBackStack(PassOrderGuestFragment.TAG)
+                    .commit();
+        }
+    }
+
+    public void toPassOrderInviteFragment() {
+        if (startDataTime != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("startsAt", MillstoDateNum(startDataTime.getTimeInMillis()));
+            bundle.putString("expiresAt", MillstoDateNum(expirestDataTime.getTimeInMillis()));
+            PassOrderInviteFragment passOrderInviteFragment = PassOrderInviteFragment.getInstance();
+            passOrderInviteFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, passOrderInviteFragment)
+                    .addToBackStack(PassOrderInviteFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, PassOrderGuestFragment.getInstance())
+                    .addToBackStack(PassOrderInviteFragment.TAG)
                     .commit();
         }
     }

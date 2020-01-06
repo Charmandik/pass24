@@ -72,7 +72,7 @@ public class PassOrderFragment extends Fragment {
     public void toPassOrderInviteFragment() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderInviteFragment())
+                .replace(R.id.flPassesContainer, PassOrderInviteFragment.getInstance())
                 .addToBackStack("asd")
                 .commit();
     }
