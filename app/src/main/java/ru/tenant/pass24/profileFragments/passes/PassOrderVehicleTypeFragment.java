@@ -168,16 +168,16 @@ public class PassOrderVehicleTypeFragment extends Fragment {
     public void toPassOrderVehicleFragment() {
         Bundle bundle = new Bundle();
         if (rbCar.isChecked()) {
-            bundle.putInt("carType", Constants.vehicleType_light);
+            bundle.putInt("carType", Constants.vehicleTypeLight);
             bundle.putString("carTypeName", "Легковой/мото");
         } else if (rbTruck.isChecked()) {
-            bundle.putInt("carType", Constants.vehicleType_normal);
+            bundle.putInt("carType", Constants.vehicleTypeNormal);
             bundle.putString("carTypeName", "Грузовой До 3,5 тонн");
         } else if (rbBigTruck.isChecked()) {
-            bundle.putInt("carType", Constants.vehicleType_heavy);
+            bundle.putInt("carType", Constants.vehicleTypeHeavy);
             bundle.putString("carTypeName", "Грузовой от 3,5 до 10 тонн");
         } else if (rbAnotherType.isChecked()) {
-            bundle.putInt("carType", Constants.vehicleType_super_heavy);
+            bundle.putInt("carType", Constants.vehicleTypeSuperHeavy);
             bundle.putString("carTypeName", "Грузовой от 10 тонн");
         }
         PassOrderVehicleFragment passOrderVehicleFragment = PassOrderVehicleFragment.getInstance();

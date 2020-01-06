@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
+import ru.tenant.pass24.profileFragments.passes.apiModels.VehicleGuestData;
 
 public class CreateVehiclePassRequest {
 
@@ -29,9 +29,9 @@ public class CreateVehiclePassRequest {
     @Expose
     private int guestType;
 
-    @SerializedName("guestData")
+    @SerializedName("vehicleGuestData")
     @Expose
-    private GuestData guestData;
+    private VehicleGuestData vehicleGuestData;
 
     @SerializedName("comment")
     @Expose
@@ -81,12 +81,12 @@ public class CreateVehiclePassRequest {
         this.guestType = guestType;
     }
 
-    public GuestData getGuestData() {
-        return guestData;
+    public VehicleGuestData getVehicleGuestData() {
+        return vehicleGuestData;
     }
 
-    public void setGuestData(GuestData guestData) {
-        this.guestData = guestData;
+    public void setVehicleGuestData(VehicleGuestData vehicleGuestData) {
+        this.vehicleGuestData = vehicleGuestData;
     }
 
     public String getComment() {

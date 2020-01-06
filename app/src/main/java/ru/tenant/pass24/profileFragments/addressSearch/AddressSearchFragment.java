@@ -26,6 +26,7 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponse;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponseBody;
+import ru.tenant.pass24.profileFragments.passes.PassOrderGuestFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
@@ -58,7 +59,6 @@ public class AddressSearchFragment extends Fragment {
     private void init(View view) {
         rvAddressSearch = view.findViewById(R.id.rvAddressSearch);
         backBtn = view.findViewById(R.id.backBtn);
-
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +69,8 @@ public class AddressSearchFragment extends Fragment {
                         toRequestsPermanentPassFragment();
                     } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderVehicleFragment.TAG)) {
                         toPassOrderVehicleFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderGuestFragment.TAG)) {
+                        toPassOrderGuestFragment();
                     }
             }
         });
@@ -175,6 +177,27 @@ public class AddressSearchFragment extends Fragment {
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flPassesContainer, PassOrderVehicleFragment.getInstance())
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        }
+    }
+
+    public void toPassOrderGuestFragment() {
+        if (!addressName.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("addressName", addressName);
+            bundle.putInt("objectId", objectId);
+            PassOrderGuestFragment passOrderGuestFragment = PassOrderGuestFragment.getInstance();
+            passOrderGuestFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, passOrderGuestFragment)
+                    .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, PassOrderGuestFragment.getInstance())
                     .addToBackStack(RequestTypeFragment.TAG)
                     .commit();
         }

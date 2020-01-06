@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -20,13 +24,34 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
-import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
-import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
+import ru.tenant.pass24.profileFragments.passes.apiModels.guestPassCreationModels.CreateGuestPassRequest;
+import ru.tenant.pass24.profileFragments.passes.apiModels.guestPassCreationModels.GuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
 
 public class PassOrderGuestFragment extends Fragment {
+    public static String TAG = "PassOrderGuestFragment";
     private RelativeLayout rlPassGuestVisitTime, rlPassGuestAddress;
     private ImageView backBtn, btnClose;
+    private Button btnCreatePass;
+    private TextView tvGuestPassAddress, tvVisitTimeInfo;
+    private TextInputEditText tieGuestPassComment, tieGuestPassName;
+    private static PassOrderGuestFragment mInstance;
+
+    private String startsAt = "";
+    private String expiresAt = "";
+    private String addressName = "";
+    private int objectId;
+
+    private PassOrderGuestFragment() {
+        mInstance = this;
+    }
+
+    public static PassOrderGuestFragment getInstance() {
+        if (mInstance == null)
+            return new PassOrderGuestFragment();
+        else
+            return mInstance;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +61,7 @@ public class PassOrderGuestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         init(view);
     }
 
@@ -44,6 +70,12 @@ public class PassOrderGuestFragment extends Fragment {
         rlPassGuestAddress = view.findViewById(R.id.rlPassGuestAddress);
         backBtn = view.findViewById(R.id.backBtn);
         btnClose = view.findViewById(R.id.btnClose);
+        btnCreatePass = view.findViewById(R.id.btnCreatePass);
+        tvGuestPassAddress = view.findViewById(R.id.tvGuestPassAddress);
+        tvVisitTimeInfo = view.findViewById(R.id.tvVisitTimeInfo);
+        tieGuestPassComment = view.findViewById(R.id.tieGuestPassComment);
+        tieGuestPassName = view.findViewById(R.id.tieGuestPassName);
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,22 +104,54 @@ public class PassOrderGuestFragment extends Fragment {
                 toAddressSearchFragment();
             }
         });
+
+        btnCreatePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createGuestPass();
+            }
+        });
+
+        if (!addressName.equals("")) {
+            tvGuestPassAddress.setText(addressName);
+            tvGuestPassAddress.setVisibility(View.VISIBLE);
+        }
+
+        if (!startsAt.equals("")) {
+            tvVisitTimeInfo.setText(startsAt + " - " + expiresAt);
+            tvVisitTimeInfo.setVisibility(View.VISIBLE);
+        }
+
+        if (this.getArguments() != null) {
+            if (this.getArguments().getString("addressName") != null) {
+                tvGuestPassAddress.setVisibility(View.VISIBLE);
+                tvGuestPassAddress.setText(this.getArguments().getString("addressName"));
+                addressName = this.getArguments().getString("addressName");
+                objectId = this.getArguments().getInt("objectId");
+            }
+
+            if (this.getArguments().getString("startsAt") != null) {
+                tvVisitTimeInfo.setVisibility(View.VISIBLE);
+                String data = this.getArguments().getString("startsAt") + " - " + this.getArguments().getString("expiresAt");
+                startsAt = this.getArguments().getString("startsAt");
+                expiresAt = this.getArguments().getString("expiresAt");
+                tvVisitTimeInfo.setText(data);
+            }
+        }
     }
 
     private void createGuestPass() {
-        CreateVehiclePassRequest createVehiclePassRequest = new CreateVehiclePassRequest();
-        createVehiclePassRequest.setAddressId(objectId);
-        createVehiclePassRequest.setStartsAt(startsAt);
-        createVehiclePassRequest.setExpiresAt(expiresAt);
-        createVehiclePassRequest.setDurationType(passType);
-        createVehiclePassRequest.setGuestType(1);
+        CreateGuestPassRequest createGuestPassRequest = new CreateGuestPassRequest();
+        createGuestPassRequest.setAddressId(objectId);
+        createGuestPassRequest.setStartsAt(startsAt);
+        createGuestPassRequest.setExpiresAt(expiresAt);
+        createGuestPassRequest.setDurationType(2);
+        createGuestPassRequest.setGuestType(2);
         GuestData guestData = new GuestData();
-        guestData.setVehicleType(carType);
-        guestData.setModelId(modelId);
-        guestData.setPlateNumber(etVehicleNumber.getText().toString().trim());
-        createVehiclePassRequest.setGuestData(guestData);
-        createVehiclePassRequest.setComment(etVehiclePassComment.getText().toString().trim());
-        ApiService.getInstance().getPassesApi().createVehiclePass(Constants.getAuthToken(), createVehiclePassRequest)
+        guestData.setName(tieGuestPassName.getText().toString().trim());
+        createGuestPassRequest.setGuestData(guestData);
+        createGuestPassRequest.setComment(tieGuestPassComment.getText().toString().trim());
+        ApiService.getInstance().getPassesApi().createGuestPass(Constants.getAuthToken(), createGuestPassRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<CreateVehiclePassResponse>() {
@@ -98,7 +162,9 @@ public class PassOrderGuestFragment extends Fragment {
 
                     @Override
                     public void onNext(CreateVehiclePassResponse createRequestResponse) {
-
+                        if (createRequestResponse != null)
+                            if (createRequestResponse.getBody() != null)
+                                toPassOrderFragment(); //todo сменить на переход в passesFragment
                     }
 
                     @Override
@@ -113,18 +179,26 @@ public class PassOrderGuestFragment extends Fragment {
     }
 
     public void toAddressSearchFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderGuestFragment.TAG);
+        AddressSearchFragment addressSearchFragment = new AddressSearchFragment();
+        addressSearchFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new AddressSearchFragment())
+                .replace(R.id.flPassesContainer, addressSearchFragment)
                 .addToBackStack("")
                 .commit();
     }
 
     public void toValidityFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", PassOrderGuestFragment.TAG);
+        ValidityFragment validityFragment = new ValidityFragment();
+        validityFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new ValidityFragment())
-                .addToBackStack(null)
+                .replace(R.id.flPassesContainer, validityFragment)
+                .addToBackStack("")
                 .commit();
     }
 

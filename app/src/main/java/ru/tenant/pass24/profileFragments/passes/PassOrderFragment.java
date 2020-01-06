@@ -64,7 +64,7 @@ public class PassOrderFragment extends Fragment {
     public void toPassOrderGuestFragment() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderGuestFragment())
+                .replace(R.id.flPassesContainer, PassOrderGuestFragment.getInstance())
                 .addToBackStack("asd")
                 .commit();
     }

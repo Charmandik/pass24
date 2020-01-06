@@ -25,7 +25,7 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.Retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
-import ru.tenant.pass24.profileFragments.passes.apiModels.GuestData;
+import ru.tenant.pass24.profileFragments.passes.apiModels.VehicleGuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
 import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
@@ -218,11 +218,11 @@ public class PassOrderVehicleFragment extends Fragment {
         createVehiclePassRequest.setExpiresAt(expiresAt);
         createVehiclePassRequest.setDurationType(passType);
         createVehiclePassRequest.setGuestType(1);
-        GuestData guestData = new GuestData();
-        guestData.setVehicleType(carType);
-        guestData.setModelId(modelId);
-        guestData.setPlateNumber(etVehicleNumber.getText().toString().trim());
-        createVehiclePassRequest.setGuestData(guestData);
+        VehicleGuestData vehicleGuestData = new VehicleGuestData();
+        vehicleGuestData.setVehicleType(carType);
+        vehicleGuestData.setModelId(modelId);
+        vehicleGuestData.setPlateNumber(etVehicleNumber.getText().toString().trim());
+        createVehiclePassRequest.setVehicleGuestData(vehicleGuestData);
         createVehiclePassRequest.setComment(etVehiclePassComment.getText().toString().trim());
         ApiService.getInstance().getPassesApi().createVehiclePass(Constants.getAuthToken(), createVehiclePassRequest)
                 .subscribeOn(Schedulers.io())

@@ -70,7 +70,7 @@
                 android:hint="ФИО">
 
                 <com.google.android.material.textfield.TextInputEditText
-
+                    android:id="@+id/tieGuestPassName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -94,12 +94,13 @@
                     android:textColor="@color/textPrimary" />
 
                 <TextView
+                    android:id="@+id/tvGuestPassAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvOrderVehicleAddress"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="8dp"
-                    android:text="Пр-кт Тамары Маркеловой, 53 д…"
+                    android:text=""
                     android:textColor="@color/textPrimary"
                     android:visibility="gone" />
 
@@ -125,7 +126,7 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
-                    android:id="@+id/tvOrderVisitTime"
+                    android:id="@+id/PassOrderVehicleFragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -133,14 +134,15 @@
                     android:text="Время визита" />
 
                 <TextView
+                    android:id="@+id/tvVisitTimeInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvOrderVisitTime"
+                    android:layout_below="@+id/PassOrderVehicleFragment"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="8dp"
-                    android:text="Одноразовый"
+                    android:text=""
                     android:textColor="@color/textPrimary"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -163,7 +165,7 @@
                 android:hint="Комментарий">
 
                 <com.google.android.material.textfield.TextInputEditText
-
+                    android:id="@+id/tieGuestPassComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
