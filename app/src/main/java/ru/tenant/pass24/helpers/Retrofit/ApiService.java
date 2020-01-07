@@ -1,15 +1,15 @@
-package ru.tenant.pass24.helpers.Retrofit;
+package ru.tenant.pass24.helpers.retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.AuthApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.ConfidancesApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.FeedApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.PassesApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.ProfileApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.RequestApi;
-import ru.tenant.pass24.helpers.Retrofit.apiInterfaces.VehicleBrand;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.AuthApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.ConfidancesApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.FeedApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.PassesApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.ProfileApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.RequestApi;
+import ru.tenant.pass24.helpers.retrofit.apiInterfaces.VehicleBrand;
 
 public class ApiService {
     private static final String BASE_URL = "https://mobile-api.pass24online.ru/v1/";

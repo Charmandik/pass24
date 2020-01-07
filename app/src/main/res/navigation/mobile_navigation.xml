@@ -67,4 +67,9 @@
         android:name="ru.tenant.pass24.profileFragments.passes.PassOrderInviteFragment"
         android:label="fragment_pass_order_invite"
         tools:layout="@layout/fragment_pass_order_invite" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.tenant.pass24.profileFragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

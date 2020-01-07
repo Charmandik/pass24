@@ -82,6 +82,7 @@
                     android:textColor="@color/textPrimary" />
 
                 <TextView
+                    android:id="@+id/tvInviteAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvOrderVehicleAddress"
@@ -121,12 +122,13 @@
                     android:text="Время визита" />
 
                 <TextView
+                    android:id="@+id/tvVisitTimeInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvOrderVisitTime"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="8dp"
-                    android:text="Одноразовый"
+                    android:text=""
                     android:textColor="@color/textPrimary"
                     android:visibility="gone" />
 
@@ -147,9 +149,22 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="ФИО">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieGuestName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Комментарий">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieInviteComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -179,6 +194,7 @@
                 android:textColor="#ffffff" />
 
             <ImageView
+                android:id="@+id/btnClose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

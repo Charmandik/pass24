@@ -3,7 +3,7 @@ package ru.tenant.pass24.apiModelsNonUsed;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ProfileResponseBody {
+public class ProfileResponseBody {
     @SerializedName("id")
     @Expose
     private int id;

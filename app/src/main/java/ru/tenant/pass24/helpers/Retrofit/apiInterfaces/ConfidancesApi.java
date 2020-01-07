@@ -1,4 +1,4 @@
-package ru.tenant.pass24.helpers.Retrofit.apiInterfaces;
+package ru.tenant.pass24.helpers.retrofit.apiInterfaces;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;

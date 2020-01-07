@@ -1,4 +1,4 @@
-package ru.tenant.pass24.helpers.Retrofit.apiInterfaces;
+package ru.tenant.pass24.helpers.retrofit.apiInterfaces;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -8,12 +8,12 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileRequest;
 import ru.tenant.pass24.apiModelsNonUsed.ChangeProfileResponse;
-import ru.tenant.pass24.apiModelsNonUsed.PasswordChangeResponse;
 import ru.tenant.pass24.apiModelsNonUsed.PhoneChangeResponse;
 import ru.tenant.pass24.apiModelsNonUsed.ProfileObjectsResponse;
 import ru.tenant.pass24.apiModelsNonUsed.ProfileResponse;
-import ru.tenant.pass24.authorizationFragments.RegistryConfirm.apiModels.ConfirmPhoneRequest;
+import ru.tenant.pass24.authorizationFragments.registryConfirm.apiModels.ConfirmPhoneRequest;
 import ru.tenant.pass24.profileFragments.addressSearch.apiModels.ProfileAddressesResponse;
+import ru.tenant.pass24.profileFragments.profile.changePassword.apiModels.PasswordChangeResponse;
 
 public interface ProfileApi {
     @GET("profile/")

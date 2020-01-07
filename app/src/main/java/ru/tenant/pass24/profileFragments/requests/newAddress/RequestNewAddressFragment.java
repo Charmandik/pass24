@@ -25,7 +25,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
-import ru.tenant.pass24.helpers.Retrofit.ApiService;
+import ru.tenant.pass24.helpers.retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestsFragment;
 import ru.tenant.pass24.profileFragments.requests.apiModels.createRequestModels.CreateRequestBody;

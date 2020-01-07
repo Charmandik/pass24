@@ -1,6 +1,6 @@
 package ru.tenant.pass24.helpers;
 
-import ru.tenant.pass24.authorizationFragments.Registration.apiModels.RegistryCheckRequestBody;
+import ru.tenant.pass24.authorizationFragments.registration.apiModels.RegistryCheckRequestBody;
 
 public class Constants {
     public static String authToken = "";
@@ -20,4 +20,11 @@ public class Constants {
     public static String getAuthToken() {
         return "Bearer " + authToken;
     }
+
+
+    public static String userEmail = "";
+    public static String userFirstName = "";
+    public static String userLastName = "";
+    public static String userFullName = "";
+    public static String userPhone = "";
 }

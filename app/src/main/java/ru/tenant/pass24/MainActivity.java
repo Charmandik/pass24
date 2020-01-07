@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import ru.tenant.pass24.authorizationFragments.Login.LoginFragment;
-import ru.tenant.pass24.authorizationFragments.Welcome.WelcomeMainFragment;
+import ru.tenant.pass24.authorizationFragments.login.LoginFragment;
+import ru.tenant.pass24.authorizationFragments.welcome.WelcomeMainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
