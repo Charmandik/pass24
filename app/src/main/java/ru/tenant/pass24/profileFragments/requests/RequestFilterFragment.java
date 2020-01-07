@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import ru.tenant.pass24.R;
 
 public class RequestFilterFragment extends Fragment {
+    public static String TAG = "RequestFilterStatusFragment";
     private ImageView btnBack, btnClose;
     private RelativeLayout rlRequestStatusFilter;
 
@@ -55,9 +56,13 @@ public class RequestFilterFragment extends Fragment {
     }
 
     public void toRequestFilterStatusFragment() {
+        RequestFilterStatusFragment requestFilterStatusFragment = new RequestFilterStatusFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", TAG);
+        requestFilterStatusFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, new RequestFilterStatusFragment())
+                .replace(R.id.flRequestsContainer, requestFilterStatusFragment)
                 .addToBackStack("")
                 .commit();
     }

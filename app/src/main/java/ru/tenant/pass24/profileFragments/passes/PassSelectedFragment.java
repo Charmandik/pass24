@@ -123,7 +123,7 @@ public class PassSelectedFragment extends Fragment {
                     public void onNext(DeletePassResponse deletePassResponse) {
                         if (deletePassResponse != null)
                             if (deletePassResponse.getBody() != null)
-                                Toast.makeText(getContext(), "Успешно удален", Toast.LENGTH_LONG);
+                                Toast.makeText(getContext(), "Успешно удален", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
