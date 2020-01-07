@@ -27,24 +27,11 @@ import ru.tenant.pass24.profileFragments.passes.PassOrderInviteFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
+import ru.tenant.pass24.profileFragments.trustedPeople.AddConfidanceFragment;
 
 public class ValidityFragment extends Fragment {
     Calendar startDataTime = Calendar.getInstance();
     Calendar expirestDataTime = Calendar.getInstance();
-    private ValidityFragment mInstance;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_visit_time, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mInstance = this;
-        init(view);
-    }
-
     DatePickerDialog.OnDateSetListener expiresDataListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             expirestDataTime.set(Calendar.YEAR, year);
@@ -106,6 +93,7 @@ public class ValidityFragment extends Fragment {
             tvTimeEditStart.setText(startDataTime.getTime().toString().substring(11, 16));
         }
     };
+    private ValidityFragment mInstance;
     private TextView tvDataEditStart, tvTimeEditStart, tvTimeEditExpires, tvDataEditExpires;
     DatePickerDialog.OnDateSetListener startDataListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -162,6 +150,18 @@ public class ValidityFragment extends Fragment {
         return out;
     }
 
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_visit_time, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mInstance = this;
+        init(view);
+    }
+
     private void init(View view) {
         tvDataEditStart = view.findViewById(R.id.tvDataEditStart);
         tvTimeEditStart = view.findViewById(R.id.tvTimeEditStart);
@@ -181,6 +181,8 @@ public class ValidityFragment extends Fragment {
                         toPassOrderGuestFragment();
                     } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderInviteFragment.TAG)) {
                         toPassOrderInviteFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), AddConfidanceFragment.TAG)) {
+                        toAddConfidanceFragment();
                     }
             }
         });
@@ -326,4 +328,26 @@ public class ValidityFragment extends Fragment {
                     .commit();
         }
     }
+
+    public void toAddConfidanceFragment() {
+        if (startDataTime != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("startsAt", MillstoDateNum(startDataTime.getTimeInMillis()));
+            bundle.putString("expiresAt", MillstoDateNum(expirestDataTime.getTimeInMillis()));
+            AddConfidanceFragment addConfidanceFragment = AddConfidanceFragment.getInstance();
+            addConfidanceFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flTrustPeopleContainer, addConfidanceFragment)
+                    .addToBackStack(PassOrderInviteFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flTrustPeopleContainer, AddConfidanceFragment.getInstance())
+                    .addToBackStack(PassOrderInviteFragment.TAG)
+                    .commit();
+        }
+    }
+
 }

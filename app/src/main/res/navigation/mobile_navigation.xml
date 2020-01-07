@@ -46,27 +46,16 @@
     <fragment
         android:id="@+id/nav_trusted_people"
         android:name="ru.tenant.pass24.profileFragments.trustedPeople.TrustedPeopleFragment"
-        tools:layout="@layout/fragment_trust_people" />
+        tools:layout="@layout/fragment_trust_people">
+        <action
+            android:id="@+id/action_nav_trusted_people_to_nav_requests"
+            app:destination="@id/nav_requests" />
+    </fragment>
     <fragment
         android:id="@+id/passOrderFragment"
         android:name="ru.tenant.pass24.profileFragments.passes.PassOrderFragment"
         android:label="fragment_pass_order"
         tools:layout="@layout/fragment_pass_order" />
-    <fragment
-        android:id="@+id/passOrderVehicleFragment"
-        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment"
-        android:label="fragment_pass_order_vehicle"
-        tools:layout="@layout/fragment_pass_order_vehicle" />
-    <fragment
-        android:id="@+id/passOrderGuestFragment"
-        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderGuestFragment"
-        android:label="fragment_pass_order_guest"
-        tools:layout="@layout/fragment_pass_order_guest" />
-    <fragment
-        android:id="@+id/passOrderInviteFragment"
-        android:name="ru.tenant.pass24.profileFragments.passes.PassOrderInviteFragment"
-        android:label="fragment_pass_order_invite"
-        tools:layout="@layout/fragment_pass_order_invite" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.tenant.pass24.profileFragments.profile.ProfileFragment"

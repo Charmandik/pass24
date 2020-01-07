@@ -18,12 +18,12 @@ import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.trustedPeople.apiModels.ConfidanceCollection;
 
 public class TrustedPeopleFragment extends Fragment {
+    public static String TAG = "TrustedPeopleFragment";
     private TrustedPeoplePresenter trustedPeoplePresenter;
     private ImageView ivTrustAdd;
     private RecyclerView rvTrustPeople;
     private RecyclerView.LayoutManager layoutManager;
     private ConfidanceAdapter mAdapter;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class TrustedPeopleFragment extends Fragment {
         ivTrustAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                toAddConfidanceFragment();
             }
         });
     }
@@ -58,5 +58,13 @@ public class TrustedPeopleFragment extends Fragment {
         rvTrustPeople.setLayoutManager(layoutManager);
         mAdapter = new ConfidanceAdapter(confidanceCollections, getFragmentManager());
         rvTrustPeople.setAdapter(mAdapter);
+    }
+
+    private void toAddConfidanceFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flTrustPeopleContainer, AddConfidanceFragment.getInstance())
+                .addToBackStack(AddConfidanceFragment.TAG)
+                .commit();
     }
 }

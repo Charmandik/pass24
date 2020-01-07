@@ -32,6 +32,7 @@ import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.requests.RequestTypeFragment;
 import ru.tenant.pass24.profileFragments.requests.newConfidance.RequestConfidantFragment;
 import ru.tenant.pass24.profileFragments.requests.permanentPass.RequestsPermanentPassFragment;
+import ru.tenant.pass24.profileFragments.trustedPeople.AddConfidanceFragment;
 
 public class AddressSearchFragment extends Fragment {
     public static String addressName = "";
@@ -74,6 +75,10 @@ public class AddressSearchFragment extends Fragment {
                         toPassOrderGuestFragment();
                     } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderInviteFragment.TAG)) {
                         toPassOrderInviteFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), PassOrderInviteFragment.TAG)) {
+                        toPassOrderInviteFragment();
+                    } else if (Objects.equals(mInstance.getArguments().getString("fragment"), AddConfidanceFragment.TAG)) {
+                        toAddConfidanceFragment();
                     }
             }
         });
@@ -139,6 +144,27 @@ public class AddressSearchFragment extends Fragment {
                     .beginTransaction()
                     .replace(R.id.flRequestsContainer, RequestConfidantFragment.getInstance())
                     .addToBackStack(RequestTypeFragment.TAG)
+                    .commit();
+        }
+    }
+
+    public void toAddConfidanceFragment() {
+        if (!addressName.equals("")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("addressName", addressName);
+            bundle.putInt("objectId", objectId);
+            AddConfidanceFragment addConfidanceFragment = AddConfidanceFragment.getInstance();
+            addConfidanceFragment.setArguments(bundle);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flTrustPeopleContainer, addConfidanceFragment)
+                    .addToBackStack(AddConfidanceFragment.TAG)
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flTrustPeopleContainer, AddConfidanceFragment.getInstance())
+                    .addToBackStack(AddConfidanceFragment.TAG)
                     .commit();
         }
     }

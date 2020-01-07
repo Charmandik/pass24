@@ -81,10 +81,14 @@ public class RequestTypeFragment extends Fragment {
     }
 
     public void toRequestsConfidant() {
+        Bundle bundle = new Bundle();
+        bundle.putString("fragment", TAG);
+        RequestConfidantFragment requestConfidantFragment = RequestConfidantFragment.getInstance();
+        requestConfidantFragment.setArguments(bundle);
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flRequestsContainer, RequestConfidantFragment.getInstance())
-                .addToBackStack("")
+                .add(R.id.flRequestsContainer, requestConfidantFragment)
+                .addToBackStack(RequestTypeFragment.TAG)
                 .commit();
     }
 

@@ -69,21 +69,27 @@ public class MainScreenActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_menu:
                         drawer.openDrawer(GravityCompat.START);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.nav_passes:
                         navController.navigate(R.id.nav_passes);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.nav_templates:
                         navController.navigate(R.id.nav_templates);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.nav_requests:
                         navController.navigate(R.id.nav_requests);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.nav_events_feed:
                         navController.navigate(R.id.nav_events_feed);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.nav_trusted_people:
                         navController.navigate(R.id.nav_trusted_people);
+                        menuItem.setChecked(true);
                         break;
                     case R.id.btnLogout:
                         clearToken();
@@ -92,8 +98,7 @@ public class MainScreenActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                 }
-                menuItem.setChecked(true);
-                setTitle(menuItem.getTitle());
+//                setTitle(menuItem.getTitle());
                 drawer.closeDrawers();
                 return false;
             }
@@ -105,5 +110,9 @@ public class MainScreenActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("AUTH_TOKEN");
         editor.apply();
+    }
+
+    public void navigateToRequests() {
+        navController.navigate(R.id.nav_requests);
     }
 }
