@@ -17,7 +17,8 @@ public class RequestsModel {
     public List<RequestCollection> requestResponses = new ArrayList<>();
 
     public void getRequest() {
-        ApiService.getInstance().getRequestApi().getRequest(Constants.getAuthToken())
+
+        ApiService.getInstance().getRequestApi().getRequest(Constants.getAuthToken(), Constants.requestTypeFilter, Constants.requestStatusFilter)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<RequestResponse>() {

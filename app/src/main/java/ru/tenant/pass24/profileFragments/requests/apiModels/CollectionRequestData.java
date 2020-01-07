@@ -6,13 +6,41 @@ import com.google.gson.annotations.SerializedName;
 import ru.tenant.pass24.profileFragments.trustedPeople.apiModels.Confidant;
 
 public class CollectionRequestData {
-    @SerializedName("objectId")
+    @SerializedName("comment")
     @Expose
-    private int objectId;
+    private String comment;
+
+    @SerializedName("startsAt")
+    @Expose
+    private String startsAt;
+
+    @SerializedName("expiresAt")
+    @Expose
+    private String expiresAt;
 
     @SerializedName("address")
     @Expose
     private String address;
+
+    @SerializedName("tenantId")
+    @Expose
+    private int tenantId;
+
+    @SerializedName("objectId")
+    @Expose
+    private int objectId;
+
+    @SerializedName("addressId")
+    @Expose
+    private int addressId;
+
+    @SerializedName("guestType")
+    @Expose
+    private int guestType;
+
+    @SerializedName("durationType")
+    @Expose
+    private int durationType;
 
     @SerializedName("tenant")
     @Expose
@@ -26,6 +54,38 @@ public class CollectionRequestData {
     @Expose
     private Confidant confidant;
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getStartsAt() {
+        return startsAt;
+    }
+
+    public void setStartsAt(String startsAt) {
+        this.startsAt = startsAt;
+    }
+
+    public String getExpiresAt() {
+        return expiresAt;
+    }
+
+    public void setExpiresAt(String expiresAt) {
+        this.expiresAt = expiresAt;
+    }
+
+    public int getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
+    }
+
     public int getObjectId() {
         return objectId;
     }
@@ -34,12 +94,28 @@ public class CollectionRequestData {
         this.objectId = objectId;
     }
 
-    public String getAddress() {
-        return address;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public int getGuestType() {
+        return guestType;
+    }
+
+    public void setGuestType(int guestType) {
+        this.guestType = guestType;
+    }
+
+    public int getDurationType() {
+        return durationType;
+    }
+
+    public void setDurationType(int durationType) {
+        this.durationType = durationType;
     }
 
     public Tenant getTenant() {
@@ -64,5 +140,13 @@ public class CollectionRequestData {
 
     public void setConfidant(Confidant confidant) {
         this.confidant = confidant;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

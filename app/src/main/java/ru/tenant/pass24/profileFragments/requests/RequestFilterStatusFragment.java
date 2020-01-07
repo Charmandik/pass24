@@ -42,39 +42,31 @@ public class RequestFilterStatusFragment extends Fragment {
         llAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFalseToAll();
                 cbAll.setChecked(true);
-                cbOpen.setChecked(false);
-                cbAccept.setChecked(false);
-                cbReject.setChecked(false);
             }
         });
 
         llOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
+                setFalseToAll();
                 cbOpen.setChecked(true);
-                cbAccept.setChecked(false);
-                cbReject.setChecked(false);
             }
         });
 
         llAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
-                cbOpen.setChecked(false);
+                setFalseToAll();
                 cbAccept.setChecked(true);
-                cbReject.setChecked(false);
             }
         });
 
         llReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
-                cbOpen.setChecked(false);
-                cbAccept.setChecked(false);
+                setFalseToAll();
                 cbReject.setChecked(true);
             }
         });
@@ -82,42 +74,40 @@ public class RequestFilterStatusFragment extends Fragment {
         cbAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setFalseToAll();
                 cbAll.setChecked(true);
-                cbOpen.setChecked(false);
-                cbAccept.setChecked(false);
-                cbReject.setChecked(false);
             }
         });
 
         cbOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
+                setFalseToAll();
                 cbOpen.setChecked(true);
-                cbAccept.setChecked(false);
-                cbReject.setChecked(false);
             }
         });
 
         cbAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
-                cbOpen.setChecked(false);
+                setFalseToAll();
                 cbAccept.setChecked(true);
-                cbReject.setChecked(false);
             }
         });
 
         cbReject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbAll.setChecked(false);
-                cbOpen.setChecked(false);
-                cbAccept.setChecked(false);
+                setFalseToAll();
                 cbReject.setChecked(true);
             }
         });
+    }
 
+    private void setFalseToAll() {
+        cbAll.setChecked(false);
+        cbOpen.setChecked(false);
+        cbAccept.setChecked(false);
+        cbReject.setChecked(false);
     }
 }

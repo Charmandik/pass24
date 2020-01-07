@@ -16,15 +16,15 @@ public class Constants {
 
     public static int SINGLE_USE_PASS = 1;
     public static int TEMPORARY_PASS = 2;
-
-    public static String getAuthToken() {
-        return "Bearer " + authToken;
-    }
-
-
     public static String userEmail = "";
     public static String userFirstName = "";
     public static String userLastName = "";
     public static String userFullName = "";
     public static String userPhone = "";
+    public static Integer requestTypeFilter = null;
+    public static Integer requestStatusFilter = null;
+
+    public static String getAuthToken() {
+        return "Bearer " + authToken;
+    }
 }

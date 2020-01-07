@@ -12,13 +12,13 @@ public class RequestCollection {
     @Expose
     private int type;
 
-    @SerializedName("objectId")
-    @Expose
-    private int objectId;
-
     @SerializedName("status")
     @Expose
     private int status;
+
+    @SerializedName("objectId")
+    @Expose
+    private int objectId;
 
     @SerializedName("requestData")
     @Expose
