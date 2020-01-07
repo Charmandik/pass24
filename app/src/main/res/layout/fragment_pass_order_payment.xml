@@ -22,7 +22,7 @@
             android:src="@drawable/ic_arrow_back" />
 
         <TextView
-            android:id="@+id/tvOrderPayTitle"
+            android:id="@+id/tvPassSelectedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -38,7 +38,7 @@
             android:id="@+id/tvOrderPaySum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvOrderPayTitle"
+            android:layout_below="@+id/tvPassSelectedTitle"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:text="Стоимость пропуска – 150 руб."

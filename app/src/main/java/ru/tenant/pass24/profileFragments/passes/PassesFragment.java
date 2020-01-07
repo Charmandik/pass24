@@ -67,7 +67,7 @@ public class PassesFragment extends Fragment {
     }
 
     public void setDataForRecycler(List<PassesCollection> passesResponses) {
-        mAdapter = new PassesAdapter(passesResponses);
+        mAdapter = new PassesAdapter(passesResponses, this.getFragmentManager());
         rvMyPass.setAdapter(mAdapter);
     }
 }
