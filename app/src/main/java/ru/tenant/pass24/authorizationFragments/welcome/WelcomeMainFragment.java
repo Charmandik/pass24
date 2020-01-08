@@ -204,7 +204,7 @@ public class WelcomeMainFragment extends Fragment {
 
                     @Override
                     public void onNext(ProfileResponse profileResponse) {
-                        if (profileResponse != null)
+                        if (profileResponse != null) {
                             if (profileResponse.getBody() != null) {
                                 if (profileResponse.getBody().getEmail() != null)
                                     Constants.userEmail = profileResponse.getBody().getEmail();
@@ -220,7 +220,18 @@ public class WelcomeMainFragment extends Fragment {
 
                                 if (profileResponse.getBody().getPhone() != null)
                                     Constants.userPhone = profileResponse.getBody().getPhone();
+
+                                Intent intent = new Intent(mContext, MainScreenActivity.class);
+                                mContext.startActivity(intent);
+                                if (mInstance.getActivity() != null)
+                                    mInstance.getActivity().finish();
                             }
+                            if (profileResponse.getError() != null) {
+                                if (profileResponse.getError().getCode().equals("UNAUTHENTICATED")) {
+                                    toLogin();
+                                }
+                            }
+                        }
                     }
 
                     @Override
@@ -229,9 +240,6 @@ public class WelcomeMainFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
-                        Intent intent = new Intent(mContext, MainScreenActivity.class);
-                        mContext.startActivity(intent);
-                        mInstance.getActivity().finish();
                     }
                 });
     }

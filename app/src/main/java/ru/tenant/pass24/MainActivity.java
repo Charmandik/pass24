@@ -9,7 +9,6 @@ import ru.tenant.pass24.authorizationFragments.login.LoginFragment;
 import ru.tenant.pass24.authorizationFragments.welcome.WelcomeMainFragment;
 
 public class MainActivity extends AppCompatActivity {
-    //todo поменять логику кнопкам снизу
     //todo выкинуть, если ошибка авторизации
     //todo красить желтым номер
     //todo время выводить в формате дд.ИМЯ_МЕСЯЦА

@@ -103,9 +103,11 @@ public class AddressSearchFragment extends Fragment {
 
                     @Override
                     public void onNext(ProfileAddressesResponse profileAddressesResponse) {
-                        if (profileAddressesResponse != null)
+                        if (profileAddressesResponse != null) {
                             if (profileAddressesResponse.getBody() != null)
                                 profileAddressesBodiesList.addAll(profileAddressesResponse.getBody());
+
+                        }
                     }
 
                     @Override
