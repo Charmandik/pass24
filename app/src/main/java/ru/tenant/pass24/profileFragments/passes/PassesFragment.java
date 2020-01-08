@@ -54,14 +54,13 @@ public class PassesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 passesPresenter.toPassOrderFragment();
-//                navigation_clicks.toPassOrder();
             }
         });
 
         ivPassSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                passesPresenter.toPassesFilter();
             }
         });
     }

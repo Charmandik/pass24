@@ -100,7 +100,7 @@
                 android:layout_weight="2">
 
                 <TextView
-                    android:id="@+id/tvOrderVehicleMark"
+                    android:id="@+id/tvPassStatusFilterTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -111,7 +111,7 @@
                     android:id="@+id/tvFeedTypeFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvOrderVehicleMark"
+                    android:layout_below="@+id/tvPassStatusFilterTitle"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="8dp"
                     android:text="Все"

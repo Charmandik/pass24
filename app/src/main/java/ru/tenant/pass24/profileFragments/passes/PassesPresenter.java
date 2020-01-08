@@ -38,4 +38,12 @@ public class PassesPresenter {
                 .addToBackStack("asd")
                 .commit();
     }
+
+    public void toPassesFilter() {
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.flPassesContainer, new PassesFilterFragment())
+                .addToBackStack("asd")
+                .commit();
+    }
 }

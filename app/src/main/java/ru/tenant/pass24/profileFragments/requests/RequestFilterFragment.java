@@ -16,7 +16,7 @@ import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 
 public class RequestFilterFragment extends Fragment {
-    public static String TAG = "RequestFilterStatusFragment";
+    public static String TAG = "PassesFilterStatusFragment";
     private ImageView btnBack, btnClose;
     private RelativeLayout rlRequestStatusFilter, rlFilterType;
     private TextView tvRequestStatusFilter, tvRequestTypeFilter, tvResetFilter;
