@@ -62,6 +62,7 @@ public class RequestsFragment extends Fragment {
                 passesPresenter.toRequestsFilter();
             }
         });
+
     }
 
     public void setDataForRecycler(List<RequestCollection> requestResponses) {

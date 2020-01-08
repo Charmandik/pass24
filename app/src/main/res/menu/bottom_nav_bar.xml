@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_menu_passes"
         android:title="" />
     <item
-        android:id="@+id/nav_trusted_people"
+        android:id="@+id/nav_create_pass"
         android:icon="@drawable/ic_menu_main2"
         android:title="" />
     <item

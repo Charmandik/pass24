@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ public class MainScreenActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_screen);
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
@@ -87,8 +88,9 @@ public class MainScreenActivity extends AppCompatActivity {
                         navController.navigate(R.id.nav_events_feed);
                         menuItem.setChecked(true);
                         break;
-                    case R.id.nav_trusted_people:
-                        navController.navigate(R.id.nav_trusted_people);
+                    case R.id.nav_create_pass:
+                        navController.navigate((R.id.nav_passes));
+                        drawer.closeDrawer(GravityCompat.START);
                         menuItem.setChecked(true);
                         break;
                     case R.id.btnLogout:
@@ -98,8 +100,43 @@ public class MainScreenActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                 }
-//                setTitle(menuItem.getTitle());
                 drawer.closeDrawers();
+                return false;
+            }
+        });
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Log.d("tag", menuItem.getItemId() + "");
+                switch (menuItem.getItemId()) {
+                    case (R.id.navigation_menu):
+                        drawer.openDrawer(GravityCompat.START);
+                        menuItem.setChecked(true);
+                        break;
+                    case (R.id.nav_passes):
+                        navController.navigate(R.id.nav_passes);
+                        drawer.closeDrawers();
+                        menuItem.setChecked(true);
+                        break;
+                    case (R.id.nav_create_pass):
+                        Bundle bundle = new Bundle();
+                        bundle.putString("action", "toCreate");
+                        navController.navigate(R.id.nav_passes, bundle);
+                        menuItem.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case (R.id.nav_requests):
+                        navController.navigate(R.id.nav_requests);
+                        menuItem.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case (R.id.nav_events_feed):
+                        navController.navigate(R.id.nav_events_feed);
+                        menuItem.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                }
                 return false;
             }
         });
@@ -110,9 +147,5 @@ public class MainScreenActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove("AUTH_TOKEN");
         editor.apply();
-    }
-
-    public void navigateToRequests() {
-        navController.navigate(R.id.nav_requests);
     }
 }

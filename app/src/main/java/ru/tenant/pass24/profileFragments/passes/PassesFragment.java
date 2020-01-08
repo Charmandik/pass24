@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
 
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.passes.apiModels.PassesCollection;
@@ -63,6 +64,12 @@ public class PassesFragment extends Fragment {
 //                passesPresenter.toPassesFilter();
             }
         });
+
+        if (getArguments() != null)
+            if (getArguments().getString("action") != null) {
+                if (Objects.requireNonNull(getArguments().getString("action")).equals("toCreate"))
+                    passesPresenter.toPassOrderFragment();
+            }
     }
 
     public void setDataForRecycler(List<PassesCollection> passesResponses) {
