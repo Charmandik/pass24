@@ -166,7 +166,7 @@ public class PassOrderInviteFragment extends Fragment {
                     public void onNext(CreateInviteResponse createInviteResponse) {
                         if (createInviteResponse != null)
                             if (createInviteResponse.getBody() != null)
-                                toPassOrderFragment(); //todo сменить на переход в passesFragment
+                                toPassCreatedFragment();
                     }
 
                     @Override
@@ -210,5 +210,15 @@ public class PassOrderInviteFragment extends Fragment {
                 .replace(R.id.flPassesContainer, new PassOrderFragment())
                 .addToBackStack("asd")
                 .commit();
+    }
+
+    public void toPassCreatedFragment() {
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, new PassCreatedFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }

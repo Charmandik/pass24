@@ -138,12 +138,14 @@ public class PassSelectedFragment extends Fragment {
     }
 
 
-    private void toPassesFragment() {
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassesFragment())
-                .addToBackStack(null)
-                .commit();
+    public void toPassesFragment() {
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, new PassesFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     public void toPassOrderFragment() {

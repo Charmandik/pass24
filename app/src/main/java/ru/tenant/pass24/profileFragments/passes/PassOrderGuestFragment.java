@@ -30,13 +30,12 @@ import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationMod
 
 public class PassOrderGuestFragment extends Fragment {
     public static String TAG = "PassOrderGuestFragment";
+    private static PassOrderGuestFragment mInstance;
     private RelativeLayout rlPassGuestVisitTime, rlPassGuestAddress;
     private ImageView backBtn, btnClose;
     private Button btnCreatePass;
     private TextView tvGuestPassAddress, tvVisitTimeInfo;
     private TextInputEditText tieGuestPassComment, tieGuestPassName;
-    private static PassOrderGuestFragment mInstance;
-
     private String startsAt = "";
     private String expiresAt = "";
     private String addressName = "";
@@ -164,7 +163,7 @@ public class PassOrderGuestFragment extends Fragment {
                     public void onNext(CreateVehiclePassResponse createRequestResponse) {
                         if (createRequestResponse != null)
                             if (createRequestResponse.getBody() != null)
-                                toPassOrderFragment(); //todo сменить на переход в passesFragment
+                                toPassCreatedFragment();
                     }
 
                     @Override
@@ -208,6 +207,16 @@ public class PassOrderGuestFragment extends Fragment {
                 .replace(R.id.flPassesContainer, new PassOrderFragment())
                 .addToBackStack("asd")
                 .commit();
+    }
+
+    public void toPassCreatedFragment() {
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, new PassCreatedFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
 }

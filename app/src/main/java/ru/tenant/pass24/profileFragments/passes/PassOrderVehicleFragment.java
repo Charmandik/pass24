@@ -32,8 +32,8 @@ import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class PassOrderVehicleFragment extends Fragment {
     public static String TAG = "PassOrderVehicleFragment";
-    private RelativeLayout rlPassOrderAddress, rlPassOrderType, rlPassOrderVehicleBrand, rlPassOrderVehicleType, rlPassOrderVisitTime;
     private static PassOrderVehicleFragment mInstance;
+    private RelativeLayout rlPassOrderAddress, rlPassOrderType, rlPassOrderVehicleBrand, rlPassOrderVehicleType, rlPassOrderVisitTime;
     private Button btnCreatePass;
     private TextView tvVehiclePassAddress, tvVehiclePassType, tvBrandName, tvCarTypeName, tvVisitTimeInfo;
     private EditText etVehicleNumber;
@@ -235,7 +235,9 @@ public class PassOrderVehicleFragment extends Fragment {
 
                     @Override
                     public void onNext(CreateVehiclePassResponse createRequestResponse) {
-
+                        if (createRequestResponse != null)
+                            if (createRequestResponse.getBody() != null)
+                                toPassCreatedFragment();
                     }
 
                     @Override
@@ -316,5 +318,15 @@ public class PassOrderVehicleFragment extends Fragment {
                 .replace(R.id.flPassesContainer, new PassOrderFragment())
                 .addToBackStack("asd")
                 .commit();
+    }
+
+    public void toPassCreatedFragment() {
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flPassesContainer, new PassCreatedFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }
