@@ -42,12 +42,12 @@ public class RequestFilterTypeFragment extends Fragment {
         llAll = view.findViewById(R.id.llAllStatusRequest);
         llOpen = view.findViewById(R.id.llOpenStatusRequest);
         llAccept = view.findViewById(R.id.llAcceptStatusRequest);
-        llReject = view.findViewById(R.id.llRejectStatusRequest);
+        llReject = view.findViewById(R.id.llEntityDeleted);
 
         cbAll = view.findViewById(R.id.cbAllStatus);
         cbOpen = view.findViewById(R.id.cbOpenStatus);
         cbAccept = view.findViewById(R.id.cbAcceptStatus);
-        cbReject = view.findViewById(R.id.cbRejectStatus);
+        cbReject = view.findViewById(R.id.cbEntityDeleted);
 
         btnBack = view.findViewById(R.id.btnBack);
         btnClose = view.findViewById(R.id.btnClose);

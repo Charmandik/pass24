@@ -23,6 +23,8 @@ public class Constants {
     public static String userPhone = "";
     public static Integer requestTypeFilter = null;
     public static Integer requestStatusFilter = null;
+    public static Integer eventFeedTypeFilter = null;
+    public static Integer eventFeedConfidantFilter = null;
 
     public static String getAuthToken() {
         return "Bearer " + authToken;

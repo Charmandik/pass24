@@ -17,7 +17,7 @@ public class FeedModel {
     private List<FeedCollection> feedResponses = new ArrayList();
 
     public void getEvents() {
-        ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken())
+        ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken(), Constants.eventFeedTypeFilter, Constants.eventFeedConfidantFilter)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<FeedResponse>() {

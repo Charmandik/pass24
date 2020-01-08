@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="56dp"
+    android:clickable="true"
     android:background="#979797">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,6 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/llNewAddressHeader">
 
             <RelativeLayout
+                android:id="@+id/rlEventTypeFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2">
@@ -106,6 +108,7 @@
                     android:text="Тип события" />
 
                 <TextView
+                    android:id="@+id/tvFeedTypeFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvOrderVehicleMark"
@@ -132,6 +135,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <RelativeLayout
+                android:id="@+id/rlEventConfidantFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -146,6 +150,7 @@
                     android:textColor="@color/textPrimary" />
 
                 <Switch
+                    android:id="@+id/swEventConfidantFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

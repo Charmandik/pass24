@@ -27,7 +27,7 @@
                 android:id="@+id/ivTrustPeopleItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#000000"
+                android:background="#FAFAFA"
                 android:src="@drawable/ic_trust_people" />
 
             <LinearLayout

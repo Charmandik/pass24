@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="56dp"
+    android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#979797">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_top_background"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <!--   Заголовок -->
+
+                    <LinearLayout
+                        android:id="@+id/llRequestStatusHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="23dp"
+                        android:paddingBottom="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageButton
+                            android:id="@+id/btnBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="#fff"
+                            android:src="@drawable/ic_arrow_back" />
+
+                        <TextView
+                            android:id="@+id/tvRequestStatusHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Статус запроса"
+                            android:textAlignment="center"
+                            android:textColor="#2A2A2A"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="#E0E0E0" />
+
+                    <!--    Все -->
+
+                    <LinearLayout
+                        android:id="@+id/llAllStatusRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvAllStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/text_all_status"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbAllStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0" />
+
+                    <LinearLayout
+                        android:id="@+id/llOpenStatusRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvOpenStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Сущность создана"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbOpenStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <!--    Открытые -->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0" />
+
+                    <!--    Подтверждённые -->
+
+                    <LinearLayout
+                        android:id="@+id/llAcceptStatusRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvAcceptStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Сущность изменена"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbAcceptStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0" />
+
+                    <!--    Отклонённые -->
+
+                    <LinearLayout
+                        android:id="@+id/llEntityDeleted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvEntityDeleted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Сущность удалена"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbEntityDeleted"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="#E0E0E0" />
+
+                    <!--    Все -->
+
+                    <LinearLayout
+                        android:id="@+id/llPassStatusChanged"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvPassStatusChanged"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Изменен статус пропуска"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbPassStatusChanged"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="#E0E0E0" />
+
+                    <!--    Все -->
+
+                    <LinearLayout
+                        android:id="@+id/llTrustmentStatusChanged"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvTrustmentStatusChanged"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Изменен статус доверенности"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbTrustmentStatusChanged"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="#E0E0E0" />
+
+                    <!--    Все -->
+
+                    <LinearLayout
+                        android:id="@+id/llRequestConfirmed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvRequestConfirmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Запрос одобрен"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbRequestConfirmed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+
+                        android:background="#E0E0E0" />
+
+                    <!--    Все -->
+
+                    <LinearLayout
+                        android:id="@+id/llRequestRejected"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+                            android:id="@+id/tvRequestRejected"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Запрос отклонен"
+                            android:textColor="#2A2A2A"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cbRequestRejected"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:button="@drawable/checkbox_selector"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_close_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+</ScrollView>
