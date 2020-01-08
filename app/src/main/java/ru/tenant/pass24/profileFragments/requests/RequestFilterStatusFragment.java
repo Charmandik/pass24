@@ -5,17 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Objects;
+
 import ru.tenant.pass24.R;
+import ru.tenant.pass24.helpers.Constants;
 
 public class RequestFilterStatusFragment extends Fragment {
     private LinearLayout llAll, llOpen, llAccept, llReject;
     private CheckBox cbAll, cbOpen, cbAccept, cbReject;
+    private ImageButton btnBack;
+    private ImageView btnClose;
+    private RequestFilterStatusFragment mInstance;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +33,7 @@ public class RequestFilterStatusFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mInstance = this;
         init(view);
     }
 
@@ -39,11 +48,15 @@ public class RequestFilterStatusFragment extends Fragment {
         cbAccept = view.findViewById(R.id.cbAcceptStatus);
         cbReject = view.findViewById(R.id.cbRejectStatus);
 
+        btnBack = view.findViewById(R.id.btnBack);
+        btnClose = view.findViewById(R.id.btnClose);
+
         llAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFalseToAll();
                 cbAll.setChecked(true);
+                Constants.requestStatusFilter = null;
             }
         });
 
@@ -52,6 +65,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbOpen.setChecked(true);
+                Constants.requestStatusFilter = 1;
             }
         });
 
@@ -60,6 +74,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbAccept.setChecked(true);
+                Constants.requestStatusFilter = 2;
             }
         });
 
@@ -68,6 +83,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbReject.setChecked(true);
+                Constants.requestStatusFilter = 3;
             }
         });
 
@@ -76,6 +92,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbAll.setChecked(true);
+                Constants.requestStatusFilter = null;
             }
         });
 
@@ -84,6 +101,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbOpen.setChecked(true);
+                Constants.requestStatusFilter = 1;
             }
         });
 
@@ -92,6 +110,7 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbAccept.setChecked(true);
+                Constants.requestStatusFilter = 2;
             }
         });
 
@@ -100,8 +119,43 @@ public class RequestFilterStatusFragment extends Fragment {
             public void onClick(View v) {
                 setFalseToAll();
                 cbReject.setChecked(true);
+                Constants.requestStatusFilter = 3;
             }
         });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mInstance.getArguments() != null)
+                    if (Objects.requireNonNull(mInstance.getArguments().getString("fragment")).equals(RequestFilterFragment.TAG))
+                        toRequestsFilter();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mInstance.getArguments() != null)
+                    if (Objects.requireNonNull(mInstance.getArguments().getString("fragment")).equals(RequestFilterFragment.TAG))
+                        toRequestsFilter();
+            }
+        });
+
+        setFalseToAll();
+        if (Constants.requestStatusFilter != null)
+            switch (Constants.requestStatusFilter) {
+                case (1):
+                    cbOpen.setChecked(true);
+                    break;
+                case (2):
+                    cbAccept.setChecked(true);
+                    break;
+                case (3):
+                    cbReject.setChecked(true);
+                    break;
+            }
+        else
+            cbAll.setChecked(true);
     }
 
     private void setFalseToAll() {
@@ -109,5 +163,14 @@ public class RequestFilterStatusFragment extends Fragment {
         cbOpen.setChecked(false);
         cbAccept.setChecked(false);
         cbReject.setChecked(false);
+    }
+
+
+    public void toRequestsFilter() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flRequestsContainer, new RequestFilterFragment())
+                .addToBackStack("")
+                .commit();
     }
 }

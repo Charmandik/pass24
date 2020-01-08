@@ -37,7 +37,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterHol
 
     @Override
     public void onBindViewHolder(@NonNull FeedAdapterHolder holder, int position) {
-        FeedCollection feedCollection = feedResponses.get(position);
+        final FeedCollection feedCollection = feedResponses.get(position);
         if (feedCollection != null) {
             holder.tvItemInfo.setText(feedCollection.getTitle());
             if (feedCollection.getHappenedAt() != null) {
@@ -59,16 +59,16 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedAdapterHol
             holder.llItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    toEventFeedSelected();
+                    toEventFeedSelected(feedCollection.getTitle(), feedCollection.getMessage());
                 }
             });
         }
     }
 
-    public void toEventFeedSelected() {
+    public void toEventFeedSelected(String title, String message) {
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flFeedContainer, new FeedSelected())
+                .replace(R.id.flFeedContainer, new FeedSelected(title, message))
                 .addToBackStack("")
                 .commit();
     }
