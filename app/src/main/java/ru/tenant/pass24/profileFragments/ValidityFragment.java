@@ -19,6 +19,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 import ru.tenant.pass24.R;
@@ -213,6 +214,11 @@ public class ValidityFragment extends Fragment {
                 setExpiresTime();
             }
         });
+
+        tvDataEditStart.setText(startDataTime.get(Calendar.DAY_OF_MONTH) + " " + startDataTime.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()));
+        tvDataEditExpires.setText(expirestDataTime.get(Calendar.DAY_OF_MONTH) + " " + expirestDataTime.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()));
+        tvTimeEditStart.setText(startDataTime.get(Calendar.HOUR) + ":" + startDataTime.get(Calendar.MINUTE));
+        tvTimeEditExpires.setText(expirestDataTime.get(Calendar.HOUR) + ":" + expirestDataTime.get(Calendar.MINUTE));
     }
 
     public void setStartDate() {

@@ -38,17 +38,22 @@ class ConfidanceAdapter extends RecyclerView.Adapter<ConfidanceAdapter.Confidanc
 
     @Override
     public void onBindViewHolder(@NonNull ConfidanceAdapterHolder holder, int position) {
-        ConfidanceCollection feedCollection = confidanceCollectionList.get(position);
-        if (feedCollection != null) {
-            if (feedCollection.getConfidant() != null)
-                if (feedCollection.getConfidant().getName() != null)
-                    holder.tvTrustPeopleName.setText(feedCollection.getConfidant().getName());
-            if (feedCollection.getExpiresAt() != null)
-                holder.tvTrustPeopleDate.setText(feedCollection.getExpiresAt().substring(0, 11));
+        final ConfidanceCollection confidanceCollection = confidanceCollectionList.get(position);
+        if (confidanceCollection != null) {
+            if (confidanceCollection.getConfidant() != null)
+                if (confidanceCollection.getConfidant().getName() != null)
+                    holder.tvTrustPeopleName.setText(confidanceCollection.getConfidant().getName());
+            if (confidanceCollection.getExpiresAt() != null)
+                holder.tvTrustPeopleDate.setText(confidanceCollection.getExpiresAt().substring(0, 11));
             holder.cvTrustPeopleItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    toTrustPeopleSelected();
+                    toTrustPeopleSelected(
+                            confidanceCollection.getConfidant().getName(),
+                            confidanceCollection.getAddress().getName(),
+                            confidanceCollection.getStartsAt(),
+                            confidanceCollection.getExpiresAt(),
+                            confidanceCollection.getConfidant().getPhone());
                 }
             });
         }
@@ -59,10 +64,10 @@ class ConfidanceAdapter extends RecyclerView.Adapter<ConfidanceAdapter.Confidanc
         return (confidanceCollectionList != null ? confidanceCollectionList.size() : 0);
     }
 
-    public void toTrustPeopleSelected() {
+    public void toTrustPeopleSelected(String name, String address, String startsAt, String expiresAt, String phone) {
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.flTrustPeopleContainer, new TrustedPeopleSelected())
+                .replace(R.id.flTrustPeopleContainer, new TrustedPeopleSelected(name, address, startsAt, expiresAt, phone))
                 .addToBackStack(null)
                 .commit();
     }
@@ -70,7 +75,7 @@ class ConfidanceAdapter extends RecyclerView.Adapter<ConfidanceAdapter.Confidanc
     public static class ConfidanceAdapterHolder extends RecyclerView.ViewHolder {
         public TextView tvTrustPeopleName, tvTrustPeopleDate;
         public ImageView ivTrustPeopleItem;
-        public FrameLayout flTrustPeopleContainer;
+        public FrameLayout flConfidanceItem;
         private CardView cvTrustPeopleItem;
 
         public ConfidanceAdapterHolder(ViewGroup viewGroup) {
@@ -78,7 +83,7 @@ class ConfidanceAdapter extends RecyclerView.Adapter<ConfidanceAdapter.Confidanc
             this.tvTrustPeopleName = viewGroup.findViewById(R.id.tvTrustPeopleName);
             this.tvTrustPeopleDate = viewGroup.findViewById(R.id.tvTrustPeopleDate);
             this.ivTrustPeopleItem = viewGroup.findViewById(R.id.ivTrustPeopleItem);
-            this.flTrustPeopleContainer = viewGroup.findViewById(R.id.flTrustPeopleContainer);
+            this.flConfidanceItem = viewGroup.findViewById(R.id.flConfidanceItem);
             this.cvTrustPeopleItem = viewGroup.findViewById(R.id.cvTrustPeopleItem);
         }
     }
