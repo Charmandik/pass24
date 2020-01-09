@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -153,6 +155,7 @@ public class PassOrderGuestFragment extends Fragment {
         guestData.setName(tieGuestPassName.getText().toString().trim());
         createGuestPassRequest.setGuestData(guestData);
         createGuestPassRequest.setComment(tieGuestPassComment.getText().toString().trim());
+        createGuestPassRequest.setOptions(new ArrayList());
         ApiService.getInstance().getPassesApi().createGuestPass(Constants.getAuthToken(), createGuestPassRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

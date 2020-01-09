@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -248,6 +250,7 @@ public class PassVehicleEditFragment extends Fragment {
         vehicleGuestData.setPlateNumber(etVehicleNumber.getText().toString().trim());
         createVehiclePassRequest.setVehicleGuestData(vehicleGuestData);
         createVehiclePassRequest.setComment(etVehiclePassComment.getText().toString().trim());
+        createVehiclePassRequest.setOptions(new ArrayList());
         ApiService.getInstance().getPassesApi().editPass(Constants.getAuthToken(), passId, createVehiclePassRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -265,6 +268,8 @@ public class PassVehicleEditFragment extends Fragment {
                                 if (editPassResponse.getError().getCode() != null)
                                     if (editPassResponse.getError().getCode().equals("CLOSED_PASS"))
                                         Toast.makeText(mInstance.getContext(), "Пропуск закрыт", Toast.LENGTH_LONG).show();
+                                    else
+                                        Toast.makeText(mInstance.getContext(), editPassResponse.getError().getCode(), Toast.LENGTH_LONG).show();
 //                        else if (editPassResponse.getError() != null)
 //                                if (editPassResponse.getError().getCode() != null)
 //                                    if (editPassResponse.getError().getCode().equals("UNAUTHENTICATED"))
