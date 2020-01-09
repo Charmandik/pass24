@@ -9,7 +9,6 @@ import ru.tenant.pass24.authorizationFragments.login.LoginFragment;
 import ru.tenant.pass24.authorizationFragments.welcome.WelcomeMainFragment;
 
 public class MainActivity extends AppCompatActivity {
-    //todo надпись пополнить в балансе
     //todo возможность редактировать пропуска
     //todo возможность редактировать профиль
     //todo возможность поиска
