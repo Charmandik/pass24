@@ -1,4 +1,4 @@
-package ru.tenant.pass24.profileFragments.passes;
+package ru.tenant.pass24.profileFragments.passes.passSelected;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
+import ru.tenant.pass24.profileFragments.passes.PassOrderFragment;
+import ru.tenant.pass24.profileFragments.passes.PassesFragment;
 import ru.tenant.pass24.profileFragments.passes.apiModels.DeletePassResponse;
 
 public class PassVehicleSelectedFragment extends Fragment {
@@ -175,7 +177,7 @@ public class PassVehicleSelectedFragment extends Fragment {
     public void toPassVehicleEditFragment() {
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.flPassesContainer, PassVehicleEditFragment.getInstance())
+                .replace(R.id.flPassesContainer, PassVehicleEditFragment.getInstance(passId))
                 .addToBackStack("asd")
                 .commit();
     }

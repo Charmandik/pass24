@@ -358,7 +358,7 @@
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/rounded_red_button"
                     android:minHeight="56dp"
-                    android:text="Заказать"
+                    android:text="Сохранить"
                     android:textAllCaps="false"
                     android:textColor="#ffffff" />
 

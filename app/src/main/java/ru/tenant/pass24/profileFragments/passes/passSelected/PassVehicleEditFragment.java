@@ -1,4 +1,4 @@
-package ru.tenant.pass24.profileFragments.passes;
+package ru.tenant.pass24.profileFragments.passes.passSelected;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,9 +27,16 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
+import ru.tenant.pass24.profileFragments.passes.PassCreatedFragment;
+import ru.tenant.pass24.profileFragments.passes.PassOrderFragment;
+import ru.tenant.pass24.profileFragments.passes.PassOrderTypeFragment;
+import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
+import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleTypeFragment;
+import ru.tenant.pass24.profileFragments.passes.apiModels.PassesCollection;
 import ru.tenant.pass24.profileFragments.passes.apiModels.VehicleGuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
+import ru.tenant.pass24.profileFragments.passes.passSelected.apiModels.GetPassResponse;
 import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class PassVehicleEditFragment extends Fragment {
@@ -41,7 +48,7 @@ public class PassVehicleEditFragment extends Fragment {
     private EditText etVehicleNumber;
     private TextInputEditText etVehiclePassComment;
     private ImageView btnBack, closeBtn;
-
+    private View view;
 
     private String addressName = "";
     private String vehicleBrand = "";
@@ -53,27 +60,31 @@ public class PassVehicleEditFragment extends Fragment {
     private String expiresAt = "";
     private int passType;
     private String passName = "";
+    private int passId;
 
-
-    private PassVehicleEditFragment() {
+    private PassVehicleEditFragment(int passId) {
+        this.passId = passId;
         mInstance = this;
     }
 
-    public static PassVehicleEditFragment getInstance() {
+    public static PassVehicleEditFragment getInstance(int passId) {
         if (mInstance == null) {
-            return new PassVehicleEditFragment();
+            return new PassVehicleEditFragment(passId);
         } else return mInstance;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pass_order_vehicle, container, false);
+        return inflater.inflate(R.layout.fragment_pass_vehicle_edit, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init(view);
+        this.view = view;
+        getPassInfo();
+
+
     }
 
     private void init(View view) {
@@ -253,6 +264,49 @@ public class PassVehicleEditFragment extends Fragment {
 
                     @Override
                     public void onComplete() {
+                    }
+                });
+    }
+
+    private void getPassInfo() {
+        ApiService.getInstance().getPassesApi().getPassInfo(Constants.getAuthToken(), passId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<GetPassResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(GetPassResponse getPassResponse) {
+                        if (getPassResponse != null)
+                            if (getPassResponse.getBody() != null) {
+                                PassesCollection body = getPassResponse.getBody();
+                                addressName = body.getAddress().getName();
+                                vehicleBrand = body.getGuestData().getModel().getTitle();
+                                carTypeName = "";
+                                carType = body.getGuestData().getVehicleType();
+                                objectId = body.getAddress().getId();
+                                modelId = body.getGuestData().getModel().getId();
+                                startsAt = body.getStartsAt();
+                                expiresAt = body.getExpiresAt();
+                                passType = body.getGuestType();
+                                passName = body.getTitle();
+                            } else if (getPassResponse.getError() != null)
+                                if (getPassResponse.getError().getCode() != null)
+                                    if (getPassResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        init(view);
                     }
                 });
     }

@@ -14,6 +14,7 @@ import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.C
 import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.CreateInviteResponse;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
+import ru.tenant.pass24.profileFragments.passes.passSelected.apiModels.GetPassResponse;
 
 public interface PassesApi {
     @GET("passes/")
@@ -37,4 +38,8 @@ public interface PassesApi {
     @DELETE("passes/{passId}")
     Observable<DeletePassResponse> deletePass(@Header("Authorization") String authToken,
                                               @Path("passId") int passId);
+
+    @GET("passes/{passId}")
+    Observable<GetPassResponse> getPassInfo(@Header("Authorization") String authToken,
+                                            @Path("passId") int passId);
 }

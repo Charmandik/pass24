@@ -14,6 +14,7 @@ import java.util.List;
 
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.profileFragments.passes.apiModels.PassesCollection;
+import ru.tenant.pass24.profileFragments.passes.passSelected.PassVehicleSelectedFragment;
 
 public class PassesAdapter extends RecyclerView.Adapter<PassesAdapter.PassesAdapterHolder> {
     private List<PassesCollection> passesCollections;
