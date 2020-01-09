@@ -1,6 +1,7 @@
 package ru.tenant.pass24;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -27,9 +28,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FragmentManager fragmentManager = this.getSupportFragmentManager();
-        if (getIntent().getBooleanExtra("toLogin", false))
+        if (getIntent().getBooleanExtra("toLogin", false)) {
             fragmentManager.beginTransaction().add(R.id.flMainContainer, new LoginFragment()).commit();
-        else
+            Toast.makeText(this, "Ошибка авторизации", Toast.LENGTH_LONG).show();
+        } else
             fragmentManager.beginTransaction().add(R.id.flMainContainer, new WelcomeMainFragment()).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStack();
     }
 }

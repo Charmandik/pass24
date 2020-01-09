@@ -160,4 +160,10 @@ public class MainScreenActivity extends AppCompatActivity {
         editor.remove("AUTH_TOKEN");
         editor.apply();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStack();
+    }
 }
