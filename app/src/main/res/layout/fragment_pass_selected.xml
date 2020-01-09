@@ -1,222 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="56dp"
-    android:background="#979797"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="#979797">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_top_background">
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
-            android:src="@drawable/ic_arrow_back" />
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_top_background">
 
-        <TextView
-            android:id="@+id/tvPassSelectedTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="32dp"
-            android:text="Renault, Е471РЕ21"
-            android:textAlignment="center"
-            android:textColor="@color/textPrimary"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tvPassSelectedPassType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPassSelectedTitle"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="#B9B9B9" />
-
-        <ImageView
-            android:id="@+id/ivPassOrderPaymentCar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPassSelectedPassType"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_vehicle_order_payment" />
-
-        <LinearLayout
-            android:id="@+id/llPassSelectedActions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ivPassOrderPaymentCar"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
+            <ImageView
+                android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/ic_arrow_back" />
 
-                <ImageView
-                    android:id="@+id/ivAddTemporaryPass"
+            <TextView
+                android:id="@+id/tvPassSelectedTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="32dp"
+                android:text="Renault, Е471РЕ21"
+                android:textAlignment="center"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvPassSelectedPassType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPassSelectedTitle"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#B9B9B9" />
+
+            <ImageView
+                android:id="@+id/ivPassOrderPaymentCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPassSelectedPassType"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_vehicle_order_payment" />
+
+            <LinearLayout
+                android:id="@+id/llPassSelectedActions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivPassOrderPaymentCar"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_add_pass" />
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <TextView
+                    <ImageView
+                        android:id="@+id/ivAddTemporaryPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_add_pass" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Временный \nпропуск"
+                        android:textAlignment="center"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.5"
-                    android:text="Временный \nпропуск"
-                    android:textAlignment="center"
-                    android:textColor="@color/textPrimary" />
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivAddPermanentPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_add_pass" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Постоянный\nпропуск"
+                        android:textAlignment="center"
+                        android:textColor="@color/textPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEditPass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="48dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivEditPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_edit" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Изменить"
+                        android:textAlignment="center"
+                        android:textColor="@color/textPrimary" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivDeletePass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_delete_pass" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.5"
+                        android:text="Удалить"
+                        android:textAlignment="center"
+                        android:textColor="@color/textPrimary" />
+
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/ivAddPermanentPass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_add_pass" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.5"
-                    android:text="Постоянный\nпропуск"
-                    android:textAlignment="center"
-                    android:textColor="@color/textPrimary" />
-            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llPassOrderPaymentInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/llPassSelectedActions"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/ivDeletePass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_delete_pass" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="#E0E0E0" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:alpha="0.5"
-                    android:text="Удалить"
-                    android:textAlignment="center"
+                    android:text="Адрес"
                     android:textColor="@color/textPrimary" />
 
+
+                <TextView
+                    android:id="@+id/tvPassSelectedAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/textPrimary" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.5"
+                    android:text="Время визита"
+                    android:textColor="@color/textPrimary" />
+
+
+                <TextView
+                    android:id="@+id/tvPassSelectedVisitTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:text=""
+                    android:textColor="@color/textPrimary" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.5"
+                    android:text="Комментарий"
+                    android:textColor="@color/textPrimary" />
+
+
+                <TextView
+                    android:id="@+id/tvPassSelectedComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/textPrimary" />
             </LinearLayout>
-        </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/llPassOrderPaymentInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/llPassSelectedActions"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="#E0E0E0" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:alpha="0.5"
-                android:text="Адрес"
-                android:textColor="@color/textPrimary" />
-
-
-            <TextView
-                android:id="@+id/tvPassSelectedAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/textPrimary" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"
-                android:alpha="0.5"
-                android:text="Время визита"
-                android:textColor="@color/textPrimary" />
-
-
-            <TextView
-                android:id="@+id/tvPassSelectedVisitTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:text=""
-                android:textColor="@color/textPrimary" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:alpha="0.5"
-                android:text="Комментарий"
-                android:textColor="@color/textPrimary" />
-
-
-            <TextView
-                android:id="@+id/tvPassSelectedComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/textPrimary" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -228,5 +258,5 @@
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/ic_close_page" />
         </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

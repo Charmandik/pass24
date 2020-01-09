@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +24,11 @@ import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.passes.apiModels.DeletePassResponse;
 
-public class PassSelectedFragment extends Fragment {
-    public static String TAG = "PassSelectedFragment";
+public class PassVehicleSelectedFragment extends Fragment {
+    public static String TAG = "PassVehicleSelectedFragment";
     private ImageView backBtn, ivBtnClose, ivDeletePass, ivAddPermanentPass, ivAddTemporaryPass;
     private TextView tvPassSelectedTitle, tvPassSelectedAddress, tvPassSelectedVisitTime, tvPassSelectedComment;
+    private LinearLayout llEditPass;
 
     private int passId;
     private String title;
@@ -35,7 +37,7 @@ public class PassSelectedFragment extends Fragment {
     private String visitTime;
     private String commentary;
 
-    public PassSelectedFragment(int id, String title, String address, String visitTime, String commentary, String inviteLink) {
+    public PassVehicleSelectedFragment(int id, String title, String address, String visitTime, String commentary, String inviteLink) {
         this.passId = id;
         this.title = title;
         this.inviteLink = inviteLink;
@@ -65,6 +67,7 @@ public class PassSelectedFragment extends Fragment {
         ivDeletePass = view.findViewById(R.id.ivDeletePass);
         ivAddPermanentPass = view.findViewById(R.id.ivAddPermanentPass);
         ivAddTemporaryPass = view.findViewById(R.id.ivAddTemporaryPass);
+        llEditPass = view.findViewById(R.id.llEditPass);
 
         if (address != null)
             tvPassSelectedAddress.setText(address);
@@ -107,6 +110,13 @@ public class PassSelectedFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 toPassesFragment();
+            }
+        });
+
+        llEditPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toPassVehicleEditFragment();
             }
         });
     }
@@ -158,6 +168,14 @@ public class PassSelectedFragment extends Fragment {
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.flPassesContainer, new PassOrderFragment())
+                .addToBackStack("asd")
+                .commit();
+    }
+
+    public void toPassVehicleEditFragment() {
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flPassesContainer, PassVehicleEditFragment.getInstance())
                 .addToBackStack("asd")
                 .commit();
     }

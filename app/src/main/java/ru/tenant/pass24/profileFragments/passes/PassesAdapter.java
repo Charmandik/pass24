@@ -92,8 +92,8 @@ public class PassesAdapter extends RecyclerView.Adapter<PassesAdapter.PassesAdap
     public void toPassSelected(int id, String title, String address, String visitTime, String commentary, String inviteLink) {
         fragmentManager
                 .beginTransaction()
-                .add(R.id.flPassesContainer, new PassSelectedFragment(id, title, address, visitTime, commentary, inviteLink))
-                .addToBackStack("PassSelectedFragment")
+                .add(R.id.flPassesContainer, new PassVehicleSelectedFragment(id, title, address, visitTime, commentary, inviteLink))
+                .addToBackStack("PassVehicleSelectedFragment")
                 .commit();
     }
 

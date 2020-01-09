@@ -17,7 +17,6 @@ public class FeedModel {
     private List<FeedCollection> feedResponses = new ArrayList();
 
     public void getEvents() {
-        Constants.authToken += "123";
         ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken(), Constants.eventFeedTypeFilter, Constants.eventFeedConfidantFilter)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -37,7 +36,6 @@ public class FeedModel {
                                 if (feedResponse.getError().getCode() != null)
                                     if (feedResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
-
                     }
 
                     @Override

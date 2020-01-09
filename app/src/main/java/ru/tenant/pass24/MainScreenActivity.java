@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,8 +68,6 @@ public class MainScreenActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.nav_balance:
-                        drawer.closeDrawers();
-                        Log.d("tag", "balance");
                         menuItem.setChecked(true);
                         break;
                     case R.id.navigation_menu:
@@ -98,6 +95,12 @@ public class MainScreenActivity extends AppCompatActivity {
                         drawer.closeDrawer(GravityCompat.START);
                         menuItem.setChecked(true);
                         break;
+                    case R.id.nav_trusted_people:
+                        navController.navigate((R.id.nav_trusted_people));
+                        drawer.closeDrawer(GravityCompat.START);
+                        menuItem.setChecked(true);
+                        break;
+
                 }
                 drawer.closeDrawers();
                 return false;
