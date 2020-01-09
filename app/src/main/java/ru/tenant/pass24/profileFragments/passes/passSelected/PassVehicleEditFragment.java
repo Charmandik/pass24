@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +35,7 @@ import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleTypeFragment;
 import ru.tenant.pass24.profileFragments.passes.apiModels.PassesCollection;
 import ru.tenant.pass24.profileFragments.passes.apiModels.VehicleGuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
-import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
+import ru.tenant.pass24.profileFragments.passes.passSelected.apiModels.EditPassResponse;
 import ru.tenant.pass24.profileFragments.passes.passSelected.apiModels.GetPassResponse;
 import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
@@ -57,7 +58,7 @@ public class PassVehicleEditFragment extends Fragment {
     private int modelId;
     private String startsAt = "";
     private String expiresAt = "";
-    private int passType;
+    private int durationType;
     private String passTypeName = "";
     private String vehicleNumber = "";
     private String commentary = "";
@@ -157,7 +158,7 @@ public class PassVehicleEditFragment extends Fragment {
         btnCreatePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createVehiclePass();
+                editPass();
             }
         });
 
@@ -227,19 +228,19 @@ public class PassVehicleEditFragment extends Fragment {
 
             if (this.getArguments().getString("passTypeName") != null) {
                 tvVehiclePassType.setVisibility(View.VISIBLE);
-                passType = this.getArguments().getInt("passType");
+                durationType = this.getArguments().getInt("durationType");
                 passTypeName = this.getArguments().getString("passTypeName");
                 tvVehiclePassType.setText(passTypeName);
             }
         }
     }
 
-    private void createVehiclePass() {
+    private void editPass() {
         CreateVehiclePassRequest createVehiclePassRequest = new CreateVehiclePassRequest();
         createVehiclePassRequest.setAddressId(objectId);
         createVehiclePassRequest.setStartsAt(startsAt);
         createVehiclePassRequest.setExpiresAt(expiresAt);
-        createVehiclePassRequest.setDurationType(passType);
+        createVehiclePassRequest.setDurationType(durationType);
         createVehiclePassRequest.setGuestType(1);
         VehicleGuestData vehicleGuestData = new VehicleGuestData();
         vehicleGuestData.setVehicleType(carType);
@@ -247,29 +248,31 @@ public class PassVehicleEditFragment extends Fragment {
         vehicleGuestData.setPlateNumber(etVehicleNumber.getText().toString().trim());
         createVehiclePassRequest.setVehicleGuestData(vehicleGuestData);
         createVehiclePassRequest.setComment(etVehiclePassComment.getText().toString().trim());
-        ApiService.getInstance().getPassesApi().createVehiclePass(Constants.getAuthToken(), createVehiclePassRequest)
+        ApiService.getInstance().getPassesApi().editPass(Constants.getAuthToken(), passId, createVehiclePassRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CreateVehiclePassResponse>() {
+                .subscribe(new Observer<EditPassResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
                     }
 
                     @Override
-                    public void onNext(CreateVehiclePassResponse createVehiclePassResponse) {
-                        if (createVehiclePassResponse != null)
-                            if (createVehiclePassResponse.getBody() != null) {
-                                toPassCreatedFragment();
-                            } else if (createVehiclePassResponse.getError() != null)
-                                if (createVehiclePassResponse.getError().getCode() != null)
-                                    if (createVehiclePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
-                                        toLogin();
+                    public void onNext(EditPassResponse editPassResponse) {
+                        if (editPassResponse != null)
+                            if (editPassResponse.getBody() != null) {
+//                                toPassCreatedFragment();
+                            } else if (editPassResponse.getError() != null)
+                                if (editPassResponse.getError().getCode() != null)
+                                    if (editPassResponse.getError().getCode().equals("CLOSED_PASS"))
+                                        Toast.makeText(mInstance.getContext(), "Пропуск закрыт", Toast.LENGTH_LONG).show();
+//                        else if (editPassResponse.getError() != null)
+//                                if (editPassResponse.getError().getCode() != null)
+//                                    if (editPassResponse.getError().getCode().equals("UNAUTHENTICATED"))
+//                                        toLogin();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
                     }
 
                     @Override
@@ -296,6 +299,7 @@ public class PassVehicleEditFragment extends Fragment {
                                 if (body.getAddress() != null) {
                                     if (body.getAddress().getName() != null)
                                         addressName = body.getAddress().getName();
+
                                     if (body.getAddress().getId() != null)
                                         objectId = body.getAddress().getId();
                                 }
@@ -305,21 +309,42 @@ public class PassVehicleEditFragment extends Fragment {
                                         vehicleBrand = body.getGuestData().getModel().getTitle();
                                         modelId = body.getGuestData().getModel().getId();
                                     }
+
                                     if (body.getGuestData().getPlateNumber() != null)
                                         vehicleNumber = body.getGuestData().getPlateNumber();
-                                    if (body.getGuestData().getVehicleType() != null)
+
+                                    if (body.getGuestData().getVehicleType() != null) {
                                         carType = body.getGuestData().getVehicleType();
+
+                                        if (carType == 1)
+                                            carTypeName = "Легковой/мото";
+                                        else if (carType == 2)
+                                            carTypeName = "Грузовой До 3,5 тонн";
+                                        else if (carType == 3)
+                                            carTypeName = "Грузовой от 3,5 до 10 тонн";
+                                        else if (carType == 4)
+                                            carTypeName = "Грузовой от 10 тонн";
+                                    }
                                 }
+
                                 if (body.getGuestType() != null)
-                                    passType = body.getGuestType();
+                                    durationType = body.getGuestType();
+
                                 if (body.getStartsAt() != null)
                                     startsAt = body.getStartsAt();
+
                                 if (body.getExpiresAt() != null)
                                     expiresAt = body.getExpiresAt();
-                                if (body.getTitle() != null)
-                                    passTypeName = body.getTitle();
-                                if (body.getGuestType() != null)
-                                    carTypeName = "";
+
+                                if (body.getDurationType() != null) {
+                                    if (body.getDurationType() == 1)
+                                        passTypeName = "Одноразовый";
+                                    else if (body.getDurationType() == 2)
+                                        passTypeName = "Временный";
+                                    else if (body.getDurationType() == 3)
+                                        passTypeName = "Постоянный";
+                                }
+
                                 if (body.getComment() != null)
                                     commentary = body.getComment();
 

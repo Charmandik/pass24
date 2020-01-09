@@ -71,7 +71,8 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -90,7 +91,8 @@
                         android:layout_marginTop="4dp"
                         android:text="Какая-то подпись"
                         android:textColor="#2A2A2A"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -125,7 +127,7 @@
                         android:id="@+id/tvTruckHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Грузовой 1"
+                        android:text="Грузовой"
                         android:textColor="#2A2A2A"
                         android:textSize="14sp" />
 
@@ -172,7 +174,7 @@
                         android:id="@+id/tvBigTruckHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Грузовой 2"
+                        android:text="Грузовой"
                         android:textColor="#2A2A2A"
                         android:textSize="14sp" />
 
@@ -219,7 +221,7 @@
                         android:id="@+id/tvAnotherTruckHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ещё какой-то"
+                        android:text="Грузовой"
                         android:textColor="#2A2A2A"
                         android:textSize="14sp" />
 
@@ -228,7 +230,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="От 3,5 до 10 тонн"
+                        android:text="От 10 тонн"
                         android:textColor="#2A2A2A"
                         android:textSize="12sp" />
 

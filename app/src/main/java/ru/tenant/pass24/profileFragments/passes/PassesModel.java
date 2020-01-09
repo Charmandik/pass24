@@ -1,5 +1,7 @@
 package ru.tenant.pass24.profileFragments.passes;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class PassesModel {
                                 if (passesResponse.getError().getCode() != null)
                                     if (passesResponse.getError().getCode().equals("UNAUTHENTICATED")) {
                                         toLogin();
-                                    }
+                                    }else showMessage(passesResponse.getError().getCode());
+
                             }
                     }
 
@@ -52,5 +55,8 @@ public class PassesModel {
 
     public void toLogin() {
         passesPresenter.toLogin();
+    }
+    public void showMessage(String message) {
+        passesPresenter.showMessage(message);
     }
 }

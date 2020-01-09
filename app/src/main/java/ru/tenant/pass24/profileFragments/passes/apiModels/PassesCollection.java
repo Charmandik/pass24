@@ -78,10 +78,13 @@ public class PassesCollection {
     @Expose
     private String inviteLink;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public PassesCollectionObject getObject() {
         return object;
@@ -155,16 +158,8 @@ public class PassesCollection {
         this.closedAt = closedAt;
     }
 
-    public int getDurationType() {
+    public Integer getDurationType() {
         return durationType;
-    }
-
-    public void setDurationType(int durationType) {
-        this.durationType = durationType;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setDurationType(Integer durationType) {
@@ -211,6 +206,13 @@ public class PassesCollection {
         this.comment = comment;
     }
 
+    public List<CollectionOptions> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<CollectionOptions> options) {
+        this.options = options;
+    }
 
     public String getInviteLink() {
         return inviteLink;
@@ -218,13 +220,5 @@ public class PassesCollection {
 
     public void setInviteLink(String inviteLink) {
         this.inviteLink = inviteLink;
-    }
-
-    public List<CollectionOptions> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<CollectionOptions> options) {
-        this.options = options;
     }
 }

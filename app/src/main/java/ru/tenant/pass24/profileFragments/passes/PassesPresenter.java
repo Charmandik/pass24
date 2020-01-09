@@ -1,6 +1,7 @@
 package ru.tenant.pass24.profileFragments.passes;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -23,7 +24,7 @@ public class PassesPresenter {
 
     public void attachView(PassesFragment passesFragment) {
         view = passesFragment;
-        fragmentManager = view.getActivity().getSupportFragmentManager();
+        fragmentManager = view.getChildFragmentManager();
     }
 
     public void detachView() {
@@ -56,5 +57,9 @@ public class PassesPresenter {
         view.startActivity(intent);
         if (view.getActivity() != null)
             view.getActivity().finish();
+    }
+
+    public void showMessage(String message) {
+        Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
     }
 }

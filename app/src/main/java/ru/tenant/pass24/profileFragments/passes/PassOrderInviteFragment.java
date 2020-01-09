@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -170,6 +171,8 @@ public class PassOrderInviteFragment extends Fragment {
                                 if (createInviteResponse.getError().getCode() != null)
                                     if (createInviteResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
+                                    else
+                                        Toast.makeText(mInstance.getContext(), createInviteResponse.getError().getCode(), Toast.LENGTH_LONG).show();
                     }
 
                     @Override
