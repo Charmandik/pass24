@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,7 @@ public class MainScreenActivity extends AppCompatActivity {
     private ImageButton ibProfileSettings;
     private NavController navController;
     private Context mContext;
-    private TextView tvUserName, tvUserPhone;
+    private TextView tvUserName, tvUserPhone, btnLogout;
 
 
     @Override
@@ -67,6 +68,11 @@ public class MainScreenActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
+                    case R.id.nav_balance:
+                        drawer.closeDrawers();
+                        Log.d("tag", "balance");
+                        menuItem.setChecked(true);
+                        break;
                     case R.id.navigation_menu:
                         drawer.openDrawer(GravityCompat.START);
                         menuItem.setChecked(true);
@@ -91,12 +97,6 @@ public class MainScreenActivity extends AppCompatActivity {
                         navController.navigate((R.id.nav_passes));
                         drawer.closeDrawer(GravityCompat.START);
                         menuItem.setChecked(true);
-                        break;
-                    case R.id.btnLogout:
-                        clearToken();
-                        Intent intent = new Intent(mContext, MainActivity.class);
-                        intent.putExtra("toLogin", true);
-                        startActivity(intent);
                         break;
                 }
                 drawer.closeDrawers();
@@ -136,6 +136,17 @@ public class MainScreenActivity extends AppCompatActivity {
                         break;
                 }
                 return false;
+            }
+        });
+
+        btnLogout = findViewById(R.id.tvLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearToken();
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("toLogin", true);
+                startActivity(intent);
             }
         });
     }

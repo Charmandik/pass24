@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_balance"
-            android:title="Баланс" />
+            android:title="Баланс"
+            app:actionLayout="@layout/balance_item" />
         <item
             android:id="@+id/nav_passes"
             android:title="Мои пропуска" />
@@ -25,8 +27,9 @@
             android:id="@+id/nav_trusted_people"
             android:title="Доверенные лица" />
     </group>
-    <item
-        android:id="@+id/btnLogout"
-        android:icon="@drawable/ic_profile_exit"
-        android:title="Выйти из профиля" />
+    <!--    <item-->
+    <!--        android:id="@+id/btnLogout"-->
+    <!--        android:icon="@drawable/ic_profile_exit"-->
+    <!--        android:title=""-->
+    <!--        app:actionLayout="@layout/item_nav_profile_exit" />-->
 </menu>

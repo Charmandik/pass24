@@ -9,9 +9,6 @@ import ru.tenant.pass24.authorizationFragments.login.LoginFragment;
 import ru.tenant.pass24.authorizationFragments.welcome.WelcomeMainFragment;
 
 public class MainActivity extends AppCompatActivity {
-    //todo выкинуть, если ошибка авторизации
-    //todo красить желтым номер
-    //todo время выводить в формате дд.ИМЯ_МЕСЯЦА
     //todo надпись пополнить в балансе
     //todo возможность редактировать пропуска
     //todo возможность редактировать профиль
@@ -23,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     //todo иногда не стягиваются данные о профиле
     //todo возможность удалить доверенное лицо
     //todo возможность изменить доверенное лицо
+    //todo красить желтым номер
+    //todo время выводить в формате дд.ИМЯ_МЕСЯЦА
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
