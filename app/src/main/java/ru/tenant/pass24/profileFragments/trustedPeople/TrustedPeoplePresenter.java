@@ -20,6 +20,7 @@ public class TrustedPeoplePresenter {
     public void attachView(TrustedPeopleFragment trustedPeopleFragment) {
         view = trustedPeopleFragment;
         fragmentManager = view.getActivity().getSupportFragmentManager();
+        model.mContext = view;
     }
 
     public void detachView() {

@@ -1,5 +1,6 @@
 package ru.tenant.pass24.profileFragments.passes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -124,6 +126,10 @@ public class PassSelectedFragment extends Fragment {
                         if (deletePassResponse != null)
                             if (deletePassResponse.getBody() != null)
                                 Toast.makeText(getContext(), "Успешно удален", Toast.LENGTH_LONG).show();
+                            else if (deletePassResponse.getError() != null)
+                                if (deletePassResponse.getError().getCode() != null)
+                                    if (deletePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
                     }
 
                     @Override
@@ -154,5 +160,13 @@ public class PassSelectedFragment extends Fragment {
                 .replace(R.id.flPassesContainer, new PassOrderFragment())
                 .addToBackStack("asd")
                 .commit();
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("toLogin", true);
+        this.startActivity(intent);
+        if (this.getActivity() != null)
+            this.getActivity().finish();
     }
 }

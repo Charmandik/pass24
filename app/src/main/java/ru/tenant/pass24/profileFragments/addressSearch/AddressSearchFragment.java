@@ -1,6 +1,7 @@
 package ru.tenant.pass24.profileFragments.addressSearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -106,6 +108,11 @@ public class AddressSearchFragment extends Fragment {
                         if (profileAddressesResponse != null) {
                             if (profileAddressesResponse.getBody() != null)
                                 profileAddressesBodiesList.addAll(profileAddressesResponse.getBody());
+                            else if (profileAddressesResponse.getError() != null) {
+                                if (profileAddressesResponse.getError().getCode() != null)
+                                    if (profileAddressesResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
+                            }
 
                         }
                     }
@@ -127,6 +134,14 @@ public class AddressSearchFragment extends Fragment {
                 .replace(R.id.flRequestsContainer, RequestTypeFragment.getInstance())
                 .addToBackStack(RequestTypeFragment.TAG)
                 .commit();
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        intent.putExtra("toLogin", true);
+        mContext.startActivity(intent);
+        if (mInstance.getActivity() != null)
+            mInstance.getActivity().finish();
     }
 
     public void toRequestConfidantFragment() {

@@ -54,7 +54,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestA
                         if (requestCollection.getRequestData().getConfidant().getName() != null) {
                             holder.requestName.setText(requestCollection.getRequestData().getConfidant().getName());
                             holder.requestName.setVisibility(View.VISIBLE);
-                        }//todo разобраться почему не показывает текст
+                        }
             }
             if (requestCollection.getStatus() == 3)
                 holder.requestStatus.setBackgroundResource(R.drawable.ic_reject);

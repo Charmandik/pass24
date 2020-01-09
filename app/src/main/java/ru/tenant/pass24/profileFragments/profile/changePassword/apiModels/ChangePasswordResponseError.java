@@ -3,7 +3,7 @@ package ru.tenant.pass24.profileFragments.profile.changePassword.apiModels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ChangePasswordResponseError {
+public class ChangePasswordResponseError {
     @SerializedName("code")
     @Expose
     private String code;

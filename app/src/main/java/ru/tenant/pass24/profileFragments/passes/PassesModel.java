@@ -28,9 +28,15 @@ public class PassesModel {
                     @Override
                     public void onNext(PassesResponse passesResponse) {
                         if (passesResponse != null)
-                            if (passesResponse.getBody() != null)
+                            if (passesResponse.getBody() != null) {
                                 if (passesResponse.getBody().getCollection() != null)
                                     passesResponses.addAll(passesResponse.getBody().getCollection());
+                            } else if (passesResponse.getError() != null) {
+                                if (passesResponse.getError().getCode() != null)
+                                    if (passesResponse.getError().getCode().equals("UNAUTHENTICATED")) {
+                                        toLogin();
+                                    }
+                            }
                     }
 
                     @Override
@@ -42,5 +48,9 @@ public class PassesModel {
                         passesPresenter.onDataLoaded(passesResponses);
                     }
                 });
+    }
+
+    public void toLogin() {
+        passesPresenter.toLogin();
     }
 }

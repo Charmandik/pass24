@@ -1,5 +1,6 @@
 package ru.tenant.pass24.profileFragments.passes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -234,10 +236,14 @@ public class PassOrderVehicleFragment extends Fragment {
                     }
 
                     @Override
-                    public void onNext(CreateVehiclePassResponse createRequestResponse) {
-                        if (createRequestResponse != null)
-                            if (createRequestResponse.getBody() != null)
+                    public void onNext(CreateVehiclePassResponse createVehiclePassResponse) {
+                        if (createVehiclePassResponse != null)
+                            if (createVehiclePassResponse.getBody() != null) {
                                 toPassCreatedFragment();
+                            } else if (createVehiclePassResponse.getError() != null)
+                                if (createVehiclePassResponse.getError().getCode() != null)
+                                    if (createVehiclePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
                     }
 
                     @Override
@@ -328,5 +334,13 @@ public class PassOrderVehicleFragment extends Fragment {
                     .addToBackStack(null)
                     .commit();
         }
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("toLogin", true);
+        this.startActivity(intent);
+        if (this.getActivity() != null)
+            this.getActivity().finish();
     }
 }

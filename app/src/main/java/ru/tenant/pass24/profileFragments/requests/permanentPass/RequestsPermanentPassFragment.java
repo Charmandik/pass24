@@ -1,5 +1,6 @@
 package ru.tenant.pass24.profileFragments.requests.permanentPass;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -234,7 +236,11 @@ public class RequestsPermanentPassFragment extends Fragment {
 
                     @Override
                     public void onNext(CreateRequestResponse createRequestResponse) {
-
+                        if (createRequestResponse != null)
+                            if (createRequestResponse.getError() != null)
+                                if (createRequestResponse.getError().getCode() != null)
+                                    if (createRequestResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
                     }
 
                     @Override
@@ -246,5 +252,13 @@ public class RequestsPermanentPassFragment extends Fragment {
                     public void onComplete() {
                     }
                 });
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(this.getContext(), MainActivity.class);
+        intent.putExtra("toLogin", true);
+        this.startActivity(intent);
+        if (mInstance.getActivity() != null)
+            mInstance.getActivity().finish();
     }
 }

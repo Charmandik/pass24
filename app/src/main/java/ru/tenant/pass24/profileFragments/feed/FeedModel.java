@@ -17,6 +17,7 @@ public class FeedModel {
     private List<FeedCollection> feedResponses = new ArrayList();
 
     public void getEvents() {
+        Constants.authToken += "123";
         ApiService.getInstance().getFeedApi().getFeed(Constants.getAuthToken(), Constants.eventFeedTypeFilter, Constants.eventFeedConfidantFilter)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -28,10 +29,15 @@ public class FeedModel {
                     @Override
                     public void onNext(FeedResponse feedResponse) {
                         if (feedResponse != null)
-                            if (feedResponse.getBody() != null)
+                            if (feedResponse.getBody() != null) {
                                 if (feedResponse.getBody().getCollection() != null)
                                     if (feedResponse.getBody().getCollection().size() > 0)
                                         feedResponses.addAll(feedResponse.getBody().getCollection());
+                            } else if (feedResponse.getError() != null)
+                                if (feedResponse.getError().getCode() != null)
+                                    if (feedResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
+
                     }
 
                     @Override
@@ -43,5 +49,9 @@ public class FeedModel {
                         feedPresenter.onDataLoaded(feedResponses);
                     }
                 });
+    }
+
+    public void toLogin() {
+        feedPresenter.toLogin();
     }
 }

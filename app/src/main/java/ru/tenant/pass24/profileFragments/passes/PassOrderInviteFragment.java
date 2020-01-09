@@ -1,5 +1,6 @@
 package ru.tenant.pass24.profileFragments.passes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -32,19 +34,26 @@ import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.C
 
 public class PassOrderInviteFragment extends Fragment {
     public static String TAG = "PassOrderInviteFragment";
+    private static PassOrderInviteFragment mInstance;
     private RelativeLayout rlPassInviteAddress, rlPassInviteVisitTime;
     private ImageView backBtn, btnClose;
     private Button btnCreatePass;
     private TextView tvInviteAddress, tvVisitTimeInfo;
     private TextInputEditText tieGuestName, tieInviteComment;
-
-    private static PassOrderInviteFragment mInstance;
-
-
     private String startsAt = "";
     private String expiresAt = "";
     private String addressName = "";
     private int objectId;
+
+    private PassOrderInviteFragment() {
+        mInstance = this;
+    }
+
+    public static PassOrderInviteFragment getInstance() {
+        if (mInstance == null)
+            return new PassOrderInviteFragment();
+        else return mInstance;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,16 +64,6 @@ public class PassOrderInviteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init(view);
-    }
-
-    private PassOrderInviteFragment() {
-        mInstance = this;
-    }
-
-    public static PassOrderInviteFragment getInstance() {
-        if (mInstance == null)
-            return new PassOrderInviteFragment();
-        else return mInstance;
     }
 
     private void init(View view) {
@@ -167,6 +166,10 @@ public class PassOrderInviteFragment extends Fragment {
                         if (createInviteResponse != null)
                             if (createInviteResponse.getBody() != null)
                                 toPassCreatedFragment();
+                            else if (createInviteResponse.getError() != null)
+                                if (createInviteResponse.getError().getCode() != null)
+                                    if (createInviteResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
                     }
 
                     @Override
@@ -220,5 +223,13 @@ public class PassOrderInviteFragment extends Fragment {
                     .addToBackStack(null)
                     .commit();
         }
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        intent.putExtra("toLogin", true);
+        this.startActivity(intent);
+        if (this.getActivity() != null)
+            this.getActivity().finish();
     }
 }

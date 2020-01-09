@@ -1,6 +1,7 @@
 package ru.tenant.pass24.profileFragments.trustedPeople;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +26,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -247,6 +249,9 @@ public class AddConfidanceFragment extends Fragment {
                     @Override
                     public void onNext(CreateRequestResponse createRequestResponse) {
                         if (createRequestResponse.getError() != null) {
+                            if (createRequestResponse.getError().getCode() != null)
+                                if (createRequestResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                    toLogin();
                             if (createRequestResponse.getError().getDetails() != null) {
                                 if (createRequestResponse.getError().getDetails().getConfidant_firstName() != null)
                                     showErrorOnFirstName(true, createRequestResponse.getError().getDetails().getConfidant_firstName().get(0));
@@ -307,6 +312,14 @@ public class AddConfidanceFragment extends Fragment {
                 .replace(R.id.flTrustPeopleContainer, new TrustedPeopleFragment())
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        intent.putExtra("toLogin", true);
+        mContext.startActivity(intent);
+        if (this.getActivity() != null)
+            this.getActivity().finish();
     }
 
     public void showErrorOnFirstName(boolean show, String text) {

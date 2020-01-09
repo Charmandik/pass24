@@ -30,9 +30,13 @@ public class RequestsModel {
                     @Override
                     public void onNext(RequestResponse requestResponse) {
                         if (requestResponse != null)
-                            if (requestResponse.getBody() != null)
+                            if (requestResponse.getBody() != null) {
                                 if (requestResponse.getBody().getCollection() != null)
                                     requestResponses.addAll(requestResponse.getBody().getCollection());
+                            } else if (requestResponse.getError() != null)
+                                if (requestResponse.getError().getCode() != null)
+                                    if (requestResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                        toLogin();
                     }
 
                     @Override
@@ -45,5 +49,9 @@ public class RequestsModel {
                         requestsPresenter.onDataLoaded(requestResponses);
                     }
                 });
+    }
+
+    private void toLogin() {
+        requestsPresenter.toLogin();
     }
 }

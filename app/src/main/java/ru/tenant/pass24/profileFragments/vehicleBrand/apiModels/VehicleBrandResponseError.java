@@ -1,9 +1,10 @@
-package ru.tenant.pass24.profileFragments.passes.apiModels;
+package ru.tenant.pass24.profileFragments.vehicleBrand.apiModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PassesResponseError {
+public class VehicleBrandResponseError {
+
     @SerializedName("code")
     @Expose
     private String code;

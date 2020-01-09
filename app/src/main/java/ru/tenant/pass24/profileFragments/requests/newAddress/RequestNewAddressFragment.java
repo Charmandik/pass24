@@ -1,6 +1,7 @@
 package ru.tenant.pass24.profileFragments.requests.newAddress;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,6 +24,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import ru.tenant.pass24.MainActivity;
 import ru.tenant.pass24.R;
 import ru.tenant.pass24.helpers.Constants;
 import ru.tenant.pass24.helpers.retrofit.ApiService;
@@ -115,7 +117,7 @@ public class RequestNewAddressFragment extends Fragment {
         CreateRequestBody createRequestBody = new CreateRequestBody();
         createRequestBody.setType(Constants.objectJoinType);
         Random random = new Random();
-
+        //todo add random id??
         createRequestBody.setRequestData(new CreateRequestData(1, tilNewAddress.getEditText().getText().toString()));
         ApiService.getInstance().getRequestApi().createRequest(Constants.getAuthToken(), createRequestBody)
                 .subscribeOn(Schedulers.io())
@@ -128,7 +130,11 @@ public class RequestNewAddressFragment extends Fragment {
 
                     @Override
                     public void onNext(CreateRequestResponse createRequestResponse) {
-
+                        if (createRequestResponse.getError() != null) {
+                            if (createRequestResponse.getError().getCode() != null)
+                                if (createRequestResponse.getError().getCode().equals("UNAUTHENTICATED"))
+                                    toLogin();
+                        }
                     }
 
                     @Override
@@ -161,6 +167,14 @@ public class RequestNewAddressFragment extends Fragment {
                 .replace(R.id.flRequestsContainer, new RequestsFragment())
                 .addToBackStack(RequestTypeFragment.TAG)
                 .commit();
+    }
+
+    public void toLogin() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        intent.putExtra("toLogin", true);
+        mContext.startActivity(intent);
+        if (this.getActivity() != null)
+            this.getActivity().finish();
     }
 
 
