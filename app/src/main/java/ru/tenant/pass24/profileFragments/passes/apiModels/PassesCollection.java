@@ -8,7 +8,7 @@ import java.util.List;
 public class PassesCollection {
     @SerializedName("id")
     @Expose
-    private int id;
+    private Integer id;
 
     @SerializedName("object")
     @Expose
@@ -48,11 +48,11 @@ public class PassesCollection {
 
     @SerializedName("durationType")
     @Expose
-    private int durationType;
+    private Integer durationType;
 
     @SerializedName("guestType")
     @Expose
-    private int guestType;
+    private Integer guestType;
 
     @SerializedName("guestData")
     @Expose
@@ -82,9 +82,6 @@ public class PassesCollection {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public PassesCollectionObject getObject() {
         return object;
@@ -166,11 +163,19 @@ public class PassesCollection {
         this.durationType = durationType;
     }
 
-    public int getGuestType() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setDurationType(Integer durationType) {
+        this.durationType = durationType;
+    }
+
+    public Integer getGuestType() {
         return guestType;
     }
 
-    public void setGuestType(int guestType) {
+    public void setGuestType(Integer guestType) {
         this.guestType = guestType;
     }
 

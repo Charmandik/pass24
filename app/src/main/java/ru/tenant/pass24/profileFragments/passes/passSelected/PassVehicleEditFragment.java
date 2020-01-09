@@ -28,7 +28,6 @@ import ru.tenant.pass24.helpers.retrofit.ApiService;
 import ru.tenant.pass24.profileFragments.ValidityFragment;
 import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.passes.PassCreatedFragment;
-import ru.tenant.pass24.profileFragments.passes.PassOrderFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderTypeFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleFragment;
 import ru.tenant.pass24.profileFragments.passes.PassOrderVehicleTypeFragment;
@@ -59,7 +58,9 @@ public class PassVehicleEditFragment extends Fragment {
     private String startsAt = "";
     private String expiresAt = "";
     private int passType;
-    private String passName = "";
+    private String passTypeName = "";
+    private String vehicleNumber = "";
+    private String commentary = "";
     private int passId;
 
     private PassVehicleEditFragment(int passId) {
@@ -180,10 +181,19 @@ public class PassVehicleEditFragment extends Fragment {
             tvVisitTimeInfo.setVisibility(View.VISIBLE);
         }
 
-        if (!passName.equals("")) {
-            tvVehiclePassType.setText(passName);
+        if (!passTypeName.equals("")) {
+            tvVehiclePassType.setText(passTypeName);
             tvVehiclePassType.setVisibility(View.VISIBLE);
         }
+
+        if (!vehicleNumber.equals("")) {
+            etVehicleNumber.setText(vehicleNumber);
+        }
+
+        if (!commentary.equals("")) {
+            etVehiclePassComment.setText(commentary);
+        }
+
 
         if (this.getArguments() != null) {
             if (this.getArguments().getString("addressName") != null) {
@@ -215,11 +225,11 @@ public class PassVehicleEditFragment extends Fragment {
                 tvVisitTimeInfo.setText(data);
             }
 
-            if (this.getArguments().getString("passName") != null) {
+            if (this.getArguments().getString("passTypeName") != null) {
                 tvVehiclePassType.setVisibility(View.VISIBLE);
                 passType = this.getArguments().getInt("passType");
-                passName = this.getArguments().getString("passName");
-                tvVehiclePassType.setText(passName);
+                passTypeName = this.getArguments().getString("passTypeName");
+                tvVehiclePassType.setText(passTypeName);
             }
         }
     }
@@ -283,16 +293,36 @@ public class PassVehicleEditFragment extends Fragment {
                         if (getPassResponse != null)
                             if (getPassResponse.getBody() != null) {
                                 PassesCollection body = getPassResponse.getBody();
-                                addressName = body.getAddress().getName();
-                                vehicleBrand = body.getGuestData().getModel().getTitle();
-                                carTypeName = "";
-                                carType = body.getGuestData().getVehicleType();
-                                objectId = body.getAddress().getId();
-                                modelId = body.getGuestData().getModel().getId();
-                                startsAt = body.getStartsAt();
-                                expiresAt = body.getExpiresAt();
-                                passType = body.getGuestType();
-                                passName = body.getTitle();
+                                if (body.getAddress() != null) {
+                                    if (body.getAddress().getName() != null)
+                                        addressName = body.getAddress().getName();
+                                    if (body.getAddress().getId() != null)
+                                        objectId = body.getAddress().getId();
+                                }
+
+                                if (body.getGuestData() != null) {
+                                    if (body.getGuestData().getModel() != null) {
+                                        vehicleBrand = body.getGuestData().getModel().getTitle();
+                                        modelId = body.getGuestData().getModel().getId();
+                                    }
+                                    if (body.getGuestData().getPlateNumber() != null)
+                                        vehicleNumber = body.getGuestData().getPlateNumber();
+                                    if (body.getGuestData().getVehicleType() != null)
+                                        carType = body.getGuestData().getVehicleType();
+                                }
+                                if (body.getGuestType() != null)
+                                    passType = body.getGuestType();
+                                if (body.getStartsAt() != null)
+                                    startsAt = body.getStartsAt();
+                                if (body.getExpiresAt() != null)
+                                    expiresAt = body.getExpiresAt();
+                                if (body.getTitle() != null)
+                                    passTypeName = body.getTitle();
+                                if (body.getGuestType() != null)
+                                    carTypeName = "";
+                                if (body.getComment() != null)
+                                    commentary = body.getComment();
+
                             } else if (getPassResponse.getError() != null)
                                 if (getPassResponse.getError().getCode() != null)
                                     if (getPassResponse.getError().getCode().equals("UNAUTHENTICATED"))
@@ -373,11 +403,10 @@ public class PassVehicleEditFragment extends Fragment {
     }
 
     public void toPassOrderFragment() {
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flPassesContainer, new PassOrderFragment())
-                .addToBackStack("asd")
-                .commit();
+        if (getFragmentManager() != null) {
+            if (getFragmentManager().getBackStackEntryCount() > 0)
+                getFragmentManager().popBackStack();
+        }
     }
 
     public void toPassCreatedFragment() {

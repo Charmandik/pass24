@@ -13,7 +13,7 @@ public class CollectionGuestData {
 
     @SerializedName("vehicleType")
     @Expose
-    private int vehicleType;
+    private Integer vehicleType;
 
     @SerializedName("model")
     @Expose
@@ -27,11 +27,11 @@ public class CollectionGuestData {
     @Expose
     private String typePlateNumber;
 
-    public int getVehicleType() {
+    public Integer getVehicleType() {
         return vehicleType;
     }
 
-    public void setVehicleType(int vehicleType) {
+    public void setVehicleType(Integer vehicleType) {
         this.vehicleType = vehicleType;
     }
 
