@@ -29,7 +29,7 @@ public class CreateVehiclePassRequest {
     @Expose
     private int guestType;
 
-    @SerializedName("vehicleGuestData")
+    @SerializedName("guestData")
     @Expose
     private VehicleGuestData vehicleGuestData;
 

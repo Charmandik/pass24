@@ -7,9 +7,11 @@ public class VehiclePassError {
     @SerializedName("code")
     @Expose
     private String code;
+
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("details")
     @Expose
     private VehiclePassErrorDetails details;
