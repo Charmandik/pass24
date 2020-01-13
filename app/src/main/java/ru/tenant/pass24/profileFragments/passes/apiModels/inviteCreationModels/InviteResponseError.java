@@ -13,6 +13,10 @@ public class InviteResponseError {
     @Expose
     private String message;
 
+    @SerializedName("details")
+    @Expose
+    private InviteErrorDetails details;
+
     public String getCode() {
         return code;
     }
@@ -27,5 +31,13 @@ public class InviteResponseError {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public InviteErrorDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(InviteErrorDetails details) {
+        this.details = details;
     }
 }

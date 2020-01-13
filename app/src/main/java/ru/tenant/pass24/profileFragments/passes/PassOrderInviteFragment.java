@@ -32,6 +32,7 @@ import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.passes.apiModels.guestPassCreationModels.GuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.CreateInviteRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.CreateInviteResponse;
+import ru.tenant.pass24.profileFragments.passes.apiModels.inviteCreationModels.InviteErrorDetails;
 
 public class PassOrderInviteFragment extends Fragment {
     public static String TAG = "PassOrderInviteFragment";
@@ -171,7 +172,29 @@ public class PassOrderInviteFragment extends Fragment {
                                 if (createInviteResponse.getError().getCode() != null)
                                     if (createInviteResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
-                                    else
+                                    else if (createInviteResponse.getError().getDetails() != null) {
+                                        InviteErrorDetails details = createInviteResponse.getError().getDetails();
+                                        if (details.getAddressId().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getAddressId().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getStartsAt().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getStartsAt().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getExpiresAt().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getExpiresAt().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getDurationType().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getDurationType().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getGuestData().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getGuestData().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getGuestData_modelid().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getGuestData_modelid().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getGuestData_plateNumber().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getGuestData_plateNumber().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getGuestData_vehicleType().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getGuestData_vehicleType().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getComment().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getComment().get(0), Toast.LENGTH_LONG).show();
+                                        else if (details.getOptions().size() > 0)
+                                            Toast.makeText(mInstance.getContext(), details.getOptions().get(0), Toast.LENGTH_LONG).show();
+                                    } else
                                         Toast.makeText(mInstance.getContext(), createInviteResponse.getError().getCode(), Toast.LENGTH_LONG).show();
                     }
 
