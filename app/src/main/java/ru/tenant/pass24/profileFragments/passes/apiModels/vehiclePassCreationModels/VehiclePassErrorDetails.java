@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-class VehiclePassErrorDetails {
+public class VehiclePassErrorDetails {
 
     @SerializedName("addressId")
     @Expose
@@ -31,7 +31,7 @@ class VehiclePassErrorDetails {
     @Expose
     private List<String> guestData_vehicleType;
 
-    @SerializedName("guestData.modelid")
+    @SerializedName("guestData.modelId")
     @Expose
     private List<String> guestData_modelid;
 

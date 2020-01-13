@@ -33,6 +33,7 @@ import ru.tenant.pass24.profileFragments.addressSearch.AddressSearchFragment;
 import ru.tenant.pass24.profileFragments.passes.apiModels.VehicleGuestData;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassRequest;
 import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.CreateVehiclePassResponse;
+import ru.tenant.pass24.profileFragments.passes.apiModels.vehiclePassCreationModels.VehiclePassErrorDetails;
 import ru.tenant.pass24.profileFragments.vehicleBrand.VehicleBrandFragment;
 
 public class PassOrderVehicleFragment extends Fragment {
@@ -245,11 +246,34 @@ public class PassOrderVehicleFragment extends Fragment {
                             if (createVehiclePassResponse.getBody() != null) {
                                 toPassCreatedFragment();
                             } else if (createVehiclePassResponse.getError() != null)
-                                if (createVehiclePassResponse.getError().getCode() != null)
+                                if (createVehiclePassResponse.getError().getCode() != null) {
                                     if (createVehiclePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
-                                    else
-                                        Toast.makeText(mInstance.getContext(), createVehiclePassResponse.getError().getCode(), Toast.LENGTH_LONG).show();
+                                } else if (createVehiclePassResponse.getError().getDetails() != null) {
+                                    VehiclePassErrorDetails details = createVehiclePassResponse.getError().getDetails();
+                                    if (details.getAddressId().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getAddressId().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getStartsAt().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getStartsAt().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getExpiresAt().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getExpiresAt().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getDurationType().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getDurationType().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getGuestData().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getGuestData().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getGuestData_modelid().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getGuestData_modelid().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getGuestData_plateNumber().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getGuestData_plateNumber().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getGuestData_vehicleType().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getGuestData_vehicleType().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getComment().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getComment().get(0), Toast.LENGTH_LONG).show();
+                                    else if (details.getOptions().size() > 0)
+                                        Toast.makeText(mInstance.getContext(), details.getOptions().get(0), Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(mInstance.getContext(), createVehiclePassResponse.getError().getCode(), Toast.LENGTH_LONG).show();
+
                     }
 
                     @Override

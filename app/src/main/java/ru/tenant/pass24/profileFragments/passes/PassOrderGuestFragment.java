@@ -174,8 +174,9 @@ public class PassOrderGuestFragment extends Fragment {
                                 if (createVehiclePassResponse.getError().getCode() != null)
                                     if (createVehiclePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
-                                    else
+                                    else {
                                         Toast.makeText(mInstance.getContext(), createVehiclePassResponse.getError().getCode(), android.widget.Toast.LENGTH_LONG).show();
+                                    }
                     }
 
                     @Override
