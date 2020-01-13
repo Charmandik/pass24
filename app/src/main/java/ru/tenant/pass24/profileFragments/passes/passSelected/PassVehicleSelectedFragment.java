@@ -31,6 +31,7 @@ public class PassVehicleSelectedFragment extends Fragment {
     private ImageView backBtn, ivBtnClose, ivDeletePass, ivAddPermanentPass, ivAddTemporaryPass;
     private TextView tvPassSelectedTitle, tvPassSelectedAddress, tvPassSelectedVisitTime, tvPassSelectedComment;
     private LinearLayout llEditPass;
+    private PassVehicleSelectedFragment mInstance;
 
     private int passId;
     private String title;
@@ -56,6 +57,7 @@ public class PassVehicleSelectedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mInstance = this;
         init(view);
     }
 
@@ -142,6 +144,8 @@ public class PassVehicleSelectedFragment extends Fragment {
                                 if (deletePassResponse.getError().getCode() != null)
                                     if (deletePassResponse.getError().getCode().equals("UNAUTHENTICATED"))
                                         toLogin();
+                                    else
+                                        Toast.makeText(mInstance.getContext(), deletePassResponse.getError().getCode(), Toast.LENGTH_LONG).show();
                     }
 
                     @Override
